@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/3Dconics.dir/main.cpp.o CMakeFiles/3Dconics.dir/glad.c.o -o 3Dconics  -lglfw3 -lGL -ldl -lpthread 
