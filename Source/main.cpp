@@ -1,7 +1,20 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "Harness.h"
 
+class Test : public conics::App{
+public:
+
+};
+
+int main(){
+    Test t;
+    t.startup();
+    return 0;
+}
+
+/*
 const float one = 1.0f;
 const GLfloat color[] = {1.0f, 1.0f, 0.0f, 1.0f};
 
@@ -37,3 +50,4 @@ int main() {
 
     return 0;
 }
+*/

@@ -6,6 +6,8 @@ namespace conics{
     class App{
     private:
     public:
+        virtual void startup();
+
     };
 }
 
