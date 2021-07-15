@@ -17,9 +17,11 @@ namespace conics{
         Window w;
 
     public:
-        explicit Harness(const Window& w);
         Harness() = default;
         virtual ~Harness() = default;
+
+        void setWindow(const Window& window); // Call before running otherwise defaults
+        const Window& getWindow() const;
 
         virtual void run(Harness* h);
         virtual void startup();

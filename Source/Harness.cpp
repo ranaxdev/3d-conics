@@ -1,11 +1,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
 
 #include "Harness.h"
 
-conics::Harness::Harness(const conics::Window &w) : w(w){
-}
 
 
 void conics::Harness::run(conics::Harness* h) {
@@ -31,17 +28,27 @@ void conics::Harness::run(conics::Harness* h) {
         glfwTerminate();
     }
 
+    // Application Initialization
     startup();
 
-    render((float) glfwGetTime());
+    // Application Render
+    while(!glfwWindowShouldClose(window)){
+        render((float) glfwGetTime());
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
 }
 
 void conics::Harness::startup() {}
 
 void conics::Harness::render(float currentTime) {}
 
+void conics::Harness::setWindow(const conics::Window &window) {
+    conics::Harness::w = window;
+}
 
-
-
-
+const conics::Window& conics::Harness::getWindow() const {
+    return Harness::w;
+}
 
