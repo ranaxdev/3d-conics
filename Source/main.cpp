@@ -10,5 +10,7 @@ public:
 int main(){
     App* a = new App;
     a->run(a);
+    delete a;
+    
     return 0;
 }

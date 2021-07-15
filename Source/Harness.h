@@ -7,8 +7,17 @@ namespace conics{
     struct Window{
         uint16_t width, height;
         const char* title;
+        float color[4]{};
 
-        explicit Window(uint16_t w=640, uint16_t h=480, const char* title="empty") : width(w), height(h), title(title){}
+
+        explicit Window(uint16_t w=640, uint16_t h=480, const char* title="empty",
+                        float r=1.0f, float g=1.0f, float b =0.0f)
+        : width(w), height(h), title(title){
+            color[0] = r;
+            color[1] = g;
+            color[2] = b;
+            color[3] = 1.0f;
+        }
     };
 
     // OpenGL render harness
