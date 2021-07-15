@@ -20,7 +20,7 @@ namespace conics{
         }
     };
 
-    // OpenGL render harness
+    // OpenGL rendering harness
     class Harness{
     private:
         Window w;
