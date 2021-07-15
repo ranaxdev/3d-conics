@@ -8,7 +8,7 @@ namespace conics{
         uint16_t width, height;
         const char* title;
 
-        Window(uint16_t w, uint16_t h, const char* title) : width(w), height(h), title(title){}
+        explicit Window(uint16_t w=640, uint16_t h=480, const char* title="empty") : width(w), height(h), title(title){}
     };
 
     // OpenGL render harness
@@ -18,7 +18,8 @@ namespace conics{
 
     public:
         explicit Harness(const Window& w);
-        virtual ~Harness();
+        Harness() = default;
+        virtual ~Harness() = default;
 
         virtual void run(Harness* h);
         virtual void startup();

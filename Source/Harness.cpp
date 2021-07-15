@@ -7,9 +7,6 @@
 conics::Harness::Harness(const conics::Window &w) : w(w){
 }
 
-conics::Harness::~Harness() {
-
-}
 
 void conics::Harness::run(conics::Harness* h) {
     // GLFW init
