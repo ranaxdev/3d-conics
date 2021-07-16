@@ -1,6 +1,11 @@
 #ifndef _H_HARNESS
 #define _H_HARNESS
 
+#include <vector>
+
+#include "Utils/KeyListener.h"
+
+
 namespace conics{
 
     // Window properties
@@ -23,13 +28,15 @@ namespace conics{
     class Harness{
     private:
         Window w;
-
+        std::vector<const KeyListener*> keylisteners;
     public:
         Harness() = default;
         virtual ~Harness() = default;
 
         void setWindow(const Window& window); // Call before running otherwise defaults
         const Window& getWindow() const;
+
+        void addKeyListener(const KeyListener* k);
 
         virtual void run(Harness* h);
         virtual void startup();

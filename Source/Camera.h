@@ -3,8 +3,8 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtx/string_cast.hpp>
+
+#include "Utils/KeyListener.h"
 
 /* TODO
  * Camera is temporarily keyboard controlled movement
@@ -13,12 +13,14 @@
  * 360 degrees
  * */
 
-class Camera{
+class Camera : public KeyListener{
 public:
-    Camera() = default;
+    Camera() = default; // temp
     ~Camera() = default;
 
     void update(float delta);
+
+    const int &pressed(const int &keycode) const override;
 
 private:
     glm::vec3 cam_pos = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -26,6 +28,7 @@ private:
     glm::vec3 cam_up = glm::vec3(0.0f, 1.0f, 0.0f);
 
     glm::mat4 view_m = glm::mat4(1.0f);
+    glm::mat4 proj_m = glm::perspective(glm::radians(45.0f), 16.0f/9.0f, 0.1f, 100.0f);
 
     float velocity = 0.0f;
 };

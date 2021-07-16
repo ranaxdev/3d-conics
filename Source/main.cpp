@@ -4,6 +4,7 @@
 
 #include "Harness.h"
 #include "Shader.h"
+#include "Camera.h"
 
 #define SHADER_SRC "/home/rana/Desktop/3Dconics/Shaders"
 class App : public conics::Harness{
@@ -25,7 +26,9 @@ public:
 };
 
 int main(){
+    Camera* camera = new Camera;
     App* a = new App;
+    a->addKeyListener(camera);
     a->run(a);
     delete a;
     

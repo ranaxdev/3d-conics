@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Harness.h"
-
+#include <vector>
 
 
 void conics::Harness::run(conics::Harness* h) {
@@ -36,6 +36,14 @@ void conics::Harness::run(conics::Harness* h) {
     while(!glfwWindowShouldClose(window)){
         glClearBufferfv(GL_COLOR, 0, screen_color);
 
+        // Update observers
+        for(auto& o : conics::Harness::keylisteners){
+            if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS){
+                o->pressed(GLFW_KEY_W);
+            }
+        }
+
+        // Render
         render((float) glfwGetTime());
 
         glfwSwapBuffers(window);
@@ -53,5 +61,9 @@ void conics::Harness::setWindow(const conics::Window &window) {
 
 const conics::Window& conics::Harness::getWindow() const {
     return Harness::w;
+}
+
+void conics::Harness::addKeyListener(const KeyListener* k) {
+    Harness::keylisteners.push_back(k);
 }
 
