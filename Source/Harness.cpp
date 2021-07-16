@@ -69,7 +69,7 @@ const conics::Window& conics::Harness::getWindow() const {
     return Harness::w;
 }
 
-void conics::Harness::addKeyListener(const KeyListener* k) {
+void conics::Harness::addKeyListener(KeyListener* k) {
     Harness::keylisteners.push_back(k);
 }
 

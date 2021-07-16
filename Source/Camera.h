@@ -6,6 +6,13 @@
 
 #include "Utils/KeyListener.h"
 
+// Direction constants - may change depending on util lib
+#define FWD GLFW_KEY_W
+#define BCK GLFW_KEY_S
+#define LFT GLFW_KEY_A
+#define RGT GLFW_KEY_D
+
+
 /* TODO
  * Camera is temporarily keyboard controlled movement
  * and mouse controlled rotation, but should be changed
@@ -19,8 +26,9 @@ public:
     ~Camera() = default;
 
     void update(float delta);
+    glm::mat4& calc_VP(float delta);
 
-    const int &pressed(const int &keycode) const override;
+    const int &pressed(const int& keycode) override;
 
 private:
     glm::vec3 cam_pos = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -29,6 +37,7 @@ private:
 
     glm::mat4 view_m = glm::mat4(1.0f);
     glm::mat4 proj_m = glm::perspective(glm::radians(45.0f), 16.0f/9.0f, 0.1f, 100.0f);
+    glm::mat4 vp_m = glm::mat4(1.0f);
 
     float velocity = 0.0f;
 };

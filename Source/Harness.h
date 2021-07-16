@@ -28,7 +28,7 @@ namespace conics{
     class Harness{
     private:
         Window w;
-        std::vector<const KeyListener*> keylisteners;
+        std::vector<KeyListener*> keylisteners;
 
         int currentKey    = 0;
         int currentAction = 0;
@@ -41,7 +41,7 @@ namespace conics{
 
         void setKA(const int& key, const int& action);
 
-        void addKeyListener(const KeyListener* k);
+        void addKeyListener(KeyListener* k);
 
         virtual void run(Harness* h);
         virtual void startup();
