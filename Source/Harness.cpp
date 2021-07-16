@@ -26,7 +26,7 @@ void conics::Harness::run(conics::Harness* h) {
     glfwSetWindowUserPointer(window, (void*)(this)); // Pointer to app window that implements this harness
 
     // Callbacks
-    glfwSetKeyCallback(window, Harness::key_callback);
+    glfwSetKeyCallback(window, conics::key_callback);
 
     // Load GLAD
     if(!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
@@ -73,15 +73,17 @@ void conics::Harness::addKeyListener(const KeyListener* k) {
     Harness::keylisteners.push_back(k);
 }
 
-void conics::Harness::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+void conics::Harness::setKA(const int &key, const int &action) {
+    Harness::currentKey = key;
+    Harness:currentAction = action;
+}
+
+void conics::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     // Retrieve harness of current window
     Harness* instance = (Harness*)glfwGetWindowUserPointer(window);
 
     // Send key info to application that implements the harness
     if(instance){
-        instance->currentKey = key;
-        instance->currentAction = action;
+        instance->setKA(key, action);
     }
 }
-
-
