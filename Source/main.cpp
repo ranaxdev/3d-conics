@@ -53,7 +53,7 @@ public:
 };
 
 int main(){
-    conics::Window window = conics::Window(1280, 960, "boterham");
+    conics::Window window = conics::Window(1280, 960, "conics");
     Camera* camera = new Camera;
     App* a = new App;
     a->setWindow(window);
