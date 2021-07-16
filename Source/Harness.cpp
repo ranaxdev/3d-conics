@@ -46,7 +46,9 @@ void conics::Harness::run(conics::Harness* h) {
         // Update observers
         for(auto& o : conics::Harness::keylisteners){
             if(currentAction == GLFW_PRESS)
-                o->pressed(currentKey);
+                o->keys[currentKey] = 1;
+            else if(currentAction == GLFW_RELEASE)
+                o->keys[currentKey] = 0;
         }
 
         // Render

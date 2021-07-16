@@ -4,7 +4,7 @@
 
 class KeyListener{
 public:
-    virtual const int& pressed(const int& keycode);
+    int keys[348] ={0};
 };
 
 #endif

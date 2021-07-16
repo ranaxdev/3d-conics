@@ -25,10 +25,8 @@ public:
     Camera() = default; // temp
     ~Camera() = default;
 
-    void update(float delta);
     glm::mat4& calc_VP(float delta);
 
-    const int &pressed(const int& keycode) override;
 
 private:
     glm::vec3 cam_pos = glm::vec3(0.0f, 0.0f, 0.0f);
