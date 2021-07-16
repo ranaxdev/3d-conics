@@ -9,7 +9,6 @@ namespace conics{
         const char* title;
         float color[4]{};
 
-
         explicit Window(uint16_t w=640, uint16_t h=480, const char* title="empty",
                         float r=1.0f, float g=1.0f, float b =0.0f)
         : width(w), height(h), title(title){
