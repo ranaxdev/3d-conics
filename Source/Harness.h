@@ -29,6 +29,9 @@ namespace conics{
     private:
         Window w;
         std::vector<const KeyListener*> keylisteners;
+        static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+
     public:
         Harness() = default;
         virtual ~Harness() = default;
@@ -42,7 +45,11 @@ namespace conics{
         virtual void startup();
         virtual void render(float currentTime);
 
+        int currentKey =0;
+        int currentAction=0;
     };
+
+
 }
 
 #endif
