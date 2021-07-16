@@ -45,10 +45,17 @@ void conics::Harness::run(conics::Harness* h) {
 
         // Update observers
         for(auto& o : conics::Harness::keylisteners){
-            if(currentAction == GLFW_PRESS)
-                o->keys[currentKey] = 1;
-            else if(currentAction == GLFW_RELEASE)
-                o->keys[currentKey] = 0;
+            // NOTE: for key callback (NOT poll) => o->keys[currentKey] = currentAction
+
+            // Poll tracked keys for presses
+            for(auto& k : keys_to_poll){
+                if(glfwGetKey(window, k) == GLFW_PRESS)
+                    o->keys[k] = 1;
+                else
+                    o->keys[k] = 0;
+            }
+
+
         }
 
         // Render

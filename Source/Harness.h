@@ -30,6 +30,9 @@ namespace conics{
         Window w;
         std::vector<KeyListener*> keylisteners;
 
+        // Probably replace with dynamic container later
+        int keys_to_poll[4] =
+                {GLFW_KEY_W, GLFW_KEY_S, GLFW_KEY_A, GLFW_KEY_D};
         int currentKey    = 0;
         int currentAction = 0;
     public:

@@ -5,6 +5,7 @@
 glm::mat4 &Camera::calc_VP(float delta) {
     Camera::velocity = 8.0f * delta;
 
+    std::cout << keys[FWD] << " " << keys[BCK] << " " << keys[LFT] << " " << keys[RGT] << std::endl;
     // Update Movement
     if(keys[FWD])
         cam_pos += velocity * cam_front;
