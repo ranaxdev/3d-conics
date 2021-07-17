@@ -15,7 +15,6 @@
 #define DEBUG 1
 #define SHADER_SRC "/home/rana/Desktop/3Dconics/Shaders"
 
-
 class App : public conics::Harness{
 public:
     std::shared_ptr<Camera> camera;
@@ -70,12 +69,15 @@ int main(){
     
     return 0;
 }
-#endif
 
-#if DEBUG
+
+#else
 int main(){
-    Vec<float, 3> v({23.0f, 2.0f, 1.0f, 4.0f, 6.0f});
+    //Vec<float, 3> v({23.0f, 2.0f, 1.0f, 4.0f, 6.0f});
+
+
 
     return 0;
 }
+
 #endif

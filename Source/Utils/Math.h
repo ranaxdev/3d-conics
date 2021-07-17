@@ -16,7 +16,9 @@ struct Vec{
     explicit Vec(const std::list<T>&& params){
         // TODO
         // Log size error
-        if(params.size() < n){}
+        if(params.size() < n){
+            std::cout << "[WARNING] Vector not fully filled" << std::endl;
+        }
 
         typename std::list<T>::const_iterator it = params.cbegin();
         for(int i=0; i<n; i++){

@@ -27,10 +27,6 @@ namespace conics{
 
     // OpenGL rendering harness
     class Harness{
-    private:
-        Window w;
-        std::vector<std::shared_ptr<KeyListener>> keylisteners;
-
         // Probably replace with dynamic container later
         int keys_to_poll[4] =
                 {GLFW_KEY_W, GLFW_KEY_S, GLFW_KEY_A, GLFW_KEY_D};
@@ -50,6 +46,11 @@ namespace conics{
         virtual void run(Harness* h);
         virtual void startup();
         virtual void render(float currentTime);
+
+    private:
+        Window w;
+        std::vector<std::shared_ptr<KeyListener>> keylisteners;
+
     };
 
     // GLFW callbacks
