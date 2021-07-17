@@ -6,12 +6,13 @@
 
 #include <iostream>
 
+
 #include "Harness.h"
 #include "Shader.h"
 #include "Camera.h"
 #include "Utils/Math.h"
 
-#define DEBUG 0
+#define DEBUG 1
 #define SHADER_SRC "/home/rana/Desktop/3Dconics/Shaders"
 
 
@@ -73,6 +74,7 @@ int main(){
 
 #if DEBUG
 int main(){
+    Vec<float, 3> v({23.0f, 2.0f, 1.0f, 4.0f, 6.0f});
 
     return 0;
 }
