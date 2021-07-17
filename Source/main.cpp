@@ -49,6 +49,9 @@ public:
     void render(float currentTime) override {
         delta = currentTime - last;
 
+        // TEMP
+        Logger::log(INFO, glm::to_string(camera->getCamPos()), __FILENAME__, __LINE__);
+
         glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
         glPointSize(40.0f);
         glDrawArrays(GL_TRIANGLES, 0, 3);

@@ -20,3 +20,7 @@ glm::mat4 &Camera::calc_VP(float delta) {
     Camera::vp_m = Camera::proj_m * Camera::view_m;
     return Camera::vp_m;
 }
+
+const glm::vec3 &Camera::getCamPos() const {
+    return Camera::cam_pos;
+}

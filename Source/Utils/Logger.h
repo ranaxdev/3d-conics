@@ -11,6 +11,7 @@ enum lvl{
 class Logger{
 public:
     Logger() = delete;
+    ~Logger() = default;
 
     static void log(lvl level, std::string&& msg, const char* where, uint16_t at);
     static void dump();

@@ -34,7 +34,7 @@ namespace conics{
         int currentAction = 0;
     public:
         Harness() = default;
-        virtual ~Harness() = default;
+        virtual ~Harness();
 
         void setWindow(const Window& window); // Call before running otherwise defaults
         const Window& getWindow() const;

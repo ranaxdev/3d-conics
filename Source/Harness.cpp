@@ -1,11 +1,13 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "Utils/Logger.h"
 #include "Harness.h"
-#include <vector>
 
-
-
+conics::Harness::~Harness() {
+    // Dump log file
+    Logger::dump();
+}
 
 void conics::Harness::run(conics::Harness* h) {
     // GLFW init
@@ -86,6 +88,8 @@ void conics::Harness::setKA(const int &key, const int &action) {
     Harness::currentKey = key;
     Harness:currentAction = action;
 }
+
+
 
 void conics::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     // Retrieve harness of current window

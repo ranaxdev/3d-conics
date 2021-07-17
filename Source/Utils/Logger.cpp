@@ -6,8 +6,7 @@
 #include "Globals.h"
 #include "Logger.h"
 
-
-std::string Logger::str_log = "*============================= APP-LOG =============================*\n";
+std::string Logger::str_log = "*============================= LOGGED SESSION =============================*\n";
 const char* Logger::tag[3] = {"[INFO]","[WARN]","[ERROR]"};
 
 void Logger::log(lvl level, std::string&& msg, const char* where, uint16_t at) {
@@ -31,7 +30,10 @@ void Logger::dump() {
     // Dumps log to output directory (called on harness detachment)
     std::ofstream f;
     f.open(DUMP_LOC+"log.txt");
-
+    f << str_log;
+    f.close();
 }
+
+
 
 

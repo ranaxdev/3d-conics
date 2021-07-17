@@ -27,6 +27,8 @@ public:
 
     glm::mat4& calc_VP(float delta);
 
+    // Getters
+    const glm::vec3& getCamPos() const;
 
 private:
     glm::vec3 cam_pos = glm::vec3(0.0f, 0.0f, 0.0f);
