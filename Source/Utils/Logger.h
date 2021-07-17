@@ -11,7 +11,7 @@ class Logger{
 public:
     Logger() = delete;
 
-    void log(lvl level, std::string&& msg);
+    static void log(lvl level, std::string&& msg, const char* where, uint16_t at);
 
 private:
     static std::string str_log;

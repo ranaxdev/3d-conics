@@ -10,7 +10,10 @@
 #include "Harness.h"
 #include "Shader.h"
 #include "Camera.h"
+
 #include "Utils/Math.h"
+#include "Utils/Logger.h"
+#include "Utils/Globals.h"
 
 #define DEBUG 1
 #define SHADER_SRC "/home/rana/Desktop/3Dconics/Shaders"
@@ -75,7 +78,7 @@ int main(){
 int main(){
     //Vec<float, 3> v({23.0f, 2.0f, 1.0f, 4.0f, 6.0f});
 
-
+    Logger::log(ERROR, "error occured", __FILENAME__, __LINE__);
 
     return 0;
 }
