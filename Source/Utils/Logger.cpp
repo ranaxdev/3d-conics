@@ -23,8 +23,8 @@ void Logger::log(lvl level, std::string&& msg, const char* where, uint16_t at) {
     msg.insert(0, s.str());
     msg.insert(0, tag[level]);
     msg.append("\n");
-    
 
+    str_log.append(msg);
 
 }
 

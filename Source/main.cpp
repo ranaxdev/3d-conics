@@ -15,14 +15,12 @@
 #include "Utils/Logger.h"
 #include "Utils/Globals.h"
 
-#define DEBUG 1
-#define SHADER_SRC "/home/rana/Desktop/3Dconics/Shaders"
 
 class App : public conics::Harness{
 public:
     std::shared_ptr<Camera> camera;
     void startup() override {
-        Shader* shader = new Shader(SHADER_SRC"/vert.glsl", SHADER_SRC"/frag.glsl");
+        Shader* shader = new Shader((SRC+"Shaders/vert.glsl").c_str(), (SRC+"Shaders/frag.glsl").c_str());
         shader->bind();
 
         GLfloat data[] = {
@@ -79,7 +77,7 @@ int main(){
     //Vec<float, 3> v({23.0f, 2.0f, 1.0f, 4.0f, 6.0f});
 
     Logger::log(ERROR, "error occured", __FILENAME__, __LINE__);
-
+    std::cout << SRC;
     return 0;
 }
 
