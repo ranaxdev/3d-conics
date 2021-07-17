@@ -9,12 +9,15 @@
 #include "Harness.h"
 #include "Shader.h"
 #include "Camera.h"
+#include "Utils/Math.h"
 
+#define DEBUG 0
 #define SHADER_SRC "/home/rana/Desktop/3Dconics/Shaders"
-class App : public conics::Harness{
 
+
+class App : public conics::Harness{
 public:
-    Camera* camera;
+    std::shared_ptr<Camera> camera;
     void startup() override {
         Shader* shader = new Shader(SHADER_SRC"/vert.glsl", SHADER_SRC"/frag.glsl");
         shader->bind();
@@ -52,9 +55,10 @@ public:
     }
 };
 
+#if !DEBUG
 int main(){
     conics::Window window = conics::Window(1280, 960, "conics");
-    Camera* camera = new Camera;
+    std::shared_ptr<Camera> camera(new Camera);
     App* a = new App;
     a->setWindow(window);
     a->addKeyListener(camera);
@@ -65,3 +69,11 @@ int main(){
     
     return 0;
 }
+#endif
+
+#if DEBUG
+int main(){
+
+    return 0;
+}
+#endif

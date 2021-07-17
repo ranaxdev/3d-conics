@@ -2,6 +2,7 @@
 #define _H_HARNESS
 
 #include <vector>
+#include <memory>
 
 #include "Utils/KeyListener.h"
 
@@ -28,7 +29,7 @@ namespace conics{
     class Harness{
     private:
         Window w;
-        std::vector<KeyListener*> keylisteners;
+        std::vector<std::shared_ptr<KeyListener>> keylisteners;
 
         // Probably replace with dynamic container later
         int keys_to_poll[4] =
@@ -44,7 +45,7 @@ namespace conics{
 
         void setKA(const int& key, const int& action);
 
-        void addKeyListener(KeyListener* k);
+        void addKeyListener(const std::shared_ptr<KeyListener>& k);
 
         virtual void run(Harness* h);
         virtual void startup();
