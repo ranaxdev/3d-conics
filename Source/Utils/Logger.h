@@ -1,5 +1,6 @@
 #ifndef _H_LOGGER
 #define _H_LOGGER
+
 #include <string>
 
 enum lvl{
@@ -12,6 +13,8 @@ public:
     Logger() = delete;
 
     static void log(lvl level, std::string&& msg, const char* where, uint16_t at);
+    static void dump();
+
 
 private:
     static std::string str_log;

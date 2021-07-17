@@ -6,7 +6,7 @@
 
 #include "Shader.h"
 
-Shader::Shader(const char *vshader_path, const char *fshader_path) {
+Shader::Shader(std::string&& vshader_path, std::string&& fshader_path) {
     // Shader source code
     std::string vshader_src;
     std::string fshader_src;

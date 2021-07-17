@@ -2,11 +2,12 @@
 #define _H_SHADER
 
 #include <GLFW/glfw3.h>
+#include <string>
 
 class Shader{
 public:
     Shader() = default;
-    Shader(const char* vshader_path, const char* fshader_path);
+    Shader(std::string&& vshader_path, std::string&& fshader_path);
     ~Shader();
 
     GLuint program;

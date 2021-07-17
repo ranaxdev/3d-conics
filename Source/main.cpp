@@ -20,7 +20,8 @@ class App : public conics::Harness{
 public:
     std::shared_ptr<Camera> camera;
     void startup() override {
-        Shader* shader = new Shader((SRC+"Shaders/vert.glsl").c_str(), (SRC+"Shaders/frag.glsl").c_str());
+        Shader* shader = new Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
+
         shader->bind();
 
         GLfloat data[] = {
