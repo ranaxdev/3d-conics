@@ -25,9 +25,6 @@ public:
         shader->bind();
 
         GLfloat data[] = {
-                0.5f, 0.5f, 0.5f,
-                0.5f, -0.5f, 0.5f,
-                -0.5f, 0.5f, 0.5f
         };
         GLuint VAO, buffer;
         glCreateVertexArrays(1, &VAO);
@@ -51,7 +48,7 @@ public:
 
         glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
         glPointSize(40.0f);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         last = currentTime;
     }

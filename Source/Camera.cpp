@@ -15,6 +15,24 @@ glm::mat4 &Camera::calc_VP(float delta) {
     if(keys[RGT])
         cam_pos += glm::normalize(glm::cross(cam_front, cam_up))*velocity;
 
+    // Update Rotation
+    xoff = xpos - lastX;
+    yoff = lastY - ypos;
+    lastX = xpos;
+    lastY = ypos;
+    xoff *= sens;
+    yoff *= sens;
+    yaw += xoff;
+    pitch += yoff;
+    if(pitch > 89.0f)
+        pitch = 89.0f;
+    if(pitch < -89.0f)
+        pitch = -89.0f;
+
+
+    cam_front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    cam_front.y = sin(glm::radians(pitch));
+    cam_front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
 
     Camera::view_m = glm::lookAt(cam_pos, cam_pos+cam_front, cam_up);
     Camera::vp_m = Camera::proj_m * Camera::view_m;

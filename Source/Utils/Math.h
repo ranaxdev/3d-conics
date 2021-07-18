@@ -32,7 +32,7 @@ struct Vec{
         // Copies other vec into this vec
         if(!this->size == v.size){
             // Log assignment error
-            Logger::log(ERROR, "Cannot assign a vector with size "+this->size+" to a vector with size "+v.size, __FILENAME__);
+            Logger::log(ERROR, "Cannot assign vector to another vector of different size", __FILENAME__);
             return;
         }
         for(int i=0; i<n; i++)

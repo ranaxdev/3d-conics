@@ -26,7 +26,8 @@ void conics::Harness::run(conics::Harness* h) {
     // Window settings
     glfwMakeContextCurrent(window);
     glfwSetWindowUserPointer(window, (void*)(this)); // Pointer to app window that implements this harness
-
+    // GLFW settings
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // Callbacks
     glfwSetKeyCallback(window, conics::key_callback);
 
@@ -48,12 +49,14 @@ void conics::Harness::run(conics::Harness* h) {
         for(auto& o : conics::Harness::keylisteners){
             // NOTE: for key callback (NOT poll) => o->keys[currentKey] = currentAction
 
-            // Poll tracked keys for presses
+            // Poll tracked keys for presses & mouse positions
             for(auto& k : keys_to_poll){
                 if(glfwGetKey(window, k) == GLFW_PRESS)
                     o->keys[k] = 1;
                 else
                     o->keys[k] = 0;
+
+                glfwGetCursorPos(window, &o->xpos, &o->ypos);
             }
 
 
