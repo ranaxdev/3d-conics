@@ -4,6 +4,8 @@
 #include <sstream>
 #include <iostream>
 
+#include "Utils/Logger.h"
+#include "Utils/Globals.h"
 #include "Shader.h"
 
 Shader::Shader(std::string&& vshader_path, std::string&& fshader_path) {
@@ -28,8 +30,8 @@ Shader::Shader(std::string&& vshader_path, std::string&& fshader_path) {
         vshader_src = vshader_stream.str();
         fshader_src = fshader_stream.str();
     } catch (std::ifstream::failure& e){
-        // TODO
         // Log error msg
+        Logger::log(ERROR, "File could not be opened", __FILENAME__);
         std::cout << e.what() << std::endl;
     }
 
@@ -90,11 +92,9 @@ void Shader::compile_error_checking(GLuint shader) {
 
     if(!success){
         glGetShaderInfoLog(shader, 1024, nullptr, info_log);
-        // TODO
-        // Replace with logger error checking msg
-        std::cout << "[ERROR] Shader compilation error" << std::endl;
-        std::cout << info_log << std::endl;
-        std::cout << "==========================================" << std::endl;
+        // Log compilation errors
+        Logger::log(ERROR, "Shader compilation error", __FILENAME__);
+        Logger::log(INFO, info_log, __FILENAME__);
     }
 }
 
@@ -107,10 +107,8 @@ void Shader::link_error_checking(GLuint program) {
 
     if(!success){
         glGetProgramInfoLog(program, 1024, nullptr, info_log);
-        // TODO
-        // Replace with logger error checking msg
-        std::cout << "[ERROR] Shader linking error" << std::endl;
-        std::cout << info_log << std::endl;
-        std::cout << "==========================================" << std::endl;
+        // Log linking errors
+        Logger::log(ERROR, "Shader linking error (program #"+std::to_string(program)+")", __FILENAME__);
+        Logger::log(INFO, info_log, __FILENAME__);
     }
 }

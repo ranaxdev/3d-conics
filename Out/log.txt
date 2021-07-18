@@ -1,0 +1,6 @@
+*============================= LOGGED SESSION =============================*
+[ERR]   2021-07-18 @ 05:40:32   |Shader.cpp| Shader compilation error
+[INF]   2021-07-18 @ 05:40:32   |Shader.cpp| 0:6(38): error: syntax error, unexpected ')', expecting ',' or ';'
+
+[ERR]   2021-07-18 @ 05:40:32   |Shader.cpp| Shader linking error (program #3)
+[INF]   2021-07-18 @ 05:40:32   |Shader.cpp| error: linking with uncompiled/unspecialized shader
