@@ -25,6 +25,17 @@ public:
         shader->bind();
 
         GLfloat data[] = {
+                // Axis 1 (red)
+                0.0f, 0.0f, 0.0f,     1.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, -5.0f,    1.0f, 0.0f, 0.0f,
+
+                // Axis 2 (green)
+                0.0f, 2.5f, -2.5f,    0.0f, 1.0f, 0.0f,
+                0.0f, -2.5f, -2.5f,   0.0f, 1.0f, 0.0f,
+
+                // Axis 3 (blue)
+                2.5f, 0.0f, -2.5f,    0.0f, 0.0f, 1.0f,
+                -2.5f, 0.0f, -2.5f,   0.0f, 0.0f, 1.0f
         };
         GLuint VAO, buffer;
         glCreateVertexArrays(1, &VAO);
@@ -32,11 +43,16 @@ public:
 
         glNamedBufferStorage(buffer, sizeof(data), data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
 
+        // Position
         glVertexArrayAttribFormat(VAO, 0, 3, GL_FLOAT, GL_FALSE, 0);
         glVertexArrayAttribBinding(VAO, 0, 0);
         glEnableVertexArrayAttrib(VAO, 0);
+        // Color
+        glVertexArrayAttribFormat(VAO, 1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float));
+        glVertexArrayAttribBinding(VAO, 1, 0);
+        glEnableVertexArrayAttrib(VAO, 1);
 
-        glVertexArrayVertexBuffer(VAO, 0, buffer, 0, 3*sizeof(float));
+        glVertexArrayVertexBuffer(VAO, 0, buffer, 0, 6*sizeof(float));
 
         glBindVertexArray(VAO);
     }
@@ -48,7 +64,8 @@ public:
 
         glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
         glPointSize(40.0f);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glLineWidth(40.0f);
+        glDrawArrays(GL_LINES , 0, 8);
 
         last = currentTime;
     }
