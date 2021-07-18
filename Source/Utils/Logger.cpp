@@ -8,9 +8,13 @@
 
 std::string Logger::str_log = "*============================= LOGGED SESSION =============================*\n";
 const char* Logger::tag[3] = {"[INFO]","[WARN]","[ERROR]"};
+bool Logger::log_exists = false;
 
 void Logger::log(lvl level, std::string&& msg, const char* where, uint16_t at) {
     // Logs information
+    if(!log_exists)
+        log_exists = true;
+
     auto t = std::time(nullptr);
     auto tm = *std::localtime(&t);
 
@@ -28,10 +32,12 @@ void Logger::log(lvl level, std::string&& msg, const char* where, uint16_t at) {
 
 void Logger::dump() {
     // Dumps log to output directory (called on harness detachment)
-    std::ofstream f;
-    f.open(DUMP_LOC+"log.txt");
-    f << str_log;
-    f.close();
+    if(log_exists){
+        std::ofstream f;
+        f.open(DUMP_LOC+"log.txt");
+        f << str_log;
+        f.close();
+    }
 }
 
 

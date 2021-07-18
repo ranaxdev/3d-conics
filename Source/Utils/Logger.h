@@ -20,6 +20,7 @@ public:
 private:
     static std::string str_log;
     static const char* tag[3];
+    static bool log_exists;
 
 };
 
