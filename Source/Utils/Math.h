@@ -5,7 +5,8 @@
 #include <list>
 #include <cstring>
 
-
+#include "Globals.h"
+#include "Logger.h"
 
 template<typename T, const uint16_t n>
 struct Vec{
@@ -14,10 +15,9 @@ struct Vec{
 
 
     explicit Vec(const std::list<T>&& params){
-        // TODO
         // Log size error
         if(params.size() < n){
-            std::cout << "[WARNING] Vector not fully filled" << std::endl;
+            Logger::log(WARN, "Vector not fully filled", __FILENAME__);
         }
 
         typename std::list<T>::const_iterator it = params.cbegin();
@@ -31,8 +31,8 @@ struct Vec{
     inline void assign_vec(const Vec& v){
         // Copies other vec into this vec
         if(!this->size == v.size){
-            // TODO
             // Log assignment error
+            Logger::log(ERROR, "Cannot assign a vector with size "+this->size+" to a vector with size "+v.size, __FILENAME__);
             return;
         }
         for(int i=0; i<n; i++)

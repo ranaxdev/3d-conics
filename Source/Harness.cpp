@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "Utils/Globals.h"
 #include "Utils/Logger.h"
 #include "Harness.h"
 
@@ -19,8 +20,7 @@ void conics::Harness::run(conics::Harness* h) {
     // GLFW window
     GLFWwindow* window = glfwCreateWindow(w.width, w.height, w.title, nullptr, nullptr);
     if(window == nullptr){
-        // TODO
-        // Log error msg here
+        Logger::log(ERROR, "Could not create GLFW window", __FILENAME__);
         glfwTerminate();
     }
     // Window settings
@@ -32,8 +32,7 @@ void conics::Harness::run(conics::Harness* h) {
 
     // Load GLAD
     if(!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-        // TODO
-        // Log error msg here
+        Logger::log(ERROR, "Could not load GLAD", __FILENAME__);
         glfwTerminate();
     }
 
