@@ -19,8 +19,11 @@
 class App : public conics::Harness{
 public:
     std::shared_ptr<Camera> camera;
+    Shader* shader;
+    Shader* shader2;
     void startup() override {
-        Shader* shader = new Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
+        shader = new Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
+        shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
 
         shader->bind();
 
@@ -37,11 +40,18 @@ public:
                 2.5f, 0.0f, -2.5f,    0.0f, 0.0f, 1.0f,
                 -2.5f, 0.0f, -2.5f,   0.0f, 0.0f, 1.0f
         };
-        GLuint VAO, buffer;
+        GLfloat data2[] = {
+                0.0f, 0.0f, -1.0f,
+                0.0f, -1.0f, -1.0f,
+                1.0f, 0.0f, -1.0f
+        };
+        GLuint VAO;
+        GLuint buffer[2];
         glCreateVertexArrays(1, &VAO);
-        glCreateBuffers(1, &buffer);
+        glCreateBuffers(2, buffer);
 
-        glNamedBufferStorage(buffer, sizeof(data), data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+        /* Axis data */
+        glNamedBufferStorage(buffer[0], sizeof(data), data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
 
         // Position
         glVertexArrayAttribFormat(VAO, 0, 3, GL_FLOAT, GL_FALSE, 0);
@@ -52,7 +62,16 @@ public:
         glVertexArrayAttribBinding(VAO, 1, 0);
         glEnableVertexArrayAttrib(VAO, 1);
 
-        glVertexArrayVertexBuffer(VAO, 0, buffer, 0, 6*sizeof(float));
+        glVertexArrayVertexBuffer(VAO, 0, buffer[0], 0, 6*sizeof(float));
+
+        //shader2->bind();
+        /* Other data */
+        glNamedBufferStorage(buffer[1], sizeof(data2), data2, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+        glVertexArrayAttribFormat(VAO, 3, 3, GL_FLOAT, GL_FALSE, 0);
+        glVertexArrayAttribBinding(VAO, 3, 1);
+        glEnableVertexArrayAttrib(VAO, 3);
+
+        glVertexArrayVertexBuffer(VAO, 1, buffer[1], 0, 3*sizeof(float));
 
         glBindVertexArray(VAO);
     }
@@ -62,10 +81,18 @@ public:
     void render(float currentTime) override {
         delta = currentTime - last;
 
-        glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
+
         glPointSize(40.0f);
         glLineWidth(40.0f);
+
+
+        shader2->bind();
+        glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
+        glDrawArrays(GL_TRIANGLES , 0, 3);
+        shader->bind();
+        glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
         glDrawArrays(GL_LINES , 0, 8);
+
 
         last = currentTime;
     }

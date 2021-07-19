@@ -22,7 +22,7 @@
 
 class Camera : public KeyListener{
 public:
-    Camera() = default; // temp
+    Camera() = default;
     ~Camera() = default;
 
     glm::mat4& calc_VP(float delta);
