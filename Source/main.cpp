@@ -23,7 +23,8 @@ public:
     std::shared_ptr<Camera> camera;
     Shader* shader;
     Shader* shader2;
-    GLuint indices[5040];
+
+    GLuint indices[108000];
     int size =0;
     void startup() override {
         shader = new Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
@@ -49,28 +50,23 @@ public:
         float x,y;
         float z = 0.0f;
 
-        for(int i=0; i < 5; i++){
-            z += 1.0f;
+        // Generate paraboloid data
+        for(int i=0; i < 100; i++){
+            z += 0.05f;
             for(int a=0; a<360; a++){
-                x = (float) (z * cos(glm::radians((float)a)));
-                y = (float) (z * sin(glm::radians((float)a)));
+                x = (float) (sqrt(z) * cos(glm::radians((float)a)));
+                y = (float) (sqrt(z) * sin(glm::radians((float)a)));
                 data2.push_back(x);
                 data2.push_back(y);
                 data2.push_back(z);
-
             }
-
         }
 
-        std::vector<int> temp;
+        // Generate indices
         for(int i=0; i<data2.size()-360; i+=2){
             indices[i] = i;
             indices[i+1] = i+360;
-
         }
-
-
-
 
         int dat_size = sizeof(float) * data2.size();
         size = (int) data2.size()/3;
@@ -122,8 +118,10 @@ public:
 
         shader2->bind();
         glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
-        glDrawArrays(GL_LINES , 0, size);
-        glDrawElements(GL_LINES, 2520, GL_UNSIGNED_INT, indices);
+        //glUniform4f(30, 1.0f, 0.0f, 1.0f, 1.0f);
+        //glDrawArrays(GL_POINTS , 0, size);
+        glUniform4f(30, 0.0f, 1.0f, 0.0f, 1.0f);
+        glDrawElements(GL_LINES, 54000, GL_UNSIGNED_INT, indices);
         shader->bind();
         glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
         glDrawArrays(GL_LINES , 0, 8);

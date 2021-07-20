@@ -101,4 +101,8 @@ void conics::key_callback(GLFWwindow *window, int key, int scancode, int action,
     if(instance){
         instance->setKA(key, action);
     }
+
+    // Shutdown
+    if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, 1);
 }
