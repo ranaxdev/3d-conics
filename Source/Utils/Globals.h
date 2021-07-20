@@ -7,6 +7,5 @@
 #define SRC std::string(std::getenv("CONICS_PATH"))
 #define DUMP_LOC SRC+"/Out/"
 
-#define DEBUG 0
 
 #endif

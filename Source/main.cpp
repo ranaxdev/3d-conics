@@ -1,6 +1,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <cmath>
+#include <vector>
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
 
@@ -21,6 +23,7 @@ public:
     std::shared_ptr<Camera> camera;
     Shader* shader;
     Shader* shader2;
+    int size =0;
     void startup() override {
         shader = new Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
         shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
@@ -40,11 +43,21 @@ public:
                 2.5f, 0.0f, -2.5f,    0.0f, 0.0f, 1.0f,
                 -2.5f, 0.0f, -2.5f,   0.0f, 0.0f, 1.0f
         };
-        GLfloat data2[] = {
-                0.0f, 0.0f, -1.0f,
-                0.0f, -1.0f, -1.0f,
-                1.0f, 0.0f, -1.0f
-        };
+        std::vector<float> data2;
+        float x,y;
+        float z = 0.0f;
+        for(int i=0; i < 5; i++){
+            z += 1.0f;
+            for(int a=0; a<360; a++){
+                x = (float) (z * cos(glm::radians((float)a)));
+                y = (float) (z * sin(glm::radians((float)a)));
+                data2.push_back(x);
+                data2.push_back(y);
+                data2.push_back(z);
+            }
+        }
+        int dat_size = sizeof(float) * data2.size();
+        size = (int) data2.size()/3;
         GLuint VAO;
         GLuint buffer[2];
         glCreateVertexArrays(1, &VAO);
@@ -66,7 +79,12 @@ public:
 
         //shader2->bind();
         /* Other data */
-        glNamedBufferStorage(buffer[1], sizeof(data2), data2, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+        glNamedBufferStorage(buffer[1], dat_size, nullptr, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+        float* ptr = (float*) glMapNamedBufferRange(buffer[1], 0, dat_size, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+        for(int i=0; i<data2.size(); i++)
+            ptr[i] = data2[i];
+        glUnmapNamedBuffer(buffer[1]);
+
         glVertexArrayAttribFormat(VAO, 3, 3, GL_FLOAT, GL_FALSE, 0);
         glVertexArrayAttribBinding(VAO, 3, 1);
         glEnableVertexArrayAttrib(VAO, 3);
@@ -82,13 +100,13 @@ public:
         delta = currentTime - last;
 
 
-        glPointSize(40.0f);
+        glPointSize(20.0f);
         glLineWidth(40.0f);
 
 
         shader2->bind();
         glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
-        glDrawArrays(GL_TRIANGLES , 0, 3);
+        glDrawArrays(GL_LINES , 0, size);
         shader->bind();
         glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
         glDrawArrays(GL_LINES , 0, 8);
@@ -98,6 +116,8 @@ public:
     }
 };
 
+
+#define DEBUG 0
 #if !DEBUG
 int main(){
     conics::Window window = conics::Window(1280, 960, "conics");
@@ -115,11 +135,32 @@ int main(){
 
 
 #else
-int main(){
-    //Vec<float, 3> v({23.0f, 2.0f, 1.0f, 4.0f, 6.0f});
 
-    Logger::log(ERROR, "error occured", __FILENAME__, __LINE__);
-    std::cout << SRC;
+int main(){
+    float x = 0.0f;
+    float y = 0.0f;
+    float z = 0.0f;
+    float angle = 0.0f;
+    std::vector<float> v;
+    std::vector<float> dat;
+    dat.push_back(55);
+    dat.push_back(27);
+    dat.push_back(69);
+    std::cout << dat[0] << " " << dat[1] << " " << dat[2] << std::endl;
+    for(int i=0; i < 5; i++){
+        z = (float)i;
+        for(int a=0; a<360; a++){
+            x = (float) (sqrt(z) * cos(glm::radians((float)a)));
+            y = (float) (sqrt(z) * sin(glm::radians((float)a)));
+            v.push_back(x);
+            v.push_back(y);
+            v.push_back(z);
+            //printf("%4.4ff, %4.4ff, %4.4ff,\n",x,y,z);
+
+
+        }
+    }
+
     return 0;
 }
 
