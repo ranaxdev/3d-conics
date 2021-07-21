@@ -24,7 +24,9 @@ public:
     Shader* shader;
     Shader* shader2;
 
-    GLuint indices[108000];
+    //GLuint indices[108000];
+    std::vector<unsigned int> indices;
+    std::vector<unsigned int> indices2;
     int size =0;
     void startup() override {
         shader = new Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
@@ -64,8 +66,11 @@ public:
 
         // Generate indices
         for(int i=0; i<data2.size()-360; i+=2){
-            indices[i] = i;
-            indices[i+1] = i+360;
+            indices.push_back(i);
+            indices.push_back(i+360);
+        }
+        for(int i=0; i<data2.size(); i++){
+            indices2.push_back(i);
         }
 
         int dat_size = sizeof(float) * data2.size();
@@ -118,10 +123,12 @@ public:
 
         shader2->bind();
         glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
-        //glUniform4f(30, 1.0f, 0.0f, 1.0f, 1.0f);
+        glUniform4f(30, 1.0f, 0.0f, 1.0f, 1.0f);
         //glDrawArrays(GL_POINTS , 0, size);
+        //glDrawElements(GL_LINES, 54000, GL_UNSIGNED_INT, &indices[0]);
         glUniform4f(30, 0.0f, 1.0f, 0.0f, 1.0f);
-        glDrawElements(GL_LINES, 54000, GL_UNSIGNED_INT, indices);
+        glDrawElements(GL_LINES, 54000, GL_UNSIGNED_INT, &indices[0]);
+
         shader->bind();
         glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
         glDrawArrays(GL_LINES , 0, 8);

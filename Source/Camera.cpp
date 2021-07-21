@@ -3,7 +3,7 @@
 
 
 glm::mat4 &Camera::calc_VP(float delta) {
-    Camera::velocity = 8.0f * delta;
+    Camera::velocity = 2.0f * delta;
 
     // Update Movement
     if(keys[FWD])
