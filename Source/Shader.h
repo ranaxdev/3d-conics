@@ -2,6 +2,7 @@
 #define _H_SHADER
 
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 #include <string>
 
 class Shader{
@@ -17,6 +18,8 @@ public:
     void bind() const;
     void unbind() const;
     int get_attrib_loc(const char* var) const;
+
+    void setVec3(int loc, glm::vec3& v);
 
 private:
     void compile_error_checking(GLuint shader);

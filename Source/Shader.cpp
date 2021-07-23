@@ -112,3 +112,7 @@ void Shader::link_error_checking(GLuint program) {
         Logger::log(INFO, info_log, __FILENAME__);
     }
 }
+
+void Shader::setVec3(int loc, glm::vec3 &v) {
+    glUniform3f(loc, v.x, v.y, v.z);
+}
