@@ -122,15 +122,15 @@ public:
 
 
         shader2->bind();
-        glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
+        shader2->setMat4(20, camera->calc_VP(delta));
         glUniform4f(30, 1.0f, 0.0f, 1.0f, 1.0f);
         //glDrawArrays(GL_POINTS , 0, size);
-        //glDrawElements(GL_LINES, 54000, GL_UNSIGNED_INT, &indices[0]);
-        glUniform4f(30, 0.0f, 1.0f, 0.0f, 1.0f);
         glDrawElements(GL_LINES, 54000, GL_UNSIGNED_INT, &indices[0]);
+        glUniform4f(30, 0.0f, 1.0f, 0.0f, 1.0f);
+        glDrawElements(GL_LINES, 54000, GL_UNSIGNED_INT, &indices2[0]);
 
         shader->bind();
-        glUniformMatrix4fv(20, 1, GL_FALSE, &(camera->calc_VP(delta))[0][0]);
+        shader->setMat4(20, camera->calc_VP(delta));
         glDrawArrays(GL_LINES , 0, 8);
 
 

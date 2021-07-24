@@ -116,3 +116,11 @@ void Shader::link_error_checking(GLuint program) {
 void Shader::setVec3(int loc, glm::vec3 &v) {
     glUniform3f(loc, v.x, v.y, v.z);
 }
+
+void Shader::setVec4(int loc, glm::vec4 &v) {
+    glUniform4f(loc, v.x, v.y, v.z, v.w);
+}
+
+void Shader::setMat4(int loc, glm::mat4& m) {
+    glUniformMatrix4fv(loc, 1, GL_FALSE, &m[0][0]);
+}
