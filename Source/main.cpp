@@ -24,10 +24,12 @@ public:
     Shader* shader;
     Shader* shader2;
 
-    //GLuint indices[108000];
-    std::vector<unsigned int> indices;
-    std::vector<unsigned int> indices2;
+    // Colors
+    glm::vec4 c1 = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
+
+    // Indexed drawing stuff
     int size =0;
+
     void startup() override {
         shader = new Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
         shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
@@ -47,34 +49,16 @@ public:
                 2.5f, 0.0f, -2.5f,    0.0f, 0.0f, 1.0f,
                 -2.5f, 0.0f, -2.5f,   0.0f, 0.0f, 1.0f
         };
-        std::vector<float> data2;
+        std::vector<float> data2 = {
+                0.5f, 0.5f, 0.0f,
+                -0.5f, 0.5f, 0.0f,
+                0.23f, 0.75f, 0.0f,
+                -1.0f, -0.75f, 0.0f,
+                -0.5f, 0.23f, 0.0f
+        };
+        size = (int) data2.size();
+        int dat_size = 4*size;
 
-        float x,y;
-        float z = 0.0f;
-
-        // Generate paraboloid data
-        for(int i=0; i < 100; i++){
-            z += 0.05f;
-            for(int a=0; a<360; a++){
-                x = (float) (sqrt(z) * cos(glm::radians((float)a)));
-                y = (float) (sqrt(z) * sin(glm::radians((float)a)));
-                data2.push_back(x);
-                data2.push_back(y);
-                data2.push_back(z);
-            }
-        }
-
-        // Generate indices
-        for(int i=0; i<data2.size()-360; i+=2){
-            indices.push_back(i);
-            indices.push_back(i+360);
-        }
-        for(int i=0; i<data2.size(); i++){
-            indices2.push_back(i);
-        }
-
-        int dat_size = sizeof(float) * data2.size();
-        size = (int) data2.size()/3;
         GLuint VAO;
         GLuint buffer[2];
         glCreateVertexArrays(1, &VAO);
@@ -94,12 +78,12 @@ public:
 
         glVertexArrayVertexBuffer(VAO, 0, buffer[0], 0, 6*sizeof(float));
 
-        //shader2->bind();
         /* Other data */
-        glNamedBufferStorage(buffer[1], dat_size, nullptr, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
-        float* ptr = (float*) glMapNamedBufferRange(buffer[1], 0, dat_size, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
-        for(int i=0; i<data2.size(); i++)
+        glNamedBufferStorage(buffer[1], dat_size, nullptr, GL_MAP_WRITE_BIT|GL_MAP_READ_BIT);
+        float* ptr = (float*) glMapNamedBufferRange(buffer[1], 0, dat_size, GL_MAP_WRITE_BIT|GL_MAP_READ_BIT);
+        for(int i=0; i<size; i++){
             ptr[i] = data2[i];
+        }
         glUnmapNamedBuffer(buffer[1]);
 
         glVertexArrayAttribFormat(VAO, 3, 3, GL_FLOAT, GL_FALSE, 0);
@@ -107,6 +91,7 @@ public:
         glEnableVertexArrayAttrib(VAO, 3);
 
         glVertexArrayVertexBuffer(VAO, 1, buffer[1], 0, 3*sizeof(float));
+
 
         glBindVertexArray(VAO);
     }
@@ -123,11 +108,8 @@ public:
 
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
-        glUniform4f(30, 1.0f, 0.0f, 1.0f, 1.0f);
-        //glDrawArrays(GL_POINTS , 0, size);
-        glDrawElements(GL_LINES, 54000, GL_UNSIGNED_INT, &indices[0]);
-        glUniform4f(30, 0.0f, 1.0f, 0.0f, 1.0f);
-        glDrawElements(GL_LINES, 54000, GL_UNSIGNED_INT, &indices2[0]);
+        shader2->setVec4(30, c1);
+        glDrawArrays(GL_POINTS, 0, size);
 
         shader->bind();
         shader->setMat4(20, camera->calc_VP(delta));
