@@ -41,6 +41,7 @@ public:
     // Colors
     glm::vec4 cyan = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
     glm::vec4 red = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+    glm::vec4 green = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
 
 
     // Indexed drawing stuff
@@ -65,17 +66,24 @@ public:
                 2.5f, 0.0f, -2.5f,    0.0f, 0.0f, 1.0f,
                 -2.5f, 0.0f, -2.5f,   0.0f, 0.0f, 1.0f
         };
-        GLfloat single_data[] = {
-                -0.110069f, 0.335281f, 0.0f
-        };
 
         std::vector<float> data2 = {
+                // Lines
                 0.5f, 0.5f, 0.0f,
                 -0.5f, 0.23f, 0.0f,
-//                -0.5f, 0.5f, 0.0f,
                 0.23f, 0.75f, 0.0f,
                 -1.0f, -0.75f, 0.0f,
-                -0.110069f, 0.335281f, 0.0f
+
+                // Perp bisectors
+                0.5f, -1.48685f, 0.0f,
+                -0.5f, 2.21685f, 0.0f,
+                0.5f, -0.7257f, 0.0f,
+                -0.5f, 0.0943f, 0.0f,
+
+                // Line intersection
+                -0.110069f, 0.335281f, 0.0f,
+                // Bisector intersection
+                0.236051f, -0.509261f, 0.0f
 
         };
         size = (int) data2.size();
@@ -117,15 +125,33 @@ public:
 
         glBindVertexArray(VAO);
 
-        // Perpendicular bisector
-        auto l1 = getLine(0.5, 0.5, -0.5, 0.23);
-        auto l2 = getLine(0.23, 0.75, -1.0, -0.75);
+        // Bisector
+        auto l1 = getBisector(0.5, 0.5, -0.5, 0.23);
+        auto l2 = getBisector(0.23, 0.75, -1.0, -0.75);
         double m1 = l1.first; double m2 = l2.first;
         double c1 = l1.second; double c2 = l2.second;
+
+        double x1 = 0.5;
+        double x2 = -0.5;
+        double y1 = (m1*x1)+c1;
+        double y2 = (m1*x2)+c1;
+        double y3 = (m2*x1)+c2;
+        double y4 = (m2*x2)+c2;
+
+
+
+
+        std::cout << x1 << " " << y1 << std::endl;
+        std::cout << x2 << " " << y2 << std::endl;
+        std::cout << x1 << " " << y3 << std::endl;
+        std::cout << x2 << " " << y4 << std::endl;
+
+
 
         double int_X = (c2-c1)/(m1-m2);
         double int_Y = m1 * int_X + c1;
         std::cout << int_X << " " << int_Y << std::endl;
+
 
 
 
@@ -145,8 +171,13 @@ public:
         shader2->setMat4(20, camera->calc_VP(delta));
         shader2->setVec4(30, cyan);
         glDrawArrays(GL_LINES , 0, 4);
+        shader2->setVec4(30, green);
+        glDrawArrays(GL_LINES , 4, 4);
+
         shader2->setVec4(30, red);
-        glDrawArrays(GL_POINTS, 4, 1);
+        glDrawArrays(GL_POINTS, 8, 1);
+        glDrawArrays(GL_POINTS, 9, 1);
+
 
         shader->bind();
         shader->setMat4(20, camera->calc_VP(delta));
