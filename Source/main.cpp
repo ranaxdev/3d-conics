@@ -19,13 +19,29 @@
 
 
 class App : public conics::Harness{
+private:
+    std::pair<double, double> getBisector(double x1, double y1, double x2, double y2){
+        double mid_x = (x2+x1)/2;
+        double mid_y = (y2+y1)/2;
+        double m = (y2-y1)/(x2-x1);
+        double perp_m = -1/m;
+        double c = mid_y - (mid_x*perp_m);
+        return std::make_pair(perp_m, c);
+    }
+    std::pair<double, double> getLine(double x1, double y1, double x2, double y2){
+        double m = (y2-y1)/(x2-x1);
+        double c = y1 - (x1*m);
+        return std::make_pair(m, c);
+    }
 public:
     std::shared_ptr<Camera> camera;
     Shader* shader;
     Shader* shader2;
 
     // Colors
-    glm::vec4 c1 = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
+    glm::vec4 cyan = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
+    glm::vec4 red = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+
 
     // Indexed drawing stuff
     int size =0;
@@ -49,20 +65,26 @@ public:
                 2.5f, 0.0f, -2.5f,    0.0f, 0.0f, 1.0f,
                 -2.5f, 0.0f, -2.5f,   0.0f, 0.0f, 1.0f
         };
+        GLfloat single_data[] = {
+                -0.110069f, 0.335281f, 0.0f
+        };
+
         std::vector<float> data2 = {
                 0.5f, 0.5f, 0.0f,
-                -0.5f, 0.5f, 0.0f,
+                -0.5f, 0.23f, 0.0f,
+//                -0.5f, 0.5f, 0.0f,
                 0.23f, 0.75f, 0.0f,
                 -1.0f, -0.75f, 0.0f,
-                -0.5f, 0.23f, 0.0f
+                -0.110069f, 0.335281f, 0.0f
+
         };
         size = (int) data2.size();
         int dat_size = 4*size;
 
         GLuint VAO;
-        GLuint buffer[2];
+        GLuint buffer[3];
         glCreateVertexArrays(1, &VAO);
-        glCreateBuffers(2, buffer);
+        glCreateBuffers(3, buffer);
 
         /* Axis data */
         glNamedBufferStorage(buffer[0], sizeof(data), data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
@@ -94,6 +116,19 @@ public:
 
 
         glBindVertexArray(VAO);
+
+        // Perpendicular bisector
+        auto l1 = getLine(0.5, 0.5, -0.5, 0.23);
+        auto l2 = getLine(0.23, 0.75, -1.0, -0.75);
+        double m1 = l1.first; double m2 = l2.first;
+        double c1 = l1.second; double c2 = l2.second;
+
+        double int_X = (c2-c1)/(m1-m2);
+        double int_Y = m1 * int_X + c1;
+        std::cout << int_X << " " << int_Y << std::endl;
+
+
+
     }
 
     float delta = 0.0f;
@@ -108,8 +143,10 @@ public:
 
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
-        shader2->setVec4(30, c1);
-        glDrawArrays(GL_POINTS, 0, size);
+        shader2->setVec4(30, cyan);
+        glDrawArrays(GL_LINES , 0, 4);
+        shader2->setVec4(30, red);
+        glDrawArrays(GL_POINTS, 4, 1);
 
         shader->bind();
         shader->setMat4(20, camera->calc_VP(delta));
