@@ -21,6 +21,8 @@
 class App : public conics::Harness{
 private:
     std::pair<double, double> getBisector(double x1, double y1, double x2, double y2){
+        if(x2-x1 == 0)
+            Logger::log(ERROR, "Triangulation failed, parallel lines", __FILENAME__);
         double mid_x = (x2+x1)/2;
         double mid_y = (y2+y1)/2;
         double m = (y2-y1)/(x2-x1);
@@ -29,10 +31,18 @@ private:
         return std::make_pair(perp_m, c);
     }
     std::pair<double, double> getLine(double x1, double y1, double x2, double y2){
+        if(x2-x1 == 0)
+            Logger::log(ERROR, "Triangulation failed, parallel lines", __FILENAME__);
         double m = (y2-y1)/(x2-x1);
         double c = y1 - (x1*m);
         return std::make_pair(m, c);
     }
+    std::pair<double, double> getIntersection(std::pair<double,double> line1, std::pair<double,double> line2){
+        double int_X = (line2.second-line1.second)/(line1.first-line2.first);
+        double int_Y = line1.first * int_X + line1.second;
+        return std::make_pair(int_X, int_Y);
+    }
+
 public:
     std::shared_ptr<Camera> camera;
     Shader* shader;
@@ -128,32 +138,8 @@ public:
         // Bisector
         auto l1 = getBisector(0.5, 0.5, -0.5, 0.23);
         auto l2 = getBisector(0.23, 0.75, -1.0, -0.75);
-        double m1 = l1.first; double m2 = l2.first;
-        double c1 = l1.second; double c2 = l2.second;
-
-        double x1 = 0.5;
-        double x2 = -0.5;
-        double y1 = (m1*x1)+c1;
-        double y2 = (m1*x2)+c1;
-        double y3 = (m2*x1)+c2;
-        double y4 = (m2*x2)+c2;
-
-
-
-
-        std::cout << x1 << " " << y1 << std::endl;
-        std::cout << x2 << " " << y2 << std::endl;
-        std::cout << x1 << " " << y3 << std::endl;
-        std::cout << x2 << " " << y4 << std::endl;
-
-
-
-        double int_X = (c2-c1)/(m1-m2);
-        double int_Y = m1 * int_X + c1;
-        std::cout << int_X << " " << int_Y << std::endl;
-
-
-
+        auto i = getIntersection(l1, l2);
+        std::cout << i.first << " " << i.second << std::endl;
 
     }
 
