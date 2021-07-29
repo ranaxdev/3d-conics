@@ -78,23 +78,18 @@ public:
         };
 
         std::vector<float> data2 = {
-                // Lines
                 0.5f, 0.5f, 0.0f,
                 -0.5f, 0.23f, 0.0f,
                 0.23f, 0.75f, 0.0f,
                 -1.0f, -0.75f, 0.0f,
+                0.73f, -0.40f, 0.0f,
+                0.69f, 0.69f, 0.0f,
+                1.0f, -0.88f, 0.0f,
 
-                // Perp bisectors
-                0.5f, -1.48685f, 0.0f,
-                -0.5f, 2.21685f, 0.0f,
-                0.5f, -0.7257f, 0.0f,
-                -0.5f, 0.0943f, 0.0f,
-
-                // Line intersection
-                -0.110069f, 0.335281f, 0.0f,
-                // Bisector intersection
-                0.236051f, -0.509261f, 0.0f
-
+                -10.0f, 10.0f, 0.0f,
+                -10.0f, -10.0f, 0.0f,
+                10.0f, 10.0f, 0.0f,
+                10.0f, -10.0f, 0.0f
         };
         size = (int) data2.size();
         int dat_size = 4*size;
@@ -135,11 +130,6 @@ public:
 
         glBindVertexArray(VAO);
 
-        // Bisector
-        auto l1 = getBisector(0.5, 0.5, -0.5, 0.23);
-        auto l2 = getBisector(0.23, 0.75, -1.0, -0.75);
-        auto i = getIntersection(l1, l2);
-        std::cout << i.first << " " << i.second << std::endl;
 
     }
 
@@ -156,15 +146,7 @@ public:
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
         shader2->setVec4(30, cyan);
-        glDrawArrays(GL_LINES , 0, 4);
-        shader2->setVec4(30, green);
-        glDrawArrays(GL_LINES , 4, 4);
-
-        shader2->setVec4(30, red);
-        glDrawArrays(GL_POINTS, 8, 1);
-        glDrawArrays(GL_POINTS, 9, 1);
-
-
+        glDrawArrays(GL_POINTS, 0, (int)size/3);
         shader->bind();
         shader->setMat4(20, camera->calc_VP(delta));
         glDrawArrays(GL_LINES , 0, 8);
