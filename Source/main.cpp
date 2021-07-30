@@ -17,15 +17,25 @@
 #include "Utils/Logger.h"
 #include "Utils/Globals.h"
 
+struct Vertex{
+    float x,y;
+    Vertex(float x, float y):x(x), y(y)
+    {}
+};
+struct Triangle{
+    Vertex v1,v2,v3;
+    Triangle(Vertex v1, Vertex v2, Vertex v3):v1(v1),v2(v2),v3(v3)
+    {}
+};
 
 class App : public conics::Harness{
 private:
-    std::pair<double, double> getBisector(double x1, double y1, double x2, double y2){
-        if(x2-x1 == 0)
+    std::pair<double, double> getBisector(Vertex v1, Vertex v2){
+        if(v2.x-v1.x == 0)
             Logger::log(ERROR, "Triangulation failed, parallel lines", __FILENAME__);
-        double mid_x = (x2+x1)/2;
-        double mid_y = (y2+y1)/2;
-        double m = (y2-y1)/(x2-x1);
+        double mid_x = (v2.x+v1.x)/2;
+        double mid_y = (v2.y+v1.y)/2;
+        double m = (v2.y-v1.y)/(v2.x-v1.x);
         double perp_m = -1/m;
         double c = mid_y - (mid_x*perp_m);
         return std::make_pair(perp_m, c);
@@ -37,11 +47,23 @@ private:
         double c = y1 - (x1*m);
         return std::make_pair(m, c);
     }
-    std::pair<double, double> getIntersection(std::pair<double,double> line1, std::pair<double,double> line2){
+    Vertex getIntersection(std::pair<double,double> line1, std::pair<double,double> line2){
         double int_X = (line2.second-line1.second)/(line1.first-line2.first);
         double int_Y = line1.first * int_X + line1.second;
-        return std::make_pair(int_X, int_Y);
+        return Vertex((float) int_X, (float) int_Y);
     }
+    std::pair<Vertex,double> getCenterAndRadius(Triangle t){
+        // Get circumcenter of triangle
+        std::pair<double, double> bisector1 = getBisector(t.v1, t.v2);
+        std::pair<double, double> bisector2 = getBisector(t.v1, t.v3);
+        Vertex center = getIntersection(bisector1, bisector2);
+        // Get radius
+        
+    }
+    bool isinCircumcircle(Vertex point){
+
+    }
+
 
 public:
     std::shared_ptr<Camera> camera;
@@ -86,10 +108,9 @@ public:
                 0.69f, 0.69f, 0.0f,
                 1.0f, -0.88f, 0.0f,
 
-                -10.0f, 10.0f, 0.0f,
-                -10.0f, -10.0f, 0.0f,
-                10.0f, 10.0f, 0.0f,
-                10.0f, -10.0f, 0.0f
+                0.0f, 50.0f, 0.0f,
+                -50.0f, -50.0f, 0.0f,
+                50.0f, -50.0f, 0.0f
         };
         size = (int) data2.size();
         int dat_size = 4*size;
@@ -130,8 +151,36 @@ public:
 
         glBindVertexArray(VAO);
 
+        // Bowyer attempt #1
+        std::vector<Vertex> points = {
+                Vertex(0.5f, 0.5f),
+                Vertex(-0.5f, 0.23f),
+                Vertex(0.23f, 0.75f),
+                Vertex(-1.0f, -0.75f),
+                Vertex(0.73f, -0.40f),
+                Vertex(0.69f, 0.69f),
+                Vertex(1.0f, -0.88f),
 
-    }
+                Vertex(0.0f, 50.0f),
+                Vertex(-50.0f, -50.0f),
+                Vertex(50.0f, -50.0f),
+        };
+        std::vector<Triangle> triangulation= {
+                Triangle(Vertex(0.0f,50.0f), Vertex(-50.0f, -50.0f), Vertex(50.0f,-50.0f))
+        };
+
+        std::vector<std::vector<Vertex>> badTris;
+
+        for(auto& p : points){
+            badTris = {};
+            for(auto& t : triangulation){
+
+            }
+        }
+
+
+
+    };
 
     float delta = 0.0f;
     float last = 0.0f;
@@ -147,6 +196,8 @@ public:
         shader2->setMat4(20, camera->calc_VP(delta));
         shader2->setVec4(30, cyan);
         glDrawArrays(GL_POINTS, 0, (int)size/3);
+
+
         shader->bind();
         shader->setMat4(20, camera->calc_VP(delta));
         glDrawArrays(GL_LINES , 0, 8);
