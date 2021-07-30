@@ -58,8 +58,15 @@ private:
         std::pair<double, double> bisector2 = getBisector(t.v1, t.v3);
         Vertex center = getIntersection(bisector1, bisector2);
         // Get radius
-        
+        // Distance between edges of triangle
+        double e1 = sqrt(pow(t.v2.x-t.v1.x,2)+ pow(t.v2.y-t.v1.y,2));
+        double e2 = sqrt(pow(t.v3.x-t.v1.x,2)+ pow(t.v3.y-t.v1.y,2));
+        double e3 = sqrt(pow(t.v2.x-t.v3.x,2)+ pow(t.v2.y-t.v3.y,2));
+        double radius = (e1*e2*e3)/(sqrt((e1+e2+e3)*(e2+e3-e1)*(e3+e1-e2)*(e1+e2-e3)));
+
+        return std::make_pair(center, radius);
     }
+    
     bool isinCircumcircle(Vertex point){
 
     }
