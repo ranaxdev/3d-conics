@@ -67,8 +67,10 @@ private:
         return std::make_pair(center, radius);
     }
 
-    bool isinCircumcircle(Vertex point){
-
+    bool isinCircumcircle(Vertex point, std::pair<Vertex,double> circle){
+        if(pow(point.x - circle.first.x,2)+pow(point.y - circle.first.y,2) < pow(circle.second,2))
+            return true;
+        return false;
     }
 
 
@@ -243,16 +245,18 @@ public:
                 Triangle(Vertex(0.0f,50.0f), Vertex(-50.0f, -50.0f), Vertex(50.0f,-50.0f))
         };
 
-        std::vector<std::vector<Vertex>> badTris;
+        std::vector<Triangle> badTris;
 
-        /*
+
         for(auto& p : points){
             badTris = {};
             for(auto& t : triangulation){
-
+                if(isinCircumcircle(p, getCenterAndRadius(t))){
+                    badTris.push_back(t);
+                }
             }
         }
-        */
+
         Vertex v1(0.5f, 0.5f);
         Vertex v2(-0.5f, 0.23f);
         Vertex v3(0.23f, 0.75f);
