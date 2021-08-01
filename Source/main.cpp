@@ -122,11 +122,15 @@ public:
     Shader* shader2;
 
     // Colors
-    glm::vec4 cyan = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
     glm::vec4 red = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+    glm::vec4 cyan = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
     glm::vec4 green = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
+    glm::vec4 purple = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
+    glm::vec4 orange = glm::vec4(1.0f, 0.35f, 0.0f, 1.0f);
+    glm::vec4 blue = glm::vec4(0.0f, 0.0f, 1.0f, 1.0f);
+    glm::vec4 dark_green = glm::vec4(0.3f, 0.7f, 0.0f, 1.0f);
 
-
+    glm::vec4 colors[6] = {cyan, green, purple, orange, blue, dark_green};
     // Indexed drawing stuff
     int size =0;
 
@@ -151,6 +155,7 @@ public:
         };
 
         std::vector<float> data2 = {
+
                 0.5f, 0.5f, 0.0f,
                 -0.5f, 0.23f, 0.0f,
                 0.23f, 0.75f, 0.0f,
@@ -159,9 +164,191 @@ public:
                 0.69f, 0.69f, 0.0f,
                 1.0f, -0.88f, 0.0f,
 
-                0.0f, 50.0f, 0.0f,
-                -50.0f, -50.0f, 0.0f,
-                50.0f, -50.0f, 0.0f,
+
+                0.5000f, 0.5000f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.5000f, 0.5000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -0.5000f, 0.2300f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.2300f, 0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                -1.0000f, -0.7500f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+                0.7300f, -0.4000f, 0.0f,
+                0.6900f, 0.6900f, 0.0f,
+                1.0000f, -0.8800f, 0.0f,
+
         };
 
         size = (int) data2.size();
@@ -229,65 +416,69 @@ public:
 
 
         for(auto& point : points){
+
             badTris.clear();
-            edges.clear();
-            toRemove.clear();
-            for(auto& t : triangulation){
-                if(isinCircumcircle(point, getCenterAndRadius(t))){
-                    badTris.push_back(t);
+            polygon.clear();
+
+            for(auto& tri : triangulation){
+                if(isinCircumcircle(point, getCenterAndRadius(tri))){
+                    badTris.push_back(tri);
                 }
             }
 
-            for(auto& t : badTris){
-                if(edges.count(t.e1) == 0){
-                    edges.insert(t.e1);
+            for(auto it1 = triangulation.begin(); it1 != triangulation.end(); ++it1){
+                int shared[3] = {0};
+                for(auto it2 = it1+1; it2 != triangulation.end(); ++it2){
+                    if(it1->e1 == it2->e1)
+                        shared[0] = 1;
+                    if(it1->e2 == it2->e2)
+                        shared[1] = 1;
+                    if(it1->e3 == it2->e3)
+                        shared[2] = 1;
                 }
-                else{
-                    toRemove.insert(t.e1);
-                }
-
-                if(edges.count(t.e2) == 0){
-                    edges.insert(t.e2);
-                }
-                else{
-                    toRemove.insert(t.e2);
-                }
-
-                if(edges.count(t.e3) == 0){
-                    edges.insert(t.e3);
-                }
-                else{
-                    toRemove.insert(t.e3);
-                }
-            }
-            for(auto& e : toRemove){
-                edges.erase(e);
+                if(shared[0] == 0)
+                    polygon.push_back(it1->e1);
+                if(shared[1] == 0)
+                    polygon.push_back(it1->e2);
+                if(shared[2] == 0)
+                    polygon.push_back(it1->e3);
             }
 
             for(auto it = triangulation.begin(); it != triangulation.end();){
-                if(std::find(badTris.begin(), badTris.end(), *it) != badTris.end())
+                if(std::find(badTris.begin(), badTris.end(), *it) != badTris.end()){
                     it = triangulation.erase(it);
+                }
                 else
-                    it++;
+                    ++it;
             }
 
-            for(auto& e: edges){
+            for(auto& e : polygon){
                 Triangle t(e.v1, e.v2, point);
                 triangulation.push_back(t);
             }
         }
 
-        for(auto it = triangulation.begin(); it != triangulation.end(); it++){
-            if(it->v1 == supertri.v1 || it->v2 == supertri.v2 || it->v3 == supertri.v3){
-                triangulation.erase(it);
-                it--;
+        auto it = triangulation.begin();
+
+        while(it != triangulation.end()) {
+
+            if((it->v1 == supertri.v1 || it->v2 == supertri.v1 || it->v3 == supertri.v1) ||
+            (it->v1 == supertri.v2 || it->v2 == supertri.v2 || it->v3 == supertri.v2) ||
+            (it->v1 == supertri.v3 || it->v3 == supertri.v3 || it->v3 == supertri.v3)
+            )
+            {
+
+                it = triangulation.erase(it);
             }
+            else ++it;
         }
 
+
         for(auto& t : triangulation){
-            std::cout << t.v1.x << " " << t.v1.y << std::endl;
-            std::cout << t.v2.x << " " << t.v2.y << std::endl;
-            std::cout << t.v3.x << " " << t.v3.y << std::endl;
+            printf("%4.4ff, %4.4ff, 0.0f,\n", t.v1.x, t.v1.y);
+            printf("%4.4ff, %4.4ff, 0.0f,\n", t.v2.x, t.v2.y);
+            printf("%4.4ff, %4.4ff, 0.0f,\n", t.v3.x, t.v3.y);
+
         }
 
 
@@ -296,6 +487,7 @@ public:
 
     float delta = 0.0f;
     float last = 0.0f;
+    bool stop = false;
     void render(float currentTime) override {
         delta = currentTime - last;
 
@@ -306,8 +498,20 @@ public:
 
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
-        shader2->setVec4(30, cyan);
-        glDrawArrays(GL_POINTS, 0, (int)size/3);
+
+        int j = 0;
+        for(int i=0; i < (int)size/3-7; i+=3){
+
+            shader2->setVec4(30, colors[j%6]);
+            glDrawArrays(GL_TRIANGLES, i, 3);
+            j++;
+        }
+        stop = true;
+
+        shader2->setVec4(30, red);
+        glDrawArrays(GL_POINTS, 0, 7);
+
+
 
         shader->bind();
         shader->setMat4(20, camera->calc_VP(delta));
