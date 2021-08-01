@@ -5,6 +5,7 @@
 #include <vector>
 #include <unordered_set>
 #include <algorithm>
+#include <random>
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
 
@@ -130,7 +131,7 @@ public:
     glm::vec4 blue = glm::vec4(0.0f, 0.0f, 1.0f, 1.0f);
     glm::vec4 dark_green = glm::vec4(0.3f, 0.7f, 0.0f, 1.0f);
 
-    glm::vec4 colors[6] = {cyan, green, purple, orange, blue, dark_green};
+    glm::vec4 colors[61];
     // Indexed drawing stuff
     int size =0;
 
@@ -481,13 +482,24 @@ public:
 
         }
 
+        // Random colors TEMP
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_real_distribution<> dis(0,1);
+        for(int i=0; i<61; i++){
+            auto r = (float) dis(gen);
+            auto g = (float) dis(gen);
+            auto b = (float) dis(gen);
+            colors[i] = glm::vec4(r,g,b,1.0f);
+        }
+
 
 
     };
 
     float delta = 0.0f;
     float last = 0.0f;
-    bool stop = false;
+
     void render(float currentTime) override {
         delta = currentTime - last;
 
@@ -499,14 +511,15 @@ public:
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
 
-        int j = 0;
+        int j=0;
         for(int i=0; i < (int)size/3-7; i+=3){
 
-            shader2->setVec4(30, colors[j%6]);
+            shader2->setVec4(30, colors[j]);
             glDrawArrays(GL_TRIANGLES, i, 3);
+
             j++;
         }
-        stop = true;
+
 
         shader2->setVec4(30, red);
         glDrawArrays(GL_POINTS, 0, 7);
