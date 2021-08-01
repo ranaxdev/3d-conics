@@ -22,11 +22,18 @@ struct Vertex{
     float x,y;
     Vertex(float x, float y):x(x), y(y)
     {}
+
+    bool operator==(const Vertex& other) const{
+        if(x == other.x && y == other.y)
+            return true;
+        return false;
+    }
 };
 struct Edge{
     Vertex v1, v2;
     Edge(Vertex v1, Vertex v2): v1(v1), v2(v2)
     {}
+
 
     bool operator==(const Edge& other) const{
         if(v1.x == other.v1.x && v1.y == other.v1.y && v2.x == other.v2.x && v2.y == other.v2.y)
@@ -140,80 +147,14 @@ public:
                 0.5f, 0.5f, 0.0f,
                 -0.5f, 0.23f, 0.0f,
                 0.23f, 0.75f, 0.0f,
-                0.0280536f, 0.261098f, 0.0f,
+                -1.0f, -0.75f, 0.0f,
+                0.73f, -0.40f, 0.0f,
+                0.69f, 0.69f, 0.0f,
+                1.0f, -0.88f, 0.0f,
 
-                0.5570f, 0.2611f, 0.0f,
-                0.1781f, -0.2461f, 0.0f,
-                -0.4158f, -0.0267f, 0.0f,
-                -0.3738f, 0.6051f, 0.0f,
-                0.2439f, 0.7440f, 0.0f,
-                0.5524f, 0.1911f, 0.0f,
-                0.1096f, -0.2615f, 0.0f,
-                -0.4500f, 0.0346f, 0.0f,
-                -0.3247f, 0.6552f, 0.0f,
-                0.3059f, 0.7112f, 0.0f,
-                0.5385f, 0.1223f, 0.0f,
-                0.0398f, -0.2677f, 0.0f,
-                -0.4757f, 0.0999f, 0.0f,
-                -0.2695f, 0.6985f, 0.0f,
-                0.3631f, 0.6705f, 0.0f,
-                0.5156f, 0.0560f, 0.0f,
-                -0.0303f, -0.2646f, 0.0f,
-                -0.4927f, 0.1680f, 0.0f,
-                -0.2090f, 0.7340f, 0.0f,
-                0.4143f, 0.6225f, 0.0f,
-                0.4842f, -0.0068f, 0.0f,
-                -0.0994f, -0.2523f, 0.0f,
-                -0.5004f, 0.2377f, 0.0f,
-                -0.1443f, 0.7612f, 0.0f,
-                0.4587f, 0.5682f, 0.0f,
-                0.4447f, -0.0648f, 0.0f,
-                -0.1662f, -0.2309f, 0.0f,
-                -0.4988f, 0.3078f, 0.0f,
-                -0.0766f, 0.7796f, 0.0f,
-                0.4956f, 0.5085f, 0.0f,
-                0.3979f, -0.1170f, 0.0f,
-                -0.2296f, -0.2009f, 0.0f,
-                -0.4880f, 0.3772f, 0.0f,
-                -0.0070f, 0.7889f, 0.0f,
-                0.5242f, 0.4445f, 0.0f,
-                0.3446f, -0.1627f, 0.0f,
-                -0.2885f, -0.1627f, 0.0f,
-                -0.4681f, 0.4444f, 0.0f,
-                0.0631f, 0.7889f, 0.0f,
-                0.5441f, 0.3772f, 0.0f,
-                0.2858f, -0.2008f, 0.0f,
-                -0.3418f, -0.1171f, 0.0f,
-                -0.4395f, 0.5085f, 0.0f,
-                0.1327f, 0.7796f, 0.0f,
-                0.5550f, 0.3079f, 0.0f,
-                0.2224f, -0.2309f, 0.0f,
-                -0.3886f, -0.0648f, 0.0f,
-                -0.4026f, 0.5682f, 0.0f,
-                0.2004f, 0.7612f, 0.0f,
-                0.5565f, 0.2377f, 0.0f,
-                0.1555f, -0.2523f, 0.0f,
-                -0.4281f, -0.0068f, 0.0f,
-                -0.3582f, 0.6225f, 0.0f,
-                0.2651f, 0.7340f, 0.0f,
-                0.5488f, 0.1680f, 0.0f,
-                0.0865f, -0.2646f, 0.0f,
-                -0.4595f, 0.0560f, 0.0f,
-                -0.3070f, 0.6705f, 0.0f,
-                0.3256f, 0.6985f, 0.0f,
-                0.5319f, 0.0999f, 0.0f,
-                0.0164f, -0.2677f, 0.0f,
-                -0.4824f, 0.1223f, 0.0f,
-                -0.2498f, 0.7112f, 0.0f,
-                0.3808f, 0.6552f, 0.0f,
-                0.5061f, 0.0346f, 0.0f,
-                -0.0535f, -0.2615f, 0.0f,
-                -0.4963f, 0.1911f, 0.0f,
-                -0.1878f, 0.7440f, 0.0f,
-                0.4299f, 0.6051f, 0.0f,
-                0.4719f, -0.0267f, 0.0f,
-                -0.1220f, -0.2461f, 0.0f,
-                -0.5009f, 0.2611f, 0.0f,
+                0.0f, 50.0f, 0.0f,
+                -50.0f, -50.0f, 0.0f,
+                50.0f, -50.0f, 0.0f,
         };
 
         size = (int) data2.size();
@@ -269,38 +210,55 @@ public:
                 Vertex(-50.0f, -50.0f),
                 Vertex(50.0f, -50.0f),
         };
+        Triangle supertri(Vertex(0.0f,50.0f), Vertex(-50.0f, -50.0f), Vertex(50.0f,-50.0f));
         std::vector<Triangle> triangulation= {
-                Triangle(Vertex(0.0f,50.0f), Vertex(-50.0f, -50.0f), Vertex(50.0f,-50.0f))
+                supertri
         };
 
         std::vector<Triangle> badTris;
         std::vector<Edge> polygon;
         std::unordered_set<Edge> edge_index;
-        /*
+
 
         for(auto& p : points){
             badTris = {};
             for(auto& t : triangulation){
                 if(isinCircumcircle(p, getCenterAndRadius(t))){
                     badTris.push_back(t);
+                    edge_index.insert(t.e1);
+                    edge_index.insert(t.e2);
+                    edge_index.insert(t.e3);
                 }
             }
             polygon = {};
             for(auto& t: badTris){
-                // Hashset edges
+                if(edge_index.find(t.e1) == edge_index.end())
+                    polygon.push_back(t.e1);
+                if(edge_index.find(t.e2) == edge_index.end())
+                    polygon.push_back(t.e2);
+                if(edge_index.find(t.e3) == edge_index.end())
+                    polygon.push_back(t.e3);
+            }
+            badTris.clear();
+            for(auto& e: polygon){
+                Triangle t(e.v1, e.v2, p);
+                triangulation.push_back(t);
             }
 
+            for(auto it = triangulation.begin(); it != triangulation.end(); ++it){
+                if(it->v1 == supertri.v1 || it->v2 == supertri.v2 || it->v3 == supertri.v3){
+                    triangulation.erase(it);
+                    it--;
+                }
+            }
         }
-         */
 
-        Vertex v1(0.5f, 0.5f);
-        Vertex v2(-0.5f, 0.23f);
-        Vertex v3(0.23f, 0.75f);
-        Triangle t(v1,v2,v3);
-        auto i = getCenterAndRadius(t);
-        std::cout << i.first.x << " " << i.first.y << std::endl;
-        std::cout << i.second << std::endl;
 
+        for(auto& t : triangulation){
+            std::cout << t.v1.x << " " << t.v1.y << std::endl;
+            std::cout << t.v2.x << " " << t.v2.y << std::endl;
+            std::cout << t.v3.x << " " << t.v3.y << std::endl;
+        }
 
 
     };
@@ -318,11 +276,7 @@ public:
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
         shader2->setVec4(30, cyan);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-        shader2->setVec4(30, red);
-        glDrawArrays(GL_POINTS, 3, 1);
-        shader2->setVec4(30, green);
-        glDrawArrays(GL_POINTS, 4, 72);
+        glDrawArrays(GL_POINTS, 0, (int)size/3);
 
         shader->bind();
         shader->setMat4(20, camera->calc_VP(delta));

@@ -27,7 +27,7 @@ void conics::Harness::run(conics::Harness* h) {
     glfwMakeContextCurrent(window);
     glfwSetWindowUserPointer(window, (void*)(this)); // Pointer to app window that implements this harness
     // GLFW settings
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // Callbacks
     glfwSetKeyCallback(window, conics::key_callback);
 
