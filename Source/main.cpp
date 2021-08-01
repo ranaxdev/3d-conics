@@ -4,6 +4,7 @@
 #include <cmath>
 #include <vector>
 #include <unordered_set>
+#include <algorithm>
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
 
@@ -54,6 +55,12 @@ struct Triangle{
     :v1(v1),v2(v2),v3(v3),
     e1(v1,v2), e2(v2,v3), e3(v1,v3)
     {}
+
+    bool operator==(const Triangle& other) const{
+        if(v1 == other.v1 && v2 == other.v2 && v3 == other.v3)
+            return true;
+        return false;
+    }
 };
 
 template<> struct std::hash<Edge>
@@ -217,48 +224,72 @@ public:
 
         std::vector<Triangle> badTris;
         std::vector<Edge> polygon;
-        std::unordered_set<Edge> edge_index;
+        std::unordered_set<Edge> edges;
+        std::unordered_set<Edge> toRemove;
 
 
-        for(auto& p : points){
-            badTris = {};
-            for(auto& t : triangulation){
-                if(isinCircumcircle(p, getCenterAndRadius(t))){
-                    badTris.push_back(t);
-                    edge_index.insert(t.e1);
-                    edge_index.insert(t.e2);
-                    edge_index.insert(t.e3);
-                }
-            }
-            polygon = {};
-            for(auto& t: badTris){
-                if(edge_index.find(t.e1) == edge_index.end())
-                    polygon.push_back(t.e1);
-                if(edge_index.find(t.e2) == edge_index.end())
-                    polygon.push_back(t.e2);
-                if(edge_index.find(t.e3) == edge_index.end())
-                    polygon.push_back(t.e3);
-            }
+        for(auto& point : points){
             badTris.clear();
-            for(auto& e: polygon){
-                Triangle t(e.v1, e.v2, p);
-                triangulation.push_back(t);
+            edges.clear();
+            toRemove.clear();
+            for(auto& t : triangulation){
+                if(isinCircumcircle(point, getCenterAndRadius(t))){
+                    badTris.push_back(t);
+                }
             }
 
-            for(auto it = triangulation.begin(); it != triangulation.end(); ++it){
-                if(it->v1 == supertri.v1 || it->v2 == supertri.v2 || it->v3 == supertri.v3){
-                    triangulation.erase(it);
-                    it--;
+            for(auto& t : badTris){
+                if(edges.count(t.e1) == 0){
+                    edges.insert(t.e1);
                 }
+                else{
+                    toRemove.insert(t.e1);
+                }
+
+                if(edges.count(t.e2) == 0){
+                    edges.insert(t.e2);
+                }
+                else{
+                    toRemove.insert(t.e2);
+                }
+
+                if(edges.count(t.e3) == 0){
+                    edges.insert(t.e3);
+                }
+                else{
+                    toRemove.insert(t.e3);
+                }
+            }
+            for(auto& e : toRemove){
+                edges.erase(e);
+            }
+
+            for(auto it = triangulation.begin(); it != triangulation.end();){
+                if(std::find(badTris.begin(), badTris.end(), *it) != badTris.end())
+                    it = triangulation.erase(it);
+                else
+                    it++;
+            }
+
+            for(auto& e: edges){
+                Triangle t(e.v1, e.v2, point);
+                triangulation.push_back(t);
             }
         }
 
+        for(auto it = triangulation.begin(); it != triangulation.end(); it++){
+            if(it->v1 == supertri.v1 || it->v2 == supertri.v2 || it->v3 == supertri.v3){
+                triangulation.erase(it);
+                it--;
+            }
+        }
 
         for(auto& t : triangulation){
             std::cout << t.v1.x << " " << t.v1.y << std::endl;
             std::cout << t.v2.x << " " << t.v2.y << std::endl;
             std::cout << t.v3.x << " " << t.v3.y << std::endl;
         }
+
 
 
     };
