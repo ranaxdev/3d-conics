@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <vector>
+#include <unordered_set>
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
 
@@ -22,11 +23,38 @@ struct Vertex{
     Vertex(float x, float y):x(x), y(y)
     {}
 };
+struct Edge{
+    Vertex v1, v2;
+    Edge(Vertex v1, Vertex v2): v1(v1), v2(v2)
+    {}
+
+    bool operator==(const Edge& other) const{
+        if(v1.x == other.v1.x && v1.y == other.v1.y && v2.x == other.v2.x && v2.y == other.v2.y)
+            return true;
+        return false;
+    }
+
+    size_t operator()(const Edge& edgeHash) const noexcept{
+        auto hash = (size_t)(v1.x + 5 * v1.y + 6 * v2.x + 7 + v2.y);
+        return hash;
+    }
+};
 struct Triangle{
     Vertex v1,v2,v3;
-    Triangle(Vertex v1, Vertex v2, Vertex v3):v1(v1),v2(v2),v3(v3)
+    Edge e1, e2, e3;
+
+    Triangle(Vertex v1, Vertex v2, Vertex v3)
+    :v1(v1),v2(v2),v3(v3),
+    e1(v1,v2), e2(v2,v3), e3(v1,v3)
     {}
 };
+
+template<> struct std::hash<Edge>
+        {
+    std::size_t operator()(const Edge& e) const noexcept{
+        return e(e);
+    }
+        };
 
 class App : public conics::Harness{
 private:
@@ -246,7 +274,9 @@ public:
         };
 
         std::vector<Triangle> badTris;
-
+        std::vector<Edge> polygon;
+        std::unordered_set<Edge> edge_index;
+        /*
 
         for(auto& p : points){
             badTris = {};
@@ -255,7 +285,13 @@ public:
                     badTris.push_back(t);
                 }
             }
+            polygon = {};
+            for(auto& t: badTris){
+                // Hashset edges
+            }
+
         }
+         */
 
         Vertex v1(0.5f, 0.5f);
         Vertex v2(-0.5f, 0.23f);
