@@ -490,7 +490,7 @@ public:
             auto r = (float) dis(gen);
             auto g = (float) dis(gen);
             auto b = (float) dis(gen);
-            colors[i] = glm::vec4(r,g,b,1.0f);
+            colors[i] = glm::vec4(r,g,b,0.5f);
         }
 
 
@@ -505,11 +505,12 @@ public:
 
 
         glPointSize(20.0f);
-        glLineWidth(40.0f);
+        glLineWidth(1.0f);
 
 
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
+
 
         int j=0;
         for(int i=0; i < (int)size/3-7; i+=3){
@@ -525,7 +526,11 @@ public:
         glDrawArrays(GL_POINTS, 0, 7);
 
 
+        shader2->setVec4(30, blue);
+        glDrawArrays(GL_LINES, 7, (int)(size)/2);
 
+
+        glLineWidth(20.0f);
         shader->bind();
         shader->setMat4(20, camera->calc_VP(delta));
         glDrawArrays(GL_LINES , 0, 8);
