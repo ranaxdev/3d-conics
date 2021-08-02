@@ -20,101 +20,19 @@
 #include "Utils/Logger.h"
 #include "Utils/Globals.h"
 
-struct Vertex{
-    float x,y;
-    Vertex(float x, float y):x(x), y(y)
-    {}
-
-    bool operator==(const Vertex& other) const{
-        if(x == other.x && y == other.y)
-            return true;
-        return false;
-    }
-};
-struct Edge{
-    Vertex v1, v2;
-    Edge(Vertex v1, Vertex v2): v1(v1), v2(v2)
-    {}
 
 
-    bool operator==(const Edge& other) const{
-        if(v1.x == other.v1.x && v1.y == other.v1.y && v2.x == other.v2.x && v2.y == other.v2.y)
-            return true;
-        return false;
-    }
 
-    size_t operator()(const Edge& edgeHash) const noexcept{
-        auto hash = (size_t)(v1.x + 5 * v1.y + 6 * v2.x + 7 + v2.y);
-        return hash;
-    }
-};
-struct Triangle{
-    Vertex v1,v2,v3;
-    Edge e1, e2, e3;
 
-    Triangle(Vertex v1, Vertex v2, Vertex v3)
-    :v1(v1),v2(v2),v3(v3),
-    e1(v1,v2), e2(v2,v3), e3(v1,v3)
-    {}
-
-    bool operator==(const Triangle& other) const{
-        if(v1 == other.v1 && v2 == other.v2 && v3 == other.v3)
-            return true;
-        return false;
-    }
-};
-
-template<> struct std::hash<Edge>
-        {
-    std::size_t operator()(const Edge& e) const noexcept{
-        return e(e);
-    }
-        };
 
 class App : public conics::Harness{
 private:
-    std::pair<double, double> getBisector(Vertex v1, Vertex v2){
-        if(v2.x-v1.x == 0)
-            Logger::log(ERROR, "Triangulation failed, parallel lines", __FILENAME__);
-        double mid_x = (v2.x+v1.x)/2;
-        double mid_y = (v2.y+v1.y)/2;
-        double m = (v2.y-v1.y)/(v2.x-v1.x);
-        double perp_m = -1/m;
-        double c = mid_y - (mid_x*perp_m);
-        return std::make_pair(perp_m, c);
-    }
-    std::pair<double, double> getLine(double x1, double y1, double x2, double y2){
-        if(x2-x1 == 0)
-            Logger::log(ERROR, "Triangulation failed, parallel lines", __FILENAME__);
-        double m = (y2-y1)/(x2-x1);
-        double c = y1 - (x1*m);
-        return std::make_pair(m, c);
-    }
-    Vertex getIntersection(std::pair<double,double> line1, std::pair<double,double> line2){
-        double int_X = (line2.second-line1.second)/(line1.first-line2.first);
-        double int_Y = line1.first * int_X + line1.second;
-        return Vertex((float) int_X, (float) int_Y);
-    }
-    std::pair<Vertex,double> getCenterAndRadius(Triangle t){
-        // Get circumcenter of triangle
-        std::pair<double, double> bisector1 = getBisector(t.v1, t.v2);
-        std::pair<double, double> bisector2 = getBisector(t.v1, t.v3);
-        Vertex center = getIntersection(bisector1, bisector2);
-        // Get radius
-        // Distance between edges of triangle
-        double e1 = sqrt(pow(t.v2.x-t.v1.x,2)+ pow(t.v2.y-t.v1.y,2));
-        double e2 = sqrt(pow(t.v3.x-t.v1.x,2)+ pow(t.v3.y-t.v1.y,2));
-        double e3 = sqrt(pow(t.v2.x-t.v3.x,2)+ pow(t.v2.y-t.v3.y,2));
-        double radius = (e1*e2*e3)/(sqrt((e1+e2+e3)*(e2+e3-e1)*(e3+e1-e2)*(e1+e2-e3)));
 
-        return std::make_pair(center, radius);
-    }
 
-    bool isinCircumcircle(Vertex point, std::pair<Vertex,double> circle){
-        if(pow(point.x - circle.first.x,2)+pow(point.y - circle.first.y,2) < pow(circle.second,2))
-            return true;
-        return false;
-    }
+
+
+
+
 
 
 public:

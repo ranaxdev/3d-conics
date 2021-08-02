@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <memory>
+#include <functional>
+#include <math.h>
 
 #include "Utils/KeyListener.h"
 
@@ -56,6 +58,84 @@ namespace conics{
     // GLFW callbacks
     static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
+    // Triangulation data structures
+
+    struct Vertex{
+        /*
+         * Represents a single vertex of a triangle
+         */
+        float x,y;
+        Vertex(float x, float y):x(x), y(y)
+        {}
+
+        bool operator==(const Vertex& other) const{
+            if(x == other.x && y == other.y)
+                return true;
+            return false;
+        }
+    };
+
+    struct Edge{
+        /*
+         * Represents a single edge of a triangle
+         * Connecting 3 vertices
+         */
+        Vertex v1, v2;
+        Edge(Vertex& v1, Vertex& v2): v1(v1), v2(v2)
+        {}
+
+
+        bool operator==(const Edge& other) const{
+            if(v1.x == other.v1.x && v1.y == other.v1.y && v2.x == other.v2.x && v2.y == other.v2.y)
+                return true;
+            return false;
+        }
+
+        size_t operator()(const Edge& edgeHash) const noexcept{
+            auto hash = (size_t)(v1.x + 5 * v1.y + 6 * v2.x + 7 + v2.y);
+            return hash;
+        }
+    };
+
+    struct Triangle{
+        /*
+         * Has 3 vertices and 3 edges that connect
+         * The vertices together
+         */
+        Vertex v1,v2,v3;
+        Edge e1, e2, e3;
+
+        Triangle(Vertex& v1, Vertex& v2, Vertex& v3)
+        :v1(v1),v2(v2),v3(v3),
+        e1(v1,v2), e2(v2,v3), e3(v1,v3)
+        {}
+
+        Triangle(Vertex&& v1, Vertex&& v2, Vertex&& v3)
+        : Triangle(v1,v2,v3)
+        {}
+
+        bool operator==(const Triangle& other) const{
+            if(v1 == other.v1 && v2 == other.v2 && v3 == other.v3)
+                return true;
+            return false;
+        }
+    };
+
+
+    // Triangulation routines
+    std::pair<double, double> getBisector(Vertex v1, Vertex v2);
+    std::pair<double, double> getLine(double x1, double y1, double x2, double y2);
+    Vertex getIntersection(std::pair<double,double> line1, std::pair<double,double> line2);
+    std::pair<Vertex,double> getCenterAndRadius(Triangle t);
+    bool isinCircumcircle(Vertex point, std::pair<Vertex,double> circle);
 }
+
+
+template<> struct std::hash<conics::Edge>
+    {
+        std::size_t operator()(const conics::Edge& e) const noexcept{
+            return e(e);
+        }
+    };
 
 #endif

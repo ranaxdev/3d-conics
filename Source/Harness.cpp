@@ -106,3 +106,70 @@ void conics::key_callback(GLFWwindow *window, int key, int scancode, int action,
     if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, 1);
 }
+
+
+// Triangulation routines
+std::pair<double, double> conics::getBisector(Vertex v1, Vertex v2){
+    /*
+     * Calculates the perpendicular bisector of 2 vertices
+     * Returns the slope and constant value of the bisector
+     */
+    if(v2.x-v1.x == 0)
+        Logger::log(ERROR, "Triangulation failed, parallel lines", __FILENAME__);
+    double mid_x = (v2.x+v1.x)/2;
+    double mid_y = (v2.y+v1.y)/2;
+    double m = (v2.y-v1.y)/(v2.x-v1.x);
+    double perp_m = -1/m;
+    double c = mid_y - (mid_x*perp_m);
+    return std::make_pair(perp_m, c);
+}
+
+std::pair<double, double> conics::getLine(double x1, double y1, double x2, double y2){
+    /*
+     * Return slope and constant of line given vertices
+     */
+    if(x2-x1 == 0)
+        Logger::log(ERROR, "Triangulation failed, parallel lines", __FILENAME__);
+    double m = (y2-y1)/(x2-x1);
+    double c = y1 - (x1*m);
+    return std::make_pair(m, c);
+}
+
+conics::Vertex conics::getIntersection(std::pair<double,double> line1, std::pair<double,double> line2){
+    /*
+     * Takes two lines
+     * Returns their point of intersection
+     */
+    double int_X = (line2.second-line1.second)/(line1.first-line2.first);
+    double int_Y = line1.first * int_X + line1.second;
+    return Vertex((float) int_X, (float) int_Y);
+}
+
+std::pair<conics::Vertex,double> conics::getCenterAndRadius(conics::Triangle t){
+    /*
+     * Takes a triangle
+     * Returns its center point and radius as a pair
+     */
+    // Get circumcenter of triangle
+    std::pair<double, double> bisector1 = getBisector(t.v1, t.v2);
+    std::pair<double, double> bisector2 = getBisector(t.v1, t.v3);
+    Vertex center = getIntersection(bisector1, bisector2);
+    // Get radius
+    // Distance between edges of triangle
+    double e1 = sqrt(pow(t.v2.x-t.v1.x,2)+ pow(t.v2.y-t.v1.y,2));
+    double e2 = sqrt(pow(t.v3.x-t.v1.x,2)+ pow(t.v3.y-t.v1.y,2));
+    double e3 = sqrt(pow(t.v2.x-t.v3.x,2)+ pow(t.v2.y-t.v3.y,2));
+    double radius = (e1*e2*e3)/(sqrt((e1+e2+e3)*(e2+e3-e1)*(e3+e1-e2)*(e1+e2-e3)));
+
+    return std::make_pair(center, radius);
+}
+
+bool conics::isinCircumcircle(conics::Vertex point, std::pair<conics::Vertex,double> circle){
+    /*
+     * Takes a point and a circle
+     * Checks if the point is contained within the circle
+     */
+    if(pow(point.x - circle.first.x,2)+pow(point.y - circle.first.y,2) < pow(circle.second,2))
+        return true;
+    return false;
+}
