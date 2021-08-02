@@ -20,8 +20,9 @@ private:
 
     // Memory utils
     static unsigned int current_free_buf;
-    GLuint buf[1024];
-    
+    static GLuint buf[1024];
+
+    static GLuint _prepBuf(const GLfloat* data);
 
 };
 #endif

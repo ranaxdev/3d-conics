@@ -55,11 +55,13 @@ namespace conics{
 
     };
 
+    // Graphics refs
+    static GLuint VAO;
+
     // GLFW callbacks
     static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
     // Triangulation data structures
-
     struct Vertex{
         /*
          * Represents a single vertex of a triangle

@@ -40,6 +40,7 @@ void conics::Harness::run(conics::Harness* h) {
     // Application Initialization
     startup();
 
+
     // Application Rendering
     const GLfloat screen_color[4] = {w.color[0], w.color[1], w.color[2], w.color[3]};
     while(!glfwWindowShouldClose(window)){

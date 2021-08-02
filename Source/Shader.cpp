@@ -125,7 +125,7 @@ void Shader::setVec3(const char *name, glm::vec3 &v) {
 void Shader::setVec4(int loc, glm::vec4 &v) {
     glUniform4f(loc, v.x, v.y, v.z, v.w);
 }
-void Shader::setVec4(const char *name, glm::vec3 &v) {
+void Shader::setVec4(const char *name, glm::vec4 &v) {
     glUniform4f(get_attrib_loc(name), v.x, v.y, v.z, v.w);
 }
 

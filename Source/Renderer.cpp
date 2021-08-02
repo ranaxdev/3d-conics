@@ -1,6 +1,6 @@
 #include "Renderer.h"
 
-unsigned int Renderer::current_free_buf = 0; // Index into currently available buffer
+unsigned int Renderer::current_free_buf = -1; // Index into currently available buffer
 
 void Renderer::enableAxis() {
     constexpr static const GLfloat axis_data[] = {
@@ -20,3 +20,12 @@ void Renderer::enableAxis() {
 void Renderer::renderAxis() {
 
 }
+
+/*
+GLuint Renderer::_prepBuf(const GLfloat *data) {
+    current_free_buf++;
+    glCreateBuffers(1, &buf[current_free_buf]);
+
+    glNamedBufferStorage(buf[current_free_buf], sizeof(data), data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+}
+*/

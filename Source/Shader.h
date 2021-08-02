@@ -22,7 +22,7 @@ public:
     void setVec3(int loc, glm::vec3& v);
     void setVec3(const char* name, glm::vec3& v);
     void setVec4(int loc, glm::vec4& v);
-    void setVec4(const char* name, glm::vec3& v);
+    void setVec4(const char* name, glm::vec4& v);
     void setMat4(int loc, glm::mat4& m);
     void setMat4(const char* name, glm::mat4& m);
 

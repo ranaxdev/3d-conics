@@ -20,7 +20,7 @@
 #include "Utils/Logger.h"
 #include "Utils/Globals.h"
 
-
+using namespace conics;
 class App : public conics::Harness{
 public:
     std::shared_ptr<Camera> camera;
@@ -67,7 +67,7 @@ public:
         size = (int) data2.size();
         int dat_size = 4*size;
 
-        GLuint VAO;
+
         GLuint buffer[3];
         glCreateVertexArrays(1, &VAO);
         glCreateBuffers(3, buffer);
@@ -99,7 +99,6 @@ public:
         glEnableVertexArrayAttrib(VAO, 3);
 
         glVertexArrayVertexBuffer(VAO, 1, buffer[1], 0, 3*sizeof(float));
-
 
         glBindVertexArray(VAO);
 
