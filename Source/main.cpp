@@ -30,12 +30,6 @@ public:
     // Colors
     glm::vec4 red = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
     glm::vec4 cyan = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
-    glm::vec4 green = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
-    glm::vec4 purple = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
-    glm::vec4 orange = glm::vec4(1.0f, 0.35f, 0.0f, 1.0f);
-    glm::vec4 blue = glm::vec4(0.0f, 0.0f, 1.0f, 1.0f);
-    glm::vec4 dark_green = glm::vec4(0.3f, 0.7f, 0.0f, 1.0f);
-
 
     // Indexed drawing stuff
     int size =0;
