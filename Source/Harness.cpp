@@ -58,8 +58,6 @@ void conics::Harness::run(conics::Harness* h) {
 
                 glfwGetCursorPos(window, &o->xpos, &o->ypos);
             }
-
-
         }
 
         // Render
