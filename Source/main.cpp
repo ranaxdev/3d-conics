@@ -324,75 +324,10 @@ public:
                 Vertex(-50.0f, -50.0f),
                 Vertex(50.0f, -50.0f),
         };
-        Triangle supertri(Vertex(0.0f,50.0f), Vertex(-50.0f, -50.0f), Vertex(50.0f,-50.0f));
-        std::vector<Triangle> triangulation= {
-                supertri
-        };
+        auto result = delaunay(points);
+        
 
-        std::vector<Triangle> badTris;
-        std::vector<Edge> polygon;
-
-
-        for(auto& point : points){
-
-            badTris.clear();
-            polygon.clear();
-
-            for(auto& tri : triangulation){
-                if(isinCircumcircle(point, getCenterAndRadius(tri))){
-                    badTris.push_back(tri);
-                }
-            }
-
-            for(auto it1 = triangulation.begin(); it1 != triangulation.end(); ++it1){
-                int shared[3] = {0};
-                for(auto it2 = it1+1; it2 != triangulation.end(); ++it2){
-                    if(it1->e1 == it2->e1)
-                        shared[0] = 1;
-                    if(it1->e2 == it2->e2)
-                        shared[1] = 1;
-                    if(it1->e3 == it2->e3)
-                        shared[2] = 1;
-                }
-                if(shared[0] == 0)
-                    polygon.push_back(it1->e1);
-                if(shared[1] == 0)
-                    polygon.push_back(it1->e2);
-                if(shared[2] == 0)
-                    polygon.push_back(it1->e3);
-            }
-
-            for(auto it = triangulation.begin(); it != triangulation.end();){
-                if(std::find(badTris.begin(), badTris.end(), *it) != badTris.end()){
-                    it = triangulation.erase(it);
-                }
-                else
-                    ++it;
-            }
-
-            for(auto& e : polygon){
-                Triangle t(e.v1, e.v2, point);
-                triangulation.push_back(t);
-            }
-        }
-
-        auto it = triangulation.begin();
-
-        while(it != triangulation.end()) {
-
-            if((it->v1 == supertri.v1 || it->v2 == supertri.v1 || it->v3 == supertri.v1) ||
-            (it->v1 == supertri.v2 || it->v2 == supertri.v2 || it->v3 == supertri.v2) ||
-            (it->v1 == supertri.v3 || it->v3 == supertri.v3 || it->v3 == supertri.v3)
-            )
-            {
-
-                it = triangulation.erase(it);
-            }
-            else ++it;
-        }
-
-
-        for(auto& t : triangulation){
+        for(auto& t : result){
             printf("%4.4ff, %4.4ff, 0.0f,\n", t.v1.x, t.v1.y);
             printf("%4.4ff, %4.4ff, 0.0f,\n", t.v2.x, t.v2.y);
             printf("%4.4ff, %4.4ff, 0.0f,\n", t.v3.x, t.v3.y);

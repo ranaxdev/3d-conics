@@ -173,3 +173,79 @@ bool conics::isinCircumcircle(conics::Vertex& point, std::pair<conics::Vertex,do
         return true;
     return false;
 }
+
+std::vector<conics::Triangle> conics::delaunay(std::vector<Vertex> &points) {
+    /*
+     * Delaunay triangulation - Bowyer-Watson algorithm
+     * Takes a set of points, constructs triangle vertices
+     * So that it can be rendered as a surface mesh
+     */
+
+    std::vector<Triangle> triangulation; // Contains final result
+    // Encompasses all reasonable points
+    Triangle super_triangle(Vertex(0.0f,50.0f), Vertex(-50.0f, -50.0f), Vertex(50.0f,-50.0f));
+    triangulation.push_back(super_triangle);
+
+    std::vector<Triangle> bad_triangles;
+    std::vector<Edge> polygons;
+
+    for(auto& point : points){ // Add points to the triangulation
+        bad_triangles.clear();
+        polygons.clear();
+
+        // Find all triangles that are invalid due to the insertion
+        for(auto& tri : triangulation){
+            if(isinCircumcircle(point, getCenterAndRadius(tri))){
+                bad_triangles.push_back(tri);
+            }
+        }
+
+        // Find boundary of polygon hole
+        for(auto it1 = triangulation.begin(); it1 != triangulation.end(); ++it1){
+            int shared[3] = {0};
+            for(auto it2 = it1+1; it2 != triangulation.end(); ++it2){
+                if(it1->e1 == it2->e1)
+                    shared[0] = 1;
+                if(it1->e2 == it2->e2)
+                    shared[1] = 1;
+                if(it1->e3 == it2->e3)
+                    shared[2] = 1;
+            }
+            if(shared[0] == 0)
+                polygons.push_back(it1->e1);
+            if(shared[1] == 0)
+                polygons.push_back(it1->e2);
+            if(shared[2] == 0)
+                polygons.push_back(it1->e3);
+        }
+
+        // Remove bad triangles from triangulations
+        for(auto it = triangulation.begin(); it != triangulation.end();){
+            if(std::find(bad_triangles.begin(), bad_triangles.end(), *it) != bad_triangles.end())
+                it = triangulation.erase(it);
+            else
+                ++it;
+        }
+
+        // Re-triangulate the polygonal hole
+        for(auto& e : polygons){
+            Triangle t(e.v1, e.v2, point);
+            triangulation.push_back(t);
+        }
+    }
+
+    // Insertions complete, clean-up
+    auto it = triangulation.begin();
+    while(it != triangulation.end()) {
+
+        if((it->v1 == super_triangle.v1 || it->v2 == super_triangle.v1 || it->v3 == super_triangle.v1)  ||
+            (it->v1 == super_triangle.v2 || it->v2 == super_triangle.v2 || it->v3 == super_triangle.v2) ||
+            (it->v1 == super_triangle.v3 || it->v3 == super_triangle.v3 || it->v3 == super_triangle.v3))
+        {
+            it = triangulation.erase(it);
+        }
+        else ++it;
+    }
+
+    return triangulation;
+}
