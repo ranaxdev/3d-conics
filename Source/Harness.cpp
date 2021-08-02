@@ -135,7 +135,7 @@ std::pair<double, double> conics::getLine(double x1, double y1, double x2, doubl
     return std::make_pair(m, c);
 }
 
-conics::Vertex conics::getIntersection(std::pair<double,double> line1, std::pair<double,double> line2){
+conics::Vertex conics::getIntersection(std::pair<double,double>& line1, std::pair<double,double>& line2){
     /*
      * Takes two lines
      * Returns their point of intersection
@@ -145,7 +145,7 @@ conics::Vertex conics::getIntersection(std::pair<double,double> line1, std::pair
     return Vertex((float) int_X, (float) int_Y);
 }
 
-std::pair<conics::Vertex,double> conics::getCenterAndRadius(conics::Triangle t){
+std::pair<conics::Vertex,double> conics::getCenterAndRadius(conics::Triangle& t){
     /*
      * Takes a triangle
      * Returns its center point and radius as a pair
@@ -164,7 +164,7 @@ std::pair<conics::Vertex,double> conics::getCenterAndRadius(conics::Triangle t){
     return std::make_pair(center, radius);
 }
 
-bool conics::isinCircumcircle(conics::Vertex point, std::pair<conics::Vertex,double> circle){
+bool conics::isinCircumcircle(conics::Vertex& point, std::pair<conics::Vertex,double>&& circle){
     /*
      * Takes a point and a circle
      * Checks if the point is contained within the circle

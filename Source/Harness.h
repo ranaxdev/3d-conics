@@ -125,9 +125,9 @@ namespace conics{
     // Triangulation routines
     std::pair<double, double> getBisector(Vertex v1, Vertex v2);
     std::pair<double, double> getLine(double x1, double y1, double x2, double y2);
-    Vertex getIntersection(std::pair<double,double> line1, std::pair<double,double> line2);
-    std::pair<Vertex,double> getCenterAndRadius(Triangle t);
-    bool isinCircumcircle(Vertex point, std::pair<Vertex,double> circle);
+    Vertex getIntersection(std::pair<double,double>& line1, std::pair<double,double>& line2);
+    std::pair<Vertex,double> getCenterAndRadius(Triangle& t);
+    bool isinCircumcircle(Vertex& point, std::pair<Vertex,double>&& circle);
 }
 
 #endif
