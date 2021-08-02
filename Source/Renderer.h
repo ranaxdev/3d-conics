@@ -8,21 +8,13 @@
 
 class Renderer{
 public:
-    Renderer() = delete;
+    Renderer(GLuint& VAO, GLuint buf[]);
     ~Renderer() = default;
 
-    static void enableAxis();
-    static void renderAxis();
+    void enableAxis();
 
 private:
-    // Axis parts
-    Shader* axis_shader = new Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
-
-    // Memory utils
-    static unsigned int current_free_buf;
-    static GLuint buf[1024];
-
-    static GLuint _prepBuf(const GLfloat* data);
-
+    GLuint VAO;
+    GLuint* buf;
 };
 #endif

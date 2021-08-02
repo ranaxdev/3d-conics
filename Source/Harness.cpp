@@ -38,8 +38,11 @@ void conics::Harness::run(conics::Harness* h) {
     }
 
     // Application Initialization
+    glCreateVertexArrays(1, &VAO);
+    glCreateBuffers(50, buf);
+    Harness::renderer = new Renderer(Harness::VAO, Harness::buf);
     startup();
-
+    glBindVertexArray(VAO);
 
     // Application Rendering
     const GLfloat screen_color[4] = {w.color[0], w.color[1], w.color[2], w.color[3]};

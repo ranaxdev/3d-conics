@@ -4,9 +4,10 @@
 #include <vector>
 #include <memory>
 #include <functional>
-#include <math.h>
+#include <cmath>
 
 #include "Utils/KeyListener.h"
+#include "Renderer.h"
 
 
 namespace conics{
@@ -53,10 +54,11 @@ namespace conics{
         Window w;
         std::vector<std::shared_ptr<KeyListener>> keylisteners;
 
+    protected:
+        GLuint VAO;
+        GLuint buf[1024];
+        Renderer* renderer;
     };
-
-    // Graphics refs
-    static GLuint VAO;
 
     // GLFW callbacks
     static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);

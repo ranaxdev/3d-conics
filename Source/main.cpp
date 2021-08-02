@@ -15,14 +15,17 @@
 #include "Harness.h"
 #include "Shader.h"
 #include "Camera.h"
+#include "Renderer.h"
 
 #include "Utils/Math.h"
 #include "Utils/Logger.h"
 #include "Utils/Globals.h"
 
+
 using namespace conics;
 class App : public conics::Harness{
 public:
+
     std::shared_ptr<Camera> camera;
     Shader* shader;
     Shader* shader2;
@@ -40,20 +43,6 @@ public:
 
         shader->bind();
 
-        GLfloat data[] = {
-                // Axis 1 (red)
-                0.0f, 0.0f, 0.0f,     1.0f, 0.0f, 0.0f,
-                0.0f, 0.0f, -5.0f,    1.0f, 0.0f, 0.0f,
-
-                // Axis 2 (green)
-                0.0f, 2.5f, -2.5f,    0.0f, 1.0f, 0.0f,
-                0.0f, -2.5f, -2.5f,   0.0f, 1.0f, 0.0f,
-
-                // Axis 3 (blue)
-                2.5f, 0.0f, -2.5f,    0.0f, 0.0f, 1.0f,
-                -2.5f, 0.0f, -2.5f,   0.0f, 0.0f, 1.0f
-        };
-
         std::vector<float> data2 = {
                 0.5f, 0.5f, 0.0f,
                 -0.5f, 0.23f, 0.0f,
@@ -69,22 +58,8 @@ public:
 
 
         GLuint buffer[3];
-        glCreateVertexArrays(1, &VAO);
+
         glCreateBuffers(3, buffer);
-
-        /* Axis data */
-        glNamedBufferStorage(buffer[0], sizeof(data), data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
-
-        // Position
-        glVertexArrayAttribFormat(VAO, 0, 3, GL_FLOAT, GL_FALSE, 0);
-        glVertexArrayAttribBinding(VAO, 0, 0);
-        glEnableVertexArrayAttrib(VAO, 0);
-        // Color
-        glVertexArrayAttribFormat(VAO, 1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float));
-        glVertexArrayAttribBinding(VAO, 1, 0);
-        glEnableVertexArrayAttrib(VAO, 1);
-
-        glVertexArrayVertexBuffer(VAO, 0, buffer[0], 0, 6*sizeof(float));
 
         /* Other data */
         glNamedBufferStorage(buffer[1], dat_size, nullptr, GL_MAP_WRITE_BIT|GL_MAP_READ_BIT);
@@ -100,8 +75,7 @@ public:
 
         glVertexArrayVertexBuffer(VAO, 1, buffer[1], 0, 3*sizeof(float));
 
-        glBindVertexArray(VAO);
-
+        renderer->enableAxis();
     };
 
     float delta = 0.0f;
@@ -122,7 +96,6 @@ public:
         shader->bind();
         shader->setMat4(20, camera->calc_VP(delta));
         glDrawArrays(GL_LINES , 0, 8);
-
 
         last = currentTime;
     }
