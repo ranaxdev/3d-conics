@@ -310,6 +310,7 @@ public:
         glBindVertexArray(VAO);
 
         // Bowyer attempt #1
+        using namespace conics;
         std::vector<Vertex> points = {
                 Vertex(0.5f, 0.5f),
                 Vertex(-0.5f, 0.23f),
@@ -330,8 +331,6 @@ public:
 
         std::vector<Triangle> badTris;
         std::vector<Edge> polygon;
-        std::unordered_set<Edge> edges;
-        std::unordered_set<Edge> toRemove;
 
 
         for(auto& point : points){

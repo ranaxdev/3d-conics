@@ -130,12 +130,4 @@ namespace conics{
     bool isinCircumcircle(Vertex point, std::pair<Vertex,double> circle);
 }
 
-
-template<> struct std::hash<conics::Edge>
-    {
-        std::size_t operator()(const conics::Edge& e) const noexcept{
-            return e(e);
-        }
-    };
-
 #endif
