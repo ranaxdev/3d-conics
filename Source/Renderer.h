@@ -14,7 +14,10 @@ public:
     void enableAxis();
 
 private:
+    static int current_free_buf;
     GLuint VAO;
     GLuint* buf;
+
+    unsigned int _prepBuf(GLfloat data[], unsigned int size);
 };
 #endif

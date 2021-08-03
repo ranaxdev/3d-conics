@@ -39,7 +39,6 @@ void conics::Harness::run(conics::Harness* h) {
 
     // Application Initialization
     glCreateVertexArrays(1, &VAO);
-    glCreateBuffers(50, buf);
     Harness::renderer = new Renderer(Harness::VAO, Harness::buf);
     startup();
     glBindVertexArray(VAO);
