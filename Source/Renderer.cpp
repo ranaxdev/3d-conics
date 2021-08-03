@@ -1,7 +1,9 @@
 #include <iostream>
 #include "Renderer.h"
 
-int Renderer::current_free_buf = -1;
+int Renderer::free_buf       = -1;
+int Renderer::free_attrib    = -1;
+int Renderer::free_bindpoint = -1;
 
 Renderer::Renderer(GLuint &VAO, GLuint *buf)
 : VAO(VAO), buf(buf) {}
@@ -38,11 +40,11 @@ void Renderer::enableAxis() {
 }
 
 unsigned int Renderer::_prepBuf(GLfloat *data, unsigned int size) {
-    current_free_buf++;
-    glCreateBuffers(1, &buf[current_free_buf]);
+    free_buf++;
+    glCreateBuffers(1, &buf[free_buf]);
 
-    glNamedBufferStorage(buf[current_free_buf], size, data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+    glNamedBufferStorage(buf[free_buf], size, data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
 
-    return current_free_buf;
+    return free_buf;
 }
 

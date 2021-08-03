@@ -14,10 +14,13 @@ public:
     void enableAxis();
 
 private:
-    static int current_free_buf;
+    static int free_buf;
+    static int free_attrib;
+    static int free_bindpoint;
     GLuint VAO;
     GLuint* buf;
 
     unsigned int _prepBuf(GLfloat data[], unsigned int size);
+    void _formatBuf(GLuint loc, unsigned int num_attribs, );
 };
 #endif
