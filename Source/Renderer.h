@@ -15,18 +15,22 @@ public:
     ~Renderer() = default;
 
     void enableAxis();
+    void test();
 
-private:
-    static int free_buf;
-    static int free_bindpoint;
-    GLuint VAO;
-    GLuint* buf;
-
-    unsigned int _prepBuf(GLfloat data[], GLuint size);
-    unsigned int _prepBuf(std::vector<GLfloat> data);
-    void _formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const char*> names, Shader& s);
+    unsigned int prepBuf(GLfloat data[], GLuint size);
+    unsigned int prepBuf(std::vector<GLfloat>& data);
+    void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const char*> names, Shader& s);
 
     // Shaders
     Shader shader_axis = Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
+    Shader shader_gen = Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
+private:
+
+    static int free_buf;
+    static int free_bindpoint;
+    GLuint VAO;
+
+    GLuint* buf;
+
 };
 #endif

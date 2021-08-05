@@ -38,44 +38,14 @@ public:
     int size =0;
 
     void startup() override {
-        shader = new Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
-        shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
-
-        shader->bind();
-
-        std::vector<float> data2 = {
-                0.5f, 0.5f, 0.0f,
-                -0.5f, 0.23f, 0.0f,
-                0.23f, 0.75f, 0.0f,
-                -1.0f, -0.75f, 0.0f,
-                0.73f, -0.40f, 0.0f,
-                0.69f, 0.69f, 0.0f,
-                1.0f, -0.88f, 0.0f
-        };
-
-        size = (int) data2.size();
-        int dat_size = 4*size;
 
 
-        GLuint buffer[3];
-
-        glCreateBuffers(3, buffer);
-
-        /* Other data */
-        glNamedBufferStorage(buffer[1], dat_size, nullptr, GL_MAP_WRITE_BIT|GL_MAP_READ_BIT);
-        float* ptr = (float*) glMapNamedBufferRange(buffer[1], 0, dat_size, GL_MAP_WRITE_BIT|GL_MAP_READ_BIT);
-        for(int i=0; i<size; i++){
-            ptr[i] = data2[i];
-        }
-        glUnmapNamedBuffer(buffer[1]);
-
-        glVertexArrayAttribFormat(VAO, 3, 3, GL_FLOAT, GL_FALSE, 0);
-        glVertexArrayAttribBinding(VAO, 3, 1);
-        glEnableVertexArrayAttrib(VAO, 3);
-
-        glVertexArrayVertexBuffer(VAO, 1, buffer[1], 0, 3*sizeof(float));
-
+        renderer->shader_axis.bind();
         renderer->enableAxis();
+
+
+        renderer->shader_gen.bind();
+        renderer->test();
 
 
     };
@@ -89,14 +59,15 @@ public:
         glPointSize(20.0f);
         glLineWidth(1.0f);
 
-        shader2->bind();
-        shader2->setMat4(20, camera->calc_VP(delta));
-        shader2->setVec4(30, cyan);
-        glDrawArrays(GL_POINTS, 0, (int)size/3);
+        renderer->shader_gen.bind();
+        renderer->shader_gen.setMat4(20, camera->calc_VP(delta));
+        renderer->shader_gen.setVec4(30, cyan);
+        glDrawArrays(GL_POINTS, 0, 7);
+//
 
         glLineWidth(20.0f);
-        shader->bind();
-        shader->setMat4(20, camera->calc_VP(delta));
+        renderer->shader_axis.bind();
+        renderer->shader_axis.setMat4(20, camera->calc_VP(delta));
         glDrawArrays(GL_LINES , 0, 8);
 
         last = currentTime;

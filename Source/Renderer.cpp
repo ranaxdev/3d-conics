@@ -25,19 +25,33 @@ void Renderer::enableAxis() {
     };
 
     // Prepare buffer
-    GLuint loc = _prepBuf((GLfloat*)axis_data, sizeof(axis_data));
+    GLuint loc = prepBuf((GLfloat*)axis_data, sizeof(axis_data));
 
     // Format data
-    _formatBuf(loc, 3, {"position", "color"}, Renderer::shader_axis);
+    formatBuf(loc, 3, {"position", "color"}, Renderer::shader_axis);
 
+}
+
+void Renderer::test() {
+    const GLfloat data2[] = {
+            0.5f, 0.5f, 0.0f,
+            -0.5f, 0.23f, 0.0f,
+            0.23f, 0.75f, 0.0f,
+            -1.0f, -0.75f, 0.0f,
+            0.73f, -0.40f, 0.0f,
+            0.69f, 0.69f, 0.0f,
+            1.0f, -0.88f, 0.0f
+    };
+    GLuint loc = prepBuf((GLfloat*)data2, sizeof(data2));
+    formatBuf(loc, 3, {"position"}, Renderer::shader_gen);
 }
 
 /*
  * @data - Array of float data
- * @size - Size of the array
+ * @size - Size of the array in bytes
  * Inits a new buffer and returns its index
  */
-unsigned int Renderer::_prepBuf(GLfloat *data, GLuint size) {
+unsigned int Renderer::prepBuf(GLfloat *data, GLuint size) {
     free_buf++;
     glCreateBuffers(1, &buf[free_buf]);
     glNamedBufferStorage(buf[free_buf], size, data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
@@ -49,7 +63,7 @@ unsigned int Renderer::_prepBuf(GLfloat *data, GLuint size) {
  * @data - List of float data
  * Inits a new buffer and returns its index
  */
-unsigned int Renderer::_prepBuf(std::vector<GLfloat> data) {
+unsigned int Renderer::prepBuf(std::vector<GLfloat>& data) {
     int size = (int) data.size();
     int dat_size = 4*size;
     free_buf++;
@@ -74,7 +88,7 @@ unsigned int Renderer::_prepBuf(std::vector<GLfloat> data) {
  *
  * Formats the buffer for the VAO
  */
-void Renderer::_formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const char*> names, Shader& s) {
+void Renderer::formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const char*> names, Shader& s) {
     free_bindpoint++;
     auto num_attribs = names.size();
     for(int i=0; i < num_attribs; i++){
