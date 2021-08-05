@@ -23,6 +23,7 @@ private:
     GLuint* buf;
 
     unsigned int _prepBuf(GLfloat data[], GLuint size);
+    unsigned int _prepBuf(std::vector<GLfloat> data);
     void _formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const char*> names, Shader& s);
 
     // Shaders

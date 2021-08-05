@@ -8,6 +8,9 @@ Renderer::Renderer(GLuint &VAO, GLuint *buf)
 : VAO(VAO), buf(buf) {}
 
 
+/*
+ * Initialize axes data
+ */
 void Renderer::enableAxis() {
     const GLfloat axis_data[] = {
             // Axis 1 (red)
@@ -29,20 +32,46 @@ void Renderer::enableAxis() {
 
 }
 
+/*
+ * @data - Array of float data
+ * @size - Size of the array
+ * Inits a new buffer and returns its index
+ */
 unsigned int Renderer::_prepBuf(GLfloat *data, GLuint size) {
     free_buf++;
     glCreateBuffers(1, &buf[free_buf]);
-
     glNamedBufferStorage(buf[free_buf], size, data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
 
     return free_buf;
 }
 
 /*
- * @loc Active buffer location
- * @comps_per_elem Number of components in an element
- * @names List of attribute names used in GLSL
- * @s Shader to get the attribute names from
+ * @data - List of float data
+ * Inits a new buffer and returns its index
+ */
+unsigned int Renderer::_prepBuf(std::vector<GLfloat> data) {
+    int size = (int) data.size();
+    int dat_size = 4*size;
+    free_buf++;
+    glCreateBuffers(1, &buf[free_buf]);
+    glNamedBufferStorage(buf[free_buf], dat_size, nullptr, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+
+    float* ptr = (float*) glMapNamedBufferRange(buf[free_buf], 0, dat_size, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+    for(int i=0; i<size; i++){
+        ptr[i] = data[i];
+    }
+    glUnmapNamedBuffer(buf[free_buf]);
+
+    return free_buf;
+}
+
+
+/*
+ * @loc                     - Active buffer location
+ * @comps_per_elem          - Number of components in an element
+ * @names                   - List of attribute names used in GLSL
+ * @s                       - Shader to get the attribute names from
+ *
  * Formats the buffer for the VAO
  */
 void Renderer::_formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const char*> names, Shader& s) {
@@ -57,6 +86,7 @@ void Renderer::_formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const ch
 
     glVertexArrayVertexBuffer(VAO, free_bindpoint, buf[loc], 0, (num_attribs*comps_per_elem)*sizeof(float));
 }
+
 
 
 
