@@ -76,6 +76,8 @@ public:
         glVertexArrayVertexBuffer(VAO, 1, buffer[1], 0, 3*sizeof(float));
 
         renderer->enableAxis();
+
+
     };
 
     float delta = 0.0f;

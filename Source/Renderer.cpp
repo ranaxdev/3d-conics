@@ -26,20 +26,11 @@ void Renderer::enableAxis() {
     GLuint loc = _prepBuf((GLfloat*)axis_data, sizeof(axis_data));
 
     // Format data
-    // Position
-    glVertexArrayAttribFormat(VAO, 0, 3, GL_FLOAT, GL_FALSE, 0);
-    glVertexArrayAttribBinding(VAO, 0, 0);
-    glEnableVertexArrayAttrib(VAO, 0);
-    // Color
-    glVertexArrayAttribFormat(VAO, 1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float));
-    glVertexArrayAttribBinding(VAO, 1, 0);
-    glEnableVertexArrayAttrib(VAO, 1);
-
-    glVertexArrayVertexBuffer(VAO, 0, buf[loc], 0, 6*sizeof(float));
+    _formatBuf(loc, 2, 3, {"position", "color"}, Renderer::shader_axis);
 
 }
 
-unsigned int Renderer::_prepBuf(GLfloat *data, unsigned int size) {
+unsigned int Renderer::_prepBuf(GLfloat *data, GLuint size) {
     free_buf++;
     glCreateBuffers(1, &buf[free_buf]);
 
@@ -47,4 +38,19 @@ unsigned int Renderer::_prepBuf(GLfloat *data, unsigned int size) {
 
     return free_buf;
 }
+
+void Renderer::_formatBuf(GLuint loc, GLuint num_attribs, GLint comps_per_elem, std::vector<const char*> names, Shader& s) {
+    free_bindpoint++;
+
+    for(int i=0; i < num_attribs; i++){
+        GLuint attrib_loc = s.get_attrib_loc(names[i]);
+        glVertexArrayAttribFormat(VAO, attrib_loc, comps_per_elem, GL_FLOAT, GL_FALSE, (i*comps_per_elem)*sizeof(float));
+        glVertexArrayAttribBinding(VAO, attrib_loc, free_bindpoint);
+        glEnableVertexArrayAttrib(VAO, attrib_loc);
+    }
+
+    glVertexArrayVertexBuffer(VAO, free_bindpoint, buf[loc], 0, (num_attribs*comps_per_elem)*sizeof(float));
+}
+
+
 
