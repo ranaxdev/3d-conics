@@ -2,7 +2,6 @@
 #include "Renderer.h"
 
 int Renderer::free_buf       = -1;
-int Renderer::free_attrib    = -1;
 int Renderer::free_bindpoint = -1;
 
 Renderer::Renderer(GLuint &VAO, GLuint *buf)
@@ -26,7 +25,7 @@ void Renderer::enableAxis() {
     GLuint loc = _prepBuf((GLfloat*)axis_data, sizeof(axis_data));
 
     // Format data
-    _formatBuf(loc, 2, 3, {"position", "color"}, Renderer::shader_axis);
+    _formatBuf(loc, 3, {"position", "color"}, Renderer::shader_axis);
 
 }
 
@@ -39,9 +38,16 @@ unsigned int Renderer::_prepBuf(GLfloat *data, GLuint size) {
     return free_buf;
 }
 
-void Renderer::_formatBuf(GLuint loc, GLuint num_attribs, GLint comps_per_elem, std::vector<const char*> names, Shader& s) {
+/*
+ * @loc Active buffer location
+ * @comps_per_elem Number of components in an element
+ * @names List of attribute names used in GLSL
+ * @s Shader to get the attribute names from
+ * Formats the buffer for the VAO
+ */
+void Renderer::_formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const char*> names, Shader& s) {
     free_bindpoint++;
-
+    auto num_attribs = names.size();
     for(int i=0; i < num_attribs; i++){
         GLuint attrib_loc = s.get_attrib_loc(names[i]);
         glVertexArrayAttribFormat(VAO, attrib_loc, comps_per_elem, GL_FLOAT, GL_FALSE, (i*comps_per_elem)*sizeof(float));

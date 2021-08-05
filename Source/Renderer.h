@@ -18,13 +18,12 @@ public:
 
 private:
     static int free_buf;
-    static int free_attrib;
     static int free_bindpoint;
     GLuint VAO;
     GLuint* buf;
 
     unsigned int _prepBuf(GLfloat data[], GLuint size);
-    void _formatBuf(GLuint loc, GLuint num_attribs, GLint comps_per_elem, std::vector<const char*> names, Shader& s);
+    void _formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const char*> names, Shader& s);
 
     // Shaders
     Shader shader_axis = Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
