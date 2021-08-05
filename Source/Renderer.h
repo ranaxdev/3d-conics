@@ -19,7 +19,7 @@ public:
 
     unsigned int prepBuf(GLfloat data[], GLuint size);
     unsigned int prepBuf(std::vector<GLfloat>& data);
-    void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<const char*> names, Shader& s);
+    void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attribs, Shader& s);
 
     // Shaders
     Shader shader_axis = Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");

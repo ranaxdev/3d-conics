@@ -95,15 +95,8 @@ int main(){
 #else
 
 int main(){
-    double centerX = 0.0280536;
-    double centerY = 0.261098;
-    double radius = 0.528968;
-    for(int i=0; i < 360; i+=5){
-        double x = radius * cos(i) + centerX;
-        double y = radius * sin(i) + centerY;
-        printf("%4.4ff, %4.4ff, 0.0f,\n", x,y);
 
-    }
+    std::unordered_set<int, const char*> set;
 
     return 0;
 }
