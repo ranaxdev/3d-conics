@@ -39,15 +39,23 @@ public:
 
     void startup() override {
 
-
         renderer->shader_axis.bind();
         renderer->enableAxis();
 
 
-        renderer->shader_gen.bind();
-        renderer->test();
-
-
+        shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
+        shader2->bind();
+        std::vector<GLfloat> data2 = {
+                0.5f, 0.5f, 0.0f,
+                -0.5f, 0.23f, 0.0f,
+                0.23f, 0.75f, 0.0f,
+                -1.0f, -0.75f, 0.0f,
+                0.73f, -0.40f, 0.0f,
+                0.69f, 0.69f, 0.0f,
+                1.0f, -0.88f, 0.0f
+        };
+        auto i = renderer->prepBuf(data2);
+        renderer->formatBuf(i, 3, {3}, *shader2);
     };
 
     float delta = 0.0f;
@@ -59,12 +67,13 @@ public:
         glPointSize(20.0f);
         glLineWidth(1.0f);
 
-        renderer->shader_gen.bind();
-        renderer->shader_gen.setMat4(20, camera->calc_VP(delta));
-        renderer->shader_gen.setVec4(30, cyan);
+        shader2->bind();
+        shader2->setMat4(20, camera->calc_VP(delta));
+        shader2->setVec4(30, cyan);
         glDrawArrays(GL_POINTS, 0, 7);
-//
 
+
+        // AXES
         glLineWidth(20.0f);
         renderer->shader_axis.bind();
         renderer->shader_axis.setMat4(20, camera->calc_VP(delta));
