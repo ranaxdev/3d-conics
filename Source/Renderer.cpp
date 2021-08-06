@@ -58,6 +58,14 @@ unsigned int Renderer::prepBuf(GLfloat *data, GLuint size) {
 
     return free_buf;
 }
+unsigned int Renderer::prepBuf(GLushort *data, GLuint size) {
+    free_buf++;
+    glCreateBuffers(1, &buf[free_buf]);
+    glNamedBufferStorage(buf[free_buf], size, data, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+
+    return free_buf;
+}
+
 
 /*
  * @data - List of float data
@@ -102,6 +110,9 @@ void Renderer::formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attr
 
     glVertexArrayVertexBuffer(VAO, free_bindpoint, buf[loc], 0, (num_attribs*comps_per_elem)*sizeof(float));
 }
+
+
+
 
 
 

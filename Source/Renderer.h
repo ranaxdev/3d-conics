@@ -18,7 +18,9 @@ public:
     void test();
 
     unsigned int prepBuf(GLfloat data[], GLuint size);
+    unsigned int prepBuf(GLushort data[], GLuint size); // Temp: make this generic later
     unsigned int prepBuf(std::vector<GLfloat>& data);
+
     void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attribs, Shader& s);
 
     // Shaders

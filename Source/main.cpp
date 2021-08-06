@@ -23,18 +23,6 @@
 
 
 using namespace conics;
-
-float func(float x, float y, float t){
-    auto z = (float) (pow(x,2) + pow(y,2));
-    return z;
-}
-
-struct point{
-    GLfloat x;
-    GLfloat y;
-    GLfloat z;
-};
-
 class App : public conics::Harness{
 public:
 
@@ -55,42 +43,6 @@ public:
         renderer->shader_axis.bind();
         renderer->enableAxis();
 
-        shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
-        shader2->bind();
-
-        point v[101][101];
-        for(int i=0; i<101; i++){
-            for(int j=0; j<101; j++){
-                v[i][j].x = (j-50)/50.0;
-                v[i][j].z = (i-50)/50.0;
-                v[i][j].y = 0;
-            }
-        }
-        GLushort indices[2*100*101*2];
-        int i=0;
-        // Horizontal
-        for(int y=0; y<101; y++){
-            for(int x =0; x<100; x++){
-                indices[i++] = y * 101 + x;
-                indices[i++] = y * 101 + x + 1;
-            }
-        }
-        // Vertical
-        for(int x=0; x<101; x++){
-            for(int y =0; y<100; y++){
-                indices[i++] = y * 101 + x;
-                indices[i++] = (y+1) * 101 + x;
-            }
-        }
-
-        GLuint ibo;
-        glCreateBuffers(1, &ibo);
-        
-        glVertexArrayElementBuffer(VAO, ibo);
-
-        auto it = renderer->prepBuf((GLfloat*)v,sizeof(v));
-        renderer->formatBuf(it, 3, {3}, *shader2);
-
     };
 
     float delta = 0.0f;
@@ -105,8 +57,6 @@ public:
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
         shader2->setVec4(30, cyan);
-
-
 
         // AXES
         glLineWidth(20.0f);
@@ -141,15 +91,7 @@ int main(){
 
 
 int main(){
-
-    int numX = 50;
-    int numY = 50;
-    for(int x=0; x<numX; x++){
-        for(int y=0; y<numY; y++){
-
-        }
-    }
-
+    
     return 0;
 }
 
