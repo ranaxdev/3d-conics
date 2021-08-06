@@ -175,7 +175,7 @@ bool conics::isinCircumcircle(conics::Vertex& point, std::pair<conics::Vertex,do
     return false;
 }
 
-std::vector<conics::Triangle> conics::delaunay(std::vector<Vertex> &points) {
+std::vector<GLfloat> conics::delaunay(std::vector<Vertex> &points) {
     /*
      * Delaunay triangulation - Bowyer-Watson algorithm
      * Takes a set of points, constructs triangle vertices
@@ -248,5 +248,22 @@ std::vector<conics::Triangle> conics::delaunay(std::vector<Vertex> &points) {
         else ++it;
     }
 
-    return triangulation;
+    // Convert triangulations to float vector
+    std::vector<GLfloat> result;
+    for(auto& t : triangulation){
+        result.push_back(t.v1.x);
+        result.push_back(t.v1.y);
+        result.push_back(0.0f);
+
+        result.push_back(t.v2.x);
+        result.push_back(t.v2.y);
+        result.push_back(0.0f);
+
+        result.push_back(t.v3.x);
+        result.push_back(t.v3.y);
+        result.push_back(0.0f);
+
+    }
+
+    return result;
 }

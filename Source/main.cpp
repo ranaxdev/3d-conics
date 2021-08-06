@@ -36,6 +36,7 @@ public:
 
     // Indexed drawing stuff
     int size =0;
+    std::vector<GLfloat> r;
 
     void startup() override {
 
@@ -54,8 +55,21 @@ public:
                 0.69f, 0.69f, 0.0f,
                 1.0f, -0.88f, 0.0f
         };
+        std::vector<Vertex> points = {
+                Vertex(0.5f, 0.5f),
+                Vertex(-0.5f, 0.23f),
+                Vertex(0.23f, 0.75f),
+                Vertex(-1.0f, -0.75),
+                Vertex(0.73f, -0.40),
+                Vertex(0.69f, 0.69f),
+                Vertex(1.0f, -0.88f),
+        };
+        r = delaunay(points);
+        data2.insert(data2.end(), r.begin(), r.end());
+
         auto i = renderer->prepBuf(data2);
         renderer->formatBuf(i, 3, {3}, *shader2);
+
     };
 
     float delta = 0.0f;
@@ -69,9 +83,13 @@ public:
 
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
-        shader2->setVec4(30, cyan);
-        glDrawArrays(GL_POINTS, 0, 7);
 
+        shader2->setVec4(30, cyan);
+        glDrawArrays(GL_TRIANGLES, 7, 183);
+
+        shader2->setVec4(30, red);
+        glDrawArrays(GL_POINTS, 0, 7);
+        
 
         // AXES
         glLineWidth(20.0f);

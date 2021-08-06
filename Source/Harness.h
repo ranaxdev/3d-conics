@@ -134,7 +134,7 @@ namespace conics{
     bool isinCircumcircle(Vertex& point, std::pair<Vertex,double>&& circle);
 
     // Bowyer-Watson (delaunay triangulation) routine
-    std::vector<Triangle> delaunay(std::vector<Vertex>& points);
+    std::vector<GLfloat> delaunay(std::vector<Vertex>& points);
 
 }
 
