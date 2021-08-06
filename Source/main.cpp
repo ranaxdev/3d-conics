@@ -43,6 +43,33 @@ public:
         renderer->shader_axis.bind();
         renderer->enableAxis();
 
+        for(int i=0; i<100; i++){
+            for(int j=0; j<100; j++){
+                float x = ((float) (i-50))/50.0f;
+                float y = ((float) (j-50))/50.0f;
+                float z = pow(x,2) + pow(y,2);
+                points.push_back(x);
+                points.push_back(z);
+                points.push_back(y);
+            }
+        }
+        for(int i=0; i<100; i++){
+            for(int j=0; j<100; j++){
+                float x = ((float) (j-50))/50.0f;
+                float y = ((float) (i-50))/50.0f;
+                float z = pow(x,2) + pow(y,2);
+                points.push_back(x);
+                points.push_back(z);
+                points.push_back(y);
+            }
+        }
+
+
+
+        shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
+        auto i = renderer->prepBuf(points);
+        renderer->formatBuf(i, 3, {3}, *shader2);
+
     };
 
     float delta = 0.0f;
@@ -57,6 +84,11 @@ public:
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
         shader2->setVec4(30, cyan);
+        for(int i=0; i<100; i++){
+            glDrawArrays(GL_LINE_STRIP, 100*i, 100);
+            glDrawArrays(GL_LINE_STRIP, points.size()/3/2+(100*i), 100);
+
+        }
 
         // AXES
         glLineWidth(20.0f);
@@ -91,7 +123,7 @@ int main(){
 
 
 int main(){
-    
+
     return 0;
 }
 
