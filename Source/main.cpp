@@ -23,6 +23,18 @@
 
 
 using namespace conics;
+
+float func(float x, float y, float t){
+    auto z = (float) (pow(x,2) + pow(y,2));
+    return z;
+}
+
+struct point{
+    GLfloat x;
+    GLfloat y;
+    GLfloat z;
+};
+
 class App : public conics::Harness{
 public:
 
@@ -36,39 +48,48 @@ public:
 
     // Indexed drawing stuff
     int size =0;
-    std::vector<GLfloat> r;
+    std::vector<GLfloat> points;
 
     void startup() override {
 
         renderer->shader_axis.bind();
         renderer->enableAxis();
 
-
         shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
         shader2->bind();
-        std::vector<GLfloat> data2 = {
-                0.5f, 0.5f, 0.0f,
-                -0.5f, 0.23f, 0.0f,
-                0.23f, 0.75f, 0.0f,
-                -1.0f, -0.75f, 0.0f,
-                0.73f, -0.40f, 0.0f,
-                0.69f, 0.69f, 0.0f,
-                1.0f, -0.88f, 0.0f
-        };
-        std::vector<Vertex> points = {
-                Vertex(0.5f, 0.5f),
-                Vertex(-0.5f, 0.23f),
-                Vertex(0.23f, 0.75f),
-                Vertex(-1.0f, -0.75),
-                Vertex(0.73f, -0.40),
-                Vertex(0.69f, 0.69f),
-                Vertex(1.0f, -0.88f),
-        };
-        r = delaunay(points);
-        data2.insert(data2.end(), r.begin(), r.end());
 
-        auto i = renderer->prepBuf(data2);
-        renderer->formatBuf(i, 3, {3}, *shader2);
+        point v[101][101];
+        for(int i=0; i<101; i++){
+            for(int j=0; j<101; j++){
+                v[i][j].x = (j-50)/50.0;
+                v[i][j].z = (i-50)/50.0;
+                v[i][j].y = 0;
+            }
+        }
+        GLushort indices[2*100*101*2];
+        int i=0;
+        // Horizontal
+        for(int y=0; y<101; y++){
+            for(int x =0; x<100; x++){
+                indices[i++] = y * 101 + x;
+                indices[i++] = y * 101 + x + 1;
+            }
+        }
+        // Vertical
+        for(int x=0; x<101; x++){
+            for(int y =0; y<100; y++){
+                indices[i++] = y * 101 + x;
+                indices[i++] = (y+1) * 101 + x;
+            }
+        }
+
+        GLuint ibo;
+        glCreateBuffers(1, &ibo);
+        
+        glVertexArrayElementBuffer(VAO, ibo);
+
+        auto it = renderer->prepBuf((GLfloat*)v,sizeof(v));
+        renderer->formatBuf(it, 3, {3}, *shader2);
 
     };
 
@@ -79,17 +100,13 @@ public:
         delta = currentTime - last;
 
         glPointSize(20.0f);
-        glLineWidth(1.0f);
+        glLineWidth(10.0f);
 
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
-
         shader2->setVec4(30, cyan);
-        glDrawArrays(GL_TRIANGLES, 7, 183);
 
-        shader2->setVec4(30, red);
-        glDrawArrays(GL_POINTS, 0, 7);
-        
+
 
         // AXES
         glLineWidth(20.0f);
@@ -105,7 +122,7 @@ public:
 #define DEBUG 0
 #if !DEBUG
 int main(){
-    conics::Window window = conics::Window(1280, 960, "conics");
+    conics::Window window = conics::Window(1280, 960, "conics", 0.0f, 0.0f, 0.0f);
     std::shared_ptr<Camera> camera(new Camera);
     App* a = new App;
     a->setWindow(window);
@@ -121,9 +138,17 @@ int main(){
 
 #else
 
+
+
 int main(){
 
-    std::unordered_set<int, const char*> set;
+    int numX = 50;
+    int numY = 50;
+    for(int x=0; x<numX; x++){
+        for(int y=0; y<numY; y++){
+
+        }
+    }
 
     return 0;
 }
