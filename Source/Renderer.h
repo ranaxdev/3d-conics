@@ -15,7 +15,9 @@ public:
     ~Renderer() = default;
 
     void enableAxis();
-    void test();
+    void setupParaboloid();
+
+    void renderAxis(Shader& s);
 
     unsigned int prepBuf(GLfloat data[], GLuint size);
     unsigned int prepBuf(GLushort data[], GLuint size); // Temp: make this generic later

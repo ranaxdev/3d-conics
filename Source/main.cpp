@@ -23,6 +23,7 @@
 
 
 using namespace conics;
+
 class App : public conics::Harness{
 public:
 
@@ -34,41 +35,44 @@ public:
     glm::vec4 red = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
     glm::vec4 cyan = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
 
+    std::vector<std::function<void(Shader& s)>> funcs;
+
     // Indexed drawing stuff
     int size =0;
+    int detail = 50;
+    float range = (float)detail/2;
     std::vector<GLfloat> points;
 
     void startup() override {
-
-        renderer->shader_axis.bind();
-        renderer->enableAxis();
-
-        for(int i=0; i<100; i++){
-            for(int j=0; j<100; j++){
-                float x = ((float) (i-50))/50.0f;
-                float y = ((float) (j-50))/50.0f;
-                float z = pow(x,2) + pow(y,2);
-                points.push_back(x);
-                points.push_back(z);
-                points.push_back(y);
-            }
-        }
-        for(int i=0; i<100; i++){
-            for(int j=0; j<100; j++){
-                float x = ((float) (j-50))/50.0f;
-                float y = ((float) (i-50))/50.0f;
-                float z = pow(x,2) + pow(y,2);
-                points.push_back(x);
-                points.push_back(z);
-                points.push_back(y);
-            }
-        }
-
-
-
         shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
-        auto i = renderer->prepBuf(points);
-        renderer->formatBuf(i, 3, {3}, *shader2);
+
+
+        R->enableAxis();
+
+        for(int i=0; i<detail; i++){
+            for(int j=0; j<detail; j++){
+                float x = 3.0f*(((float) (i-range))/range);
+                float y = 3.0f*(((float) (j-range))/range);
+                float z = pow(x,2) + pow(y,2);
+                points.push_back(x);
+                points.push_back(z);
+                points.push_back(-2.5f+y);
+            }
+        }
+        for(int i=0; i<detail; i++){
+            for(int j=0; j<detail; j++){
+                float x = 3.0f*(((float) (j-range))/range);
+                float y = 3.0f*(((float) (i-range))/range);
+                float z = pow(x,2) + pow(y,2);
+                points.push_back(x);
+                points.push_back(z);
+                points.push_back(-2.5f+y);
+            }
+        }
+
+
+        auto i = R->prepBuf(points);
+        R->formatBuf(i, 3, {3}, *shader2);
 
     };
 
@@ -77,6 +81,7 @@ public:
 
     void render(float currentTime) override {
         delta = currentTime - last;
+        VP = camera->calc_VP(delta);
 
         glPointSize(20.0f);
         glLineWidth(10.0f);
@@ -84,18 +89,13 @@ public:
         shader2->bind();
         shader2->setMat4(20, camera->calc_VP(delta));
         shader2->setVec4(30, cyan);
-        for(int i=0; i<100; i++){
-            glDrawArrays(GL_LINE_STRIP, 100*i, 100);
-            glDrawArrays(GL_LINE_STRIP, points.size()/3/2+(100*i), 100);
-
+        for(int i=0; i<detail; i++){
+            glDrawArrays(GL_LINE_STRIP, detail*i, detail);
+            glDrawArrays(GL_LINE_STRIP, points.size()/3/2+(detail*i), detail);
         }
 
         // AXES
-        glLineWidth(20.0f);
-        renderer->shader_axis.bind();
-        renderer->shader_axis.setMat4(20, camera->calc_VP(delta));
-        glDrawArrays(GL_LINES , 0, 8);
-
+        R->renderAxis(R->shader_axis);
         last = currentTime;
     }
 };

@@ -50,6 +50,8 @@ namespace conics{
         virtual void startup();
         virtual void render(float currentTime);
 
+        static glm::mat4 VP;
+
     private:
         Window w;
         std::vector<std::shared_ptr<KeyListener>> keylisteners;
@@ -57,7 +59,7 @@ namespace conics{
     protected:
         GLuint VAO;
         GLuint buf[1024];
-        Renderer* renderer;
+        Renderer* R;
     };
 
     // GLFW callbacks

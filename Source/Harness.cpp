@@ -5,6 +5,8 @@
 #include "Utils/Logger.h"
 #include "Harness.h"
 
+glm::mat4 conics::Harness::VP = glm::mat4(1.0f);
+
 conics::Harness::~Harness() {
     // Dump log file
     Logger::dump();
@@ -39,7 +41,7 @@ void conics::Harness::run(conics::Harness* h) {
 
     // Application Initialization
     glCreateVertexArrays(1, &VAO);
-    Harness::renderer = new Renderer(Harness::VAO, Harness::buf);
+    Harness::R = new Renderer(Harness::VAO, Harness::buf);
     startup();
     glBindVertexArray(VAO);
 

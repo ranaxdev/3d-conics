@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Renderer.h"
+#include "Harness.h"
 
 int Renderer::free_buf       = -1;
 int Renderer::free_bindpoint = -1;
@@ -31,20 +32,21 @@ void Renderer::enableAxis() {
     formatBuf(loc, 3, {0, 1}, Renderer::shader_axis);
 
 }
+/* Pre-fed surfaces setups */
+void Renderer::setupParaboloid() {
 
-void Renderer::test() {
-    const GLfloat data2[] = {
-            0.5f, 0.5f, 0.0f,
-            -0.5f, 0.23f, 0.0f,
-            0.23f, 0.75f, 0.0f,
-            -1.0f, -0.75f, 0.0f,
-            0.73f, -0.40f, 0.0f,
-            0.69f, 0.69f, 0.0f,
-            1.0f, -0.88f, 0.0f
-    };
-    GLuint loc = prepBuf((GLfloat*)data2, sizeof(data2));
-    formatBuf(loc, 3, {3}, Renderer::shader_gen);
 }
+
+
+/* Rendering routines */
+void Renderer::renderAxis(Shader& s) {
+    glLineWidth(20.0f);
+    s.bind();
+    s.setMat4(20, conics::Harness::VP);
+
+    glDrawArrays(GL_LINES , 0, 8);
+}
+
 
 /*
  * @data - Array of float data
@@ -110,6 +112,8 @@ void Renderer::formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attr
 
     glVertexArrayVertexBuffer(VAO, free_bindpoint, buf[loc], 0, (num_attribs*comps_per_elem)*sizeof(float));
 }
+
+
 
 
 
