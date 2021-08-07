@@ -11,7 +11,7 @@
     A 3D surface and conics visualizer made using OpenGL and C++
     <br />
     <br />
-    <a href="">Video Demos</a>
+    <a href="https://github.com/ranaxdev/3d-conics">Video Demos</a>
     ·
     <a href="https://github.com/ranaxdev/3d-conics/issues">Report Bug</a>
   </p>
