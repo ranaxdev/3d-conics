@@ -40,8 +40,9 @@ void Renderer::enableAxis() {
  * @lod    - Level of detail, how fine the mesh should be
  */
 void Renderer::setupSurface(float xrange, float yrange, int lod, float time, surface type) {
+    surface_data.clear();
+
     // Create horizontal and vertical meshes
-    // TODO : Make this into a routine for general meshes with plottable functions
     float split = lod/2;
     for(int i=0; i<lod; i++){
         for(int j=0; j<lod; j++){
@@ -83,7 +84,7 @@ void Renderer::renderAxis() {
 }
 
 
-void Renderer::renderParaboloid() {
+void Renderer::renderSurface() {
     glLineWidth(10.0f);
 
     shader_surface.bind();
@@ -113,6 +114,14 @@ float Renderer::func(float x, float y, float t, surface type) {
     switch (type) {
         case PARABOLOID:
             z = pow(x,2) + pow(y,2);
+            break;
+
+        case DISC:
+            z = sin(pow(x,2) + pow(y,2));
+            break;
+
+        case HYPERBOLIC:
+            z = pow(x,2) - pow(y,2);
             break;
     }
     return z;

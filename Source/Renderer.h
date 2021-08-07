@@ -10,7 +10,9 @@
 #include "Shader.h"
 
 enum surface{
-    PARABOLOID
+    PARABOLOID,
+    DISC,
+    HYPERBOLIC
 };
 
 class Renderer{
@@ -22,7 +24,7 @@ public:
     void setupSurface(float xrange, float yrange, int lod, float time, surface type);
 
     void renderAxis();
-    void renderParaboloid();
+    void renderSurface();
 
     unsigned int prepBuf(GLfloat data[], GLuint size);
     unsigned int prepBuf(GLushort data[], GLuint size); // Temp: make this generic later

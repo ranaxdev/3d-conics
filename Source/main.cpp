@@ -31,8 +31,9 @@ public:
 
     void startup() override {
 
+        R->setupSurface(1.0f, 1.0f, 50, 1.0f, surface::HYPERBOLIC);
         R->enableAxis();
-        R->setupSurface(1.0f, 1.0f, 10, 1.0f, surface::PARABOLOID);
+
 
     };
 
@@ -44,7 +45,7 @@ public:
         VP = camera->calc_VP(delta);
 
         // SURFACES
-        R->renderParaboloid();
+        R->renderSurface();
         // AXES
         R->renderAxis();
 
