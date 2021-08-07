@@ -13,7 +13,7 @@
     <br />
     <a href="">Video Demos</a>
     ·
-    <a href="https://github.com/RanaSharjeel/3d-conics/issues">Report Bug</a>
+    <a href="https://github.com/ranaxdev/3d-conics/issues">Report Bug</a>
   </p>
 </p>
 
