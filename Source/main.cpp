@@ -31,10 +31,8 @@ public:
 
     void startup() override {
 
-        R->setupSurface(1.0f, 1.0f, 50, 1.0f, surface::HYPERBOLIC);
+        R->setupSurface(1.0f, 1.0f, 50, 1.0f, surface::PARABOLOID);
         R->enableAxis();
-
-
     };
 
     float delta = 0.0f;

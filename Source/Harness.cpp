@@ -30,6 +30,7 @@ void conics::Harness::run(conics::Harness* h) {
     glfwSetWindowUserPointer(window, (void*)(this)); // Pointer to app window that implements this harness
     // GLFW settings
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     // Callbacks
     glfwSetKeyCallback(window, conics::key_callback);
 
@@ -39,6 +40,10 @@ void conics::Harness::run(conics::Harness* h) {
         glfwTerminate();
     }
 
+    // OpenGL settings
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+
     // Application Initialization
     glCreateVertexArrays(1, &VAO);
     Harness::R = new Renderer(Harness::VAO, Harness::buf);
@@ -47,8 +52,10 @@ void conics::Harness::run(conics::Harness* h) {
 
     // Application Rendering
     const GLfloat screen_color[4] = {w.color[0], w.color[1], w.color[2], w.color[3]};
+    const float one = 1.0f;
     while(!glfwWindowShouldClose(window)){
         glClearBufferfv(GL_COLOR, 0, screen_color);
+        glClearBufferfv(GL_DEPTH, 0, &one);
 
         // Update observers
         for(auto& o : conics::Harness::keylisteners){
