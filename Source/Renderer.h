@@ -12,7 +12,11 @@
 enum surface{
     PARABOLOID,
     DISC,
-    HYPERBOLIC
+    HYPERBOLIC,
+    UNRESTRICTED_CONE
+};
+enum conic{
+    CONE
 };
 
 class Renderer{
@@ -22,15 +26,20 @@ public:
 
     void enableAxis();
     void setupSurface(float xrange, float yrange, int lod, float time, surface type);
+    void setupConic(float max_height, float max_angle, int lod, float time, conic type);
 
     void renderAxis();
-    void renderSurface();
+    void renderMesh(std::vector<GLfloat>& data);
 
     unsigned int prepBuf(GLfloat data[], GLuint size);
     unsigned int prepBuf(GLushort data[], GLuint size); // Temp: make this generic later
     unsigned int prepBuf(std::vector<GLfloat>& data);
 
     void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attribs, Shader& s);
+
+    // Current active mesh vertices
+    std::vector<GLfloat> surface_data;
+    std::vector<GLfloat> conic_data;
 
 private:
     // Memory mgmt
@@ -41,13 +50,11 @@ private:
 
     // Util
     float func(float x, float y, float t, surface type); // Surface eq solver
+    float func2(float h, float a, float t, conic type); // Conic eq solver
 
     // Shaders
     Shader shader_axis = Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
     Shader shader_surface = Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
-
-    // Currently active surface's vertices
-    std::vector<GLfloat> surface_data;
 
     // Colors
     glm::vec4 red = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);

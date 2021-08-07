@@ -31,8 +31,8 @@ public:
 
     void startup() override {
 
-        R->setupSurface(1.0f, 1.0f, 10, 1.0f, surface::HYPERBOLIC);
-//        R->enableAxis();
+        R->setupConic(2.0f, glm::radians(360.0f), 100, 1.0f, conic::CONE);
+        R->enableAxis();
     };
 
     float delta = 0.0f;
@@ -43,9 +43,10 @@ public:
         VP = camera->calc_VP(delta);
 
         // SURFACES
-        R->renderSurface();
+        R->renderMesh(R->conic_data);
+
         // AXES
-//        R->renderAxis();
+        R->renderAxis();
 
         last = currentTime;
     }

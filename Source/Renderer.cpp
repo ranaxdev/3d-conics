@@ -73,6 +73,47 @@ void Renderer::setupSurface(float xrange, float yrange, int lod, float time, sur
 
 }
 
+/*
+ * @max_height - h-values range
+ * @max_angle  - Same as max_height but with angles
+ * @lod        - Level of detail, how fine the mesh should be
+ */
+void Renderer::setupConic(float max_height, float max_angle, int lod, float time, conic type) {
+    conic_data.clear();
+
+    // Create horizontal and vertical meshes
+    float split = lod/2;
+    for(int i=0; i<lod; i++){
+        for(int j=0; j<lod; j++){
+            float h = max_height*(((float) (i-split))/split);
+            float a = max_angle*(((float) (j-split))/split);
+            float x = h*cos(a);
+            float y = h*sin(a);
+            conic_data.push_back(x);
+            conic_data.push_back(h);
+            conic_data.push_back(-2.5f+y); // Move to center
+        }
+    }
+    for(int i=0; i<lod; i++){
+        for(int j=0; j<lod; j++){
+            float h = max_height*(((float) (j-split))/split);
+            float a = max_angle*(((float) (i-split))/split);
+            float x = h*cos(a);
+            float y = h*sin(a);
+            conic_data.push_back(x);
+            conic_data.push_back(h);
+            conic_data.push_back(-2.5f+y);
+        }
+    }
+
+    // Reserve LOD for drawing
+    conic_data.push_back((float) lod);
+
+    GLuint loc = prepBuf(conic_data);
+    formatBuf(loc, 3, {3}, Renderer::shader_surface);
+}
+
+
 
 /* Rendering routines */
 void Renderer::renderAxis() {
@@ -84,14 +125,14 @@ void Renderer::renderAxis() {
 }
 
 
-void Renderer::renderSurface() {
+void Renderer::renderMesh(std::vector<GLfloat>& data) {
     glLineWidth(10.0f);
 
     shader_surface.bind();
     shader_surface.setMat4(20, conics::Harness::VP);
     shader_surface.setVec4(30, cyan);
 
-    int lod = (int) surface_data.back();
+    int lod = (int) data.back();
 
     /*
      * The vertical mesh data is appended to the horizontal one in the buffer
@@ -101,7 +142,7 @@ void Renderer::renderSurface() {
      */
     for(int i=0; i<lod; i++){
         glDrawArrays(GL_LINE_STRIP, lod*i, lod); // Draw horizontal
-        glDrawArrays(GL_LINE_STRIP, ((int) surface_data.size()-1)/3/2+(lod*i), lod); // Draw vertical
+        glDrawArrays(GL_LINE_STRIP, ((int) data.size()-1)/3/2+(lod*i), lod); // Draw vertical
     }
 }
 
@@ -123,9 +164,25 @@ float Renderer::func(float x, float y, float t, surface type) {
         case HYPERBOLIC:
             z = pow(x,2) - pow(y,2);
             break;
+
+        case UNRESTRICTED_CONE:
+            z = sqrt(pow(x,2)+pow(y,2));
+            break;
     }
     return z;
 }
+
+/*
+ * Solves conics equation of the type provided
+ */
+float Renderer::func2(float h, float a, float t, conic type) {
+    switch (type) {
+        case CONE:
+            break;
+    }
+    return 0;
+}
+
 
 /*
  * @data - Array of float data
