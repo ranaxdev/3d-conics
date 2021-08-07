@@ -28,23 +28,11 @@ class App : public conics::Harness{
 public:
 
     std::shared_ptr<Camera> camera;
-    Shader* shader;
-    Shader* shader2;
-
-
-    // Indexed drawing stuff
-    int size =0;
-    int detail = 50;
-    float range = (float)detail/2;
-    std::vector<GLfloat> points;
 
     void startup() override {
-        shader2 = new Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
-
 
         R->enableAxis();
-
-        R->setupParaboloid(1.0f, 1.0f, detail);
+        R->setupParaboloid(1.0f, 1.0f, 20);
 
     };
 
@@ -55,11 +43,11 @@ public:
         delta = currentTime - last;
         VP = camera->calc_VP(delta);
 
-        R->renderParaboloid(R->shader_gen);
-
-
+        // SURFACES
+        R->renderParaboloid();
         // AXES
-        R->renderAxis(R->shader_axis);
+        R->renderAxis();
+
         last = currentTime;
     }
 };

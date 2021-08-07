@@ -74,21 +74,21 @@ void Renderer::setupParaboloid(float xrange, float yrange, int lod) {
 
 
 /* Rendering routines */
-void Renderer::renderAxis(Shader& s) {
+void Renderer::renderAxis() {
     glLineWidth(20.0f);
-    s.bind();
-    s.setMat4(20, conics::Harness::VP);
+    shader_axis.bind();
+    shader_axis.setMat4(20, conics::Harness::VP);
 
     glDrawArrays(GL_LINES , 0, 8);
 }
 
 
-void Renderer::renderParaboloid(Shader& s) {
+void Renderer::renderParaboloid() {
     glLineWidth(10.0f);
 
-    s.bind();
-    s.setMat4(20, conics::Harness::VP);
-    s.setVec4(30, cyan);
+    shader_gen.bind();
+    shader_gen.setMat4(20, conics::Harness::VP);
+    shader_gen.setVec4(30, cyan);
 
     int lod = (int) data_paraboloid.back();
 

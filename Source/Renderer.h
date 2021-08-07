@@ -17,8 +17,8 @@ public:
     void enableAxis();
     void setupParaboloid(float xrange, float yrange, int lod);
 
-    void renderAxis(Shader& s);
-    void renderParaboloid(Shader& s);
+    void renderAxis();
+    void renderParaboloid();
 
     unsigned int prepBuf(GLfloat data[], GLuint size);
     unsigned int prepBuf(GLushort data[], GLuint size); // Temp: make this generic later
