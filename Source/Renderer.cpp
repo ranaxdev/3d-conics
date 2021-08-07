@@ -39,7 +39,7 @@ void Renderer::enableAxis() {
  * @yrange - Same as xrange but with y-vals. Note: this is z-axis in OpenGL
  * @lod    - Level of detail, how fine the mesh should be
  */
-void Renderer::setupParaboloid(float xrange, float yrange, int lod) {
+void Renderer::setupSurface(float xrange, float yrange, int lod, float time, surface type) {
     // Create horizontal and vertical meshes
     // TODO : Make this into a routine for general meshes with plottable functions
     float split = lod/2;
@@ -47,28 +47,28 @@ void Renderer::setupParaboloid(float xrange, float yrange, int lod) {
         for(int j=0; j<lod; j++){
             float x = xrange*(((float) (i-split))/split);
             float y = yrange*(((float) (j-split))/split);
-            float z = pow(x,2) + pow(y,2); // Paraboloid eq: x^2+y^2 = z
-            data_paraboloid.push_back(x);
-            data_paraboloid.push_back(z);
-            data_paraboloid.push_back(-2.5f+y); // Move to center
+            float z = func(x,y, time, type); // Solve surface eq
+            surface_data.push_back(x);
+            surface_data.push_back(z);
+            surface_data.push_back(-2.5f+y); // Move to center
         }
     }
     for(int i=0; i<lod; i++){
         for(int j=0; j<lod; j++){
-            float x = xrange*(((float) (j-split))/split);
+            float x = xrange*(((float) (j-split))/split); // swap i,j for other dir.
             float y = yrange*(((float) (i-split))/split);
-            float z = pow(x,2) + pow(y,2); // Paraboloid eq: x^2+y^2 = z
-            data_paraboloid.push_back(x);
-            data_paraboloid.push_back(z);
-            data_paraboloid.push_back(-2.5f+y); // Move to center
+            float z = func(x,y,time,type);
+            surface_data.push_back(x);
+            surface_data.push_back(z);
+            surface_data.push_back(-2.5f+y);
         }
     }
     // Reserve LOD for drawing
-    data_paraboloid.push_back((float) lod);
+    surface_data.push_back((float) lod);
 
 
-    GLuint loc = prepBuf(data_paraboloid);
-    formatBuf(loc, 3, {3}, Renderer::shader_gen);
+    GLuint loc = prepBuf(surface_data);
+    formatBuf(loc, 3, {3}, Renderer::shader_surface);
 
 }
 
@@ -86,11 +86,11 @@ void Renderer::renderAxis() {
 void Renderer::renderParaboloid() {
     glLineWidth(10.0f);
 
-    shader_gen.bind();
-    shader_gen.setMat4(20, conics::Harness::VP);
-    shader_gen.setVec4(30, cyan);
+    shader_surface.bind();
+    shader_surface.setMat4(20, conics::Harness::VP);
+    shader_surface.setVec4(30, cyan);
 
-    int lod = (int) data_paraboloid.back();
+    int lod = (int) surface_data.back();
 
     /*
      * The vertical mesh data is appended to the horizontal one in the buffer
@@ -100,12 +100,23 @@ void Renderer::renderParaboloid() {
      */
     for(int i=0; i<lod; i++){
         glDrawArrays(GL_LINE_STRIP, lod*i, lod); // Draw horizontal
-        glDrawArrays(GL_LINE_STRIP, ((int) data_paraboloid.size()-1)/3/2+(lod*i), lod); // Draw vertical
+        glDrawArrays(GL_LINE_STRIP, ((int) surface_data.size()-1)/3/2+(lod*i), lod); // Draw vertical
     }
-
 }
 
-
+/*
+ * Solves surface equation of the type provided
+ * Time parameter is optional (some surfaces don't use it)
+ */
+float Renderer::func(float x, float y, float t, surface type) {
+    float z = 0.0f;
+    switch (type) {
+        case PARABOLOID:
+            z = pow(x,2) + pow(y,2);
+            break;
+    }
+    return z;
+}
 
 /*
  * @data - Array of float data
@@ -171,3 +182,5 @@ void Renderer::formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attr
 
     glVertexArrayVertexBuffer(VAO, free_bindpoint, buf[loc], 0, (num_attribs*comps_per_elem)*sizeof(float));
 }
+
+

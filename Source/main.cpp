@@ -32,7 +32,7 @@ public:
     void startup() override {
 
         R->enableAxis();
-        R->setupParaboloid(1.0f, 1.0f, 20);
+        R->setupSurface(1.0f, 1.0f, 10, 1.0f, surface::PARABOLOID);
 
     };
 

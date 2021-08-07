@@ -9,13 +9,17 @@
 #include "Utils/Globals.h"
 #include "Shader.h"
 
+enum surface{
+    PARABOLOID
+};
+
 class Renderer{
 public:
     Renderer(GLuint& VAO, GLuint buf[]);
     ~Renderer() = default;
 
     void enableAxis();
-    void setupParaboloid(float xrange, float yrange, int lod);
+    void setupSurface(float xrange, float yrange, int lod, float time, surface type);
 
     void renderAxis();
     void renderParaboloid();
@@ -26,20 +30,22 @@ public:
 
     void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attribs, Shader& s);
 
-    // Shaders
-    Shader shader_axis = Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
-    Shader shader_gen = Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
 private:
-
+    // Memory mgmt
     static int free_buf;
     static int free_bindpoint;
     GLuint VAO;
-
     GLuint* buf;
 
-    // Surface data
-    std::vector<GLfloat> data_paraboloid;
+    // Util
+    float func(float x, float y, float t, surface type); // Surface eq solver
 
+    // Shaders
+    Shader shader_axis = Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
+    Shader shader_surface = Shader(SRC+"Shaders/overt.glsl", SRC+"Shaders/ofrag.glsl");
+
+    // Currently active surface's vertices
+    std::vector<GLfloat> surface_data;
 
     // Colors
     glm::vec4 red = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
