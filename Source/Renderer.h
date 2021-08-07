@@ -15,9 +15,10 @@ public:
     ~Renderer() = default;
 
     void enableAxis();
-    void setupParaboloid();
+    void setupParaboloid(float xrange, float yrange, int lod);
 
     void renderAxis(Shader& s);
+    void renderParaboloid(Shader& s);
 
     unsigned int prepBuf(GLfloat data[], GLuint size);
     unsigned int prepBuf(GLushort data[], GLuint size); // Temp: make this generic later
@@ -35,6 +36,14 @@ private:
     GLuint VAO;
 
     GLuint* buf;
+
+    // Surface data
+    std::vector<GLfloat> data_paraboloid;
+
+
+    // Colors
+    glm::vec4 red = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+    glm::vec4 cyan = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
 
 };
 #endif

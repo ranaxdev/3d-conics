@@ -33,7 +33,42 @@ void Renderer::enableAxis() {
 
 }
 /* Pre-fed surfaces setups */
-void Renderer::setupParaboloid() {
+
+/*
+ * @xrange - X values range e.g. if -5 to 5, enter 10
+ * @yrange - Same as xrange but with y-vals. Note: this is z-axis in OpenGL
+ * @lod    - Level of detail, how fine the mesh should be
+ */
+void Renderer::setupParaboloid(float xrange, float yrange, int lod) {
+    // Create horizontal and vertical meshes
+    // TODO : Make this into a routine for general meshes with plottable functions
+    float split = lod/2;
+    for(int i=0; i<lod; i++){
+        for(int j=0; j<lod; j++){
+            float x = xrange*(((float) (i-split))/split);
+            float y = yrange*(((float) (j-split))/split);
+            float z = pow(x,2) + pow(y,2); // Paraboloid eq: x^2+y^2 = z
+            data_paraboloid.push_back(x);
+            data_paraboloid.push_back(z);
+            data_paraboloid.push_back(-2.5f+y); // Move to center
+        }
+    }
+    for(int i=0; i<lod; i++){
+        for(int j=0; j<lod; j++){
+            float x = xrange*(((float) (j-split))/split);
+            float y = yrange*(((float) (i-split))/split);
+            float z = pow(x,2) + pow(y,2); // Paraboloid eq: x^2+y^2 = z
+            data_paraboloid.push_back(x);
+            data_paraboloid.push_back(z);
+            data_paraboloid.push_back(-2.5f+y); // Move to center
+        }
+    }
+    // Reserve LOD for drawing
+    data_paraboloid.push_back((float) lod);
+
+
+    GLuint loc = prepBuf(data_paraboloid);
+    formatBuf(loc, 3, {3}, Renderer::shader_gen);
 
 }
 
@@ -46,6 +81,30 @@ void Renderer::renderAxis(Shader& s) {
 
     glDrawArrays(GL_LINES , 0, 8);
 }
+
+
+void Renderer::renderParaboloid(Shader& s) {
+    glLineWidth(10.0f);
+
+    s.bind();
+    s.setMat4(20, conics::Harness::VP);
+    s.setVec4(30, cyan);
+
+    int lod = (int) data_paraboloid.back();
+
+    /*
+     * The vertical mesh data is appended to the horizontal one in the buffer
+     * So to draw the vertical mesh, the starting index is half the size of the buffer
+     * LOD is appended right at the end, it won't be used anyway because a vertex is 3 elements
+     * Don't have to worry about alignment
+     */
+    for(int i=0; i<lod; i++){
+        glDrawArrays(GL_LINE_STRIP, lod*i, lod); // Draw horizontal
+        glDrawArrays(GL_LINE_STRIP, ((int) data_paraboloid.size()-1)/3/2+(lod*i), lod); // Draw vertical
+    }
+
+}
+
 
 
 /*
@@ -112,12 +171,3 @@ void Renderer::formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attr
 
     glVertexArrayVertexBuffer(VAO, free_bindpoint, buf[loc], 0, (num_attribs*comps_per_elem)*sizeof(float));
 }
-
-
-
-
-
-
-
-
-
