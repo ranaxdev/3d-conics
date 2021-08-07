@@ -31,8 +31,8 @@ public:
 
     void startup() override {
 
-        R->setupSurface(1.0f, 1.0f, 50, 1.0f, surface::PARABOLOID);
-        R->enableAxis();
+        R->setupSurface(1.0f, 1.0f, 10, 1.0f, surface::HYPERBOLIC);
+//        R->enableAxis();
     };
 
     float delta = 0.0f;
@@ -45,7 +45,7 @@ public:
         // SURFACES
         R->renderSurface();
         // AXES
-        R->renderAxis();
+//        R->renderAxis();
 
         last = currentTime;
     }
