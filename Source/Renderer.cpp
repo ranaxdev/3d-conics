@@ -87,25 +87,22 @@ void Renderer::setupConic(float max_height, float max_angle, int lod, float time
         for(int j=0; j<lod; j++){
             float h = max_height*(((float) (i-split))/split);
             float a = max_angle*(((float) (j-split))/split);
-            float x = h*cos(a);
-            float y = h*sin(a);
-            conic_data.push_back(x);
-            conic_data.push_back(h);
-            conic_data.push_back(-2.5f+y); // Move to center
+            Vertex3D v = func2(h, a, time, type);
+            conic_data.push_back(v.x);
+            conic_data.push_back(v.z);
+            conic_data.push_back(-2.5f+v.y);
         }
     }
     for(int i=0; i<lod; i++){
         for(int j=0; j<lod; j++){
             float h = max_height*(((float) (j-split))/split);
             float a = max_angle*(((float) (i-split))/split);
-            float x = h*cos(a);
-            float y = h*sin(a);
-            conic_data.push_back(x);
-            conic_data.push_back(h);
-            conic_data.push_back(-2.5f+y);
+            Vertex3D v = func2(h, a, time, type);
+            conic_data.push_back(v.x);
+            conic_data.push_back(v.z);
+            conic_data.push_back(-2.5f+v.y);
         }
     }
-
     // Reserve LOD for drawing
     conic_data.push_back((float) lod);
 
@@ -175,12 +172,16 @@ float Renderer::func(float x, float y, float t, surface type) {
 /*
  * Solves conics equation of the type provided
  */
-float Renderer::func2(float h, float a, float t, conic type) {
+Vertex3D Renderer::func2(float h, float a, float t, conic type) {
+    Vertex3D v{};
     switch (type) {
-        case CONE:
+        case DOUBLE_CONE:
+            v.x = h*cos(a);
+            v.y = h*sin(a);
+            v.z = h;
             break;
     }
-    return 0;
+    return v;
 }
 
 

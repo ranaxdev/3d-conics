@@ -31,7 +31,7 @@ public:
 
     void startup() override {
 
-        R->setupConic(2.0f, glm::radians(360.0f), 100, 1.0f, conic::CONE);
+        R->setupConic(2.0f, glm::radians(360.0f), 100, 1.0f, conic::DOUBLE_CONE);
         R->enableAxis();
     };
 

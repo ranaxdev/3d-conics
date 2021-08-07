@@ -16,7 +16,11 @@ enum surface{
     UNRESTRICTED_CONE
 };
 enum conic{
-    CONE
+    DOUBLE_CONE
+};
+
+struct Vertex3D{
+    float x,y,z;
 };
 
 class Renderer{
@@ -50,7 +54,7 @@ private:
 
     // Util
     float func(float x, float y, float t, surface type); // Surface eq solver
-    float func2(float h, float a, float t, conic type); // Conic eq solver
+    Vertex3D func2(float h, float a, float t, conic type); // Conic eq solver
 
     // Shaders
     Shader shader_axis = Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");
