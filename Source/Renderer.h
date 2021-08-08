@@ -15,35 +15,34 @@ enum surface{
     DISC,
     HYPERBOLIC,
     UNRESTRICTED_CONE,
-};
 
-enum conic{
     // Conic surfaces
     DOUBLE_CONE
+
 };
 
 struct Mesh{
     float xrange, yrange, max_height, max_angle, time;
     int lod;
     surface s;
-    conic c;
+protected:
+    Mesh(surface s, float xrange, float yrange, float max_height, float max_angle, float time, int lod)
+    : xrange(xrange), yrange(yrange), max_height(max_height), max_angle(max_angle), time(time), lod(lod), s(s)
+    {}
 
+public:
     // Surface Mesh
-    Mesh(surface s, float xrange=1.0f, float yrange=1.0f, float time=1.0f, int lod=10)
-    : xrange(xrange), yrange(yrange), time(time), lod(lod), s(s)
+    static Mesh createSurface(surface s, float xrange=1.0f, float yrange=1.0f, float time=1.0f, int lod=10)
     {
-        // Conic-related data is unused
-        max_angle = 0.0f;
-        max_height = 0.0f;
+        // Conic-related data is unused (set to 0)
+        return {s, xrange, yrange, 0.0f, 0.0f, time, lod};
     }
 
     // Conic Mesh
-    Mesh(conic c, float max_height=1.0f, float max_angle=2*PI, float time=1.0f, int lod=10)
-    : max_height(max_height), max_angle(max_angle), time(time), lod(lod), c(c)
+    static Mesh createConic(surface c, float max_height=1.0f, float max_angle=2*PI, float time=1.0f, int lod=10)
     {
-        // Surface-related data is unused
-        xrange = 0.0f;
-        yrange = 0.0f;
+        // Surface-related data is unused (set to 0)
+        return {c, 0.0f, 0.0f, max_height, max_angle, time, lod};
     }
 };
 
