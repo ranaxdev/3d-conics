@@ -22,28 +22,15 @@ enum surface{
 };
 
 struct Mesh{
-    float xrange, yrange, max_height, max_angle, time;
+    // alpha - x-range/height depending on surface type
+    // beta  - y-range/angle depending on surface type
+    float alpha, beta, time;
     int lod;
     surface s;
-protected:
-    Mesh(surface s, float xrange, float yrange, float max_height, float max_angle, float time, int lod)
-    : xrange(xrange), yrange(yrange), max_height(max_height), max_angle(max_angle), time(time), lod(lod), s(s)
+    
+    Mesh(surface s, float alpha, float beta, float time=1.0f, int lod=10)
+    : s(s), alpha(alpha), beta(beta), time(time), lod(lod)
     {}
-
-public:
-    // Surface Mesh
-    static Mesh createSurface(surface s, float xrange=1.0f, float yrange=1.0f, float time=1.0f, int lod=10)
-    {
-        // Conic-related data is unused (set to 0)
-        return {s, xrange, yrange, 0.0f, 0.0f, time, lod};
-    }
-
-    // Conic Mesh
-    static Mesh createConic(surface c, float max_height=1.0f, float max_angle=2*PI, float time=1.0f, int lod=10)
-    {
-        // Surface-related data is unused (set to 0)
-        return {c, 0.0f, 0.0f, max_height, max_angle, time, lod};
-    }
 };
 
 struct Vertex3D{
@@ -79,7 +66,6 @@ private:
     static int free_bindpoint;
     static bool setup;
     static GLuint active_surface;
-    static GLuint active_conic;
     GLuint VAO;
     GLuint* buf;
 

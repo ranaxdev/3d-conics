@@ -4,7 +4,6 @@
 
 int Renderer::free_buf          = -1;
 int Renderer::free_bindpoint    = -1;
-GLuint Renderer::active_conic   = -1;
 GLuint Renderer::active_surface = -1;
 bool Renderer::setup = false;
 std::vector<GLfloat> Renderer::conic_data = {};
