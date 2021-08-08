@@ -74,15 +74,17 @@ void Renderer::setupSurface(float xrange, float yrange, int lod, float time, sur
     surface_data.push_back((float) lod);
 
     // First time setup
-    if(!setup){
+    if(!Renderer::setup){
         GLuint loc = prepBuf(surface_data);
         formatBuf(loc, 3, {3}, Renderer::shader_surface);
         Renderer::active_surface = loc;
     }
     // Editing buffer otherwise
     else{
-
+        editBuf(surface_data, Renderer::active_surface);
     }
+
+    Renderer::setup = true;
 
 }
 
@@ -243,8 +245,17 @@ unsigned int Renderer::prepBuf(std::vector<GLfloat>& data) {
  * @buf - Buffer to edit
  * Edits buffer data
  */
-unsigned int Renderer::editBuf(std::vector<GLfloat>& data, GLuint buf) {
-    return 0;
+unsigned int Renderer::editBuf(std::vector<GLfloat>& data, GLuint i) {
+    int size = (int) data.size();
+    int dat_size = 4*size;
+
+    float* ptr = (float*) glMapNamedBufferRange(buf[i], 0, dat_size, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+    for(int x=0; x<size; x++){
+        ptr[x] = data[x];
+    }
+    glUnmapNamedBuffer(buf[i]);
+
+    return i;
 }
 
 
