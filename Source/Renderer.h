@@ -10,13 +10,41 @@
 #include "Shader.h"
 
 enum surface{
+    // Pure surfaces
     PARABOLOID,
     DISC,
     HYPERBOLIC,
-    UNRESTRICTED_CONE
+    UNRESTRICTED_CONE,
 };
+
 enum conic{
+    // Conic surfaces
     DOUBLE_CONE
+};
+
+struct Mesh{
+    float xrange, yrange, max_height, max_angle, time;
+    int lod;
+    surface s;
+    conic c;
+
+    // Surface Mesh
+    Mesh(surface s, float xrange=1.0f, float yrange=1.0f, float time=1.0f, int lod=10)
+    : xrange(xrange), yrange(yrange), time(time), lod(lod), s(s)
+    {
+        // Conic-related data is unused
+        max_angle = 0.0f;
+        max_height = 0.0f;
+    }
+
+    // Conic Mesh
+    Mesh(conic c, float max_height=1.0f, float max_angle=2*PI, float time=1.0f, int lod=10)
+    : max_height(max_height), max_angle(max_angle), time(time), lod(lod), c(c)
+    {
+        // Surface-related data is unused
+        xrange = 0.0f;
+        yrange = 0.0f;
+    }
 };
 
 struct Vertex3D{

@@ -136,7 +136,9 @@ void Renderer::renderAxis() {
     glDrawArrays(GL_LINES , 0, 8);
 }
 
-
+/*
+ * Renders vertical and horizontal components of mesh vertices
+ */
 void Renderer::renderMesh(std::vector<GLfloat>& data) {
     glLineWidth(10.0f);
 
@@ -257,7 +259,6 @@ unsigned int Renderer::editBuf(std::vector<GLfloat>& data, GLuint i) {
 
     return i;
 }
-
 
 
 /*

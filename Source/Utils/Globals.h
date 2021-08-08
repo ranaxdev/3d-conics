@@ -6,5 +6,5 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 #define SRC std::string(std::getenv("CONICS_PATH"))
 #define DUMP_LOC SRC+"/Out/"
-
+#define PI 3.1415926535
 #endif
