@@ -27,7 +27,7 @@ struct Mesh{
     float alpha, beta, time;
     int lod;
     surface s;
-    
+
     Mesh(surface s, float alpha, float beta, float time=1.0f, int lod=10)
     : s(s), alpha(alpha), beta(beta), time(time), lod(lod)
     {}
@@ -43,8 +43,7 @@ public:
     ~Renderer() = default;
 
     void enableAxis();
-    void setupSurface(float xrange, float yrange, int lod, float time, surface type);
-    void setupConic(float max_height, float max_angle, int lod, float time, conic type);
+    void setupMesh(Mesh& m);
 
     void renderAxis();
     void renderMesh(std::vector<GLfloat>& data);
@@ -57,8 +56,7 @@ public:
     void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attribs, Shader& s);
 
     // Current active mesh vertices
-    static std::vector<GLfloat> surface_data;
-    static std::vector<GLfloat> conic_data;
+    static std::vector<GLfloat> mesh_data;
 
 private:
     // Memory mgmt
@@ -70,8 +68,7 @@ private:
     GLuint* buf;
 
     // Util
-    float func(float x, float y, float t, surface type); // Surface eq solver
-    Vertex3D func2(float h, float a, float t, conic type); // Conic eq solver
+    Vertex3D func(float A, float B, float t, surface s); // Surface eq solver
 
     // Shaders
     Shader shader_axis = Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");

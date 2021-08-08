@@ -28,12 +28,11 @@ class App : public conics::Harness{
 public:
 
     std::shared_ptr<Camera> camera;
-
+    Mesh* m;
     void startup() override {
-//        R->setupConic(5.0f, glm::radians(360.0f), 100, 1.0f, conic::DOUBLE_CONE);
-
-
         R->enableAxis();
+        m = new Mesh(surface::DOUBLE_CONE, 2.0f, 2*PI, 1.0f, 50);
+
     };
 
     float delta = 0.0f;
@@ -44,11 +43,10 @@ public:
         VP = camera->calc_VP(delta);
 
 
-        R->setupSurface((float)glfwGetTime(), 1.0f, 25, 1.0f, surface::PARABOLOID);
+        m->beta -= (float)glfwGetTime()*glm::radians(1.0f);
+        R->setupMesh(*m);
 
-        // SURFACES
-        R->renderMesh(Renderer::surface_data);
-
+        R->renderMesh(Renderer::mesh_data);
         // AXES
         R->renderAxis();
 

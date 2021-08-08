@@ -6,8 +6,7 @@ int Renderer::free_buf          = -1;
 int Renderer::free_bindpoint    = -1;
 GLuint Renderer::active_surface = -1;
 bool Renderer::setup = false;
-std::vector<GLfloat> Renderer::conic_data = {};
-std::vector<GLfloat> Renderer::surface_data = {};
+std::vector<GLfloat> Renderer::mesh_data = {};
 
 
 Renderer::Renderer(GLuint &VAO, GLuint *buf)
@@ -37,93 +36,60 @@ void Renderer::enableAxis() {
     formatBuf(loc, 3, {0, 1}, Renderer::shader_axis);
 
 }
-/* Pre-fed surfaces setups */
 
-/*
+/* Pre-fed mesh setup
+ * Mesh properties (context-dependant):
  * @xrange - X values range e.g. if -5 to 5, enter 10
  * @yrange - Same as xrange but with y-vals. Note: this is z-axis in OpenGL
+ * @angle  - Maximum angle range e.g. 360 for round mesh
+ * @height - Maximum height range (along GL y-axis)
  * @lod    - Level of detail, how fine the mesh should be
+ *
+ * NOTE: A = x-range/height
+ *       B = y-range/angle
  */
-void Renderer::setupSurface(float xrange, float yrange, int lod, float time, surface type) {
-    surface_data.clear();
+void Renderer::setupMesh(Mesh& m) {
+    mesh_data.clear();
 
     // Create horizontal and vertical meshes
-    float split = lod/2;
-    for(int i=0; i<lod; i++){
-        for(int j=0; j<lod; j++){
-            float x = xrange*(((float) (i-split))/split);
-            float y = yrange*(((float) (j-split))/split);
-            float z = func(x,y, time, type); // Solve surface eq
-            surface_data.push_back(x);
-            surface_data.push_back(z);
-            surface_data.push_back(-2.5f+y); // Move to center
+    float split = m.lod/2;
+    for(int i=0; i<m.lod; i++){
+        for(int j=0; j<m.lod; j++){
+            float A = m.alpha*(((float) (i-split))/split);
+            float B = m.beta*(((float) (j-split))/split);
+            Vertex3D v = func(A,B, m.time, m.s); // Solve surface eq
+            mesh_data.push_back(v.x);
+            mesh_data.push_back(v.z);
+            mesh_data.push_back(-2.5f+v.y); // Move to center
         }
     }
-    for(int i=0; i<lod; i++){
-        for(int j=0; j<lod; j++){
-            float x = xrange*(((float) (j-split))/split); // swap i,j for other dir.
-            float y = yrange*(((float) (i-split))/split);
-            float z = func(x,y,time,type);
-            surface_data.push_back(x);
-            surface_data.push_back(z);
-            surface_data.push_back(-2.5f+y);
+    for(int i=0; i<m.lod; i++){
+        for(int j=0; j<m.lod; j++){
+            float x = m.alpha*(((float) (j-split))/split); // swap i,j for other dir.
+            float y = m.beta*(((float) (i-split))/split);
+            Vertex3D v = func(x,y,m.time,m.s);
+            mesh_data.push_back(v.x);
+            mesh_data.push_back(v.z);
+            mesh_data.push_back(-2.5f+v.y);
         }
     }
     // Reserve LOD for drawing
-    surface_data.push_back((float) lod);
+    mesh_data.push_back((float) m.lod);
 
     // First time setup
     if(!Renderer::setup){
-        GLuint loc = prepBuf(surface_data);
+        GLuint loc = prepBuf(mesh_data);
         formatBuf(loc, 3, {3}, Renderer::shader_surface);
         Renderer::active_surface = loc;
     }
     // Editing buffer otherwise
     else{
-        editBuf(surface_data, Renderer::active_surface);
+        editBuf(mesh_data, Renderer::active_surface);
     }
 
     Renderer::setup = true;
 
 }
-
-/*
- * @max_height - h-values range
- * @max_angle  - Same as max_height but with angles
- * @lod        - Level of detail, how fine the mesh should be
- */
-void Renderer::setupConic(float max_height, float max_angle, int lod, float time, conic type) {
-    conic_data.clear();
-
-    // Create horizontal and vertical meshes
-    float split = lod/2;
-    for(int i=0; i<lod; i++){
-        for(int j=0; j<lod; j++){
-            float h = max_height*(((float) (i-split))/split);
-            float a = max_angle*(((float) (j-split))/split);
-            Vertex3D v = func2(h, a, time, type);
-            conic_data.push_back(v.x);
-            conic_data.push_back(v.z);
-            conic_data.push_back(-2.5f+v.y);
-        }
-    }
-    for(int i=0; i<lod; i++){
-        for(int j=0; j<lod; j++){
-            float h = max_height*(((float) (j-split))/split);
-            float a = max_angle*(((float) (i-split))/split);
-            Vertex3D v = func2(h, a, time, type);
-            conic_data.push_back(v.x);
-            conic_data.push_back(v.z);
-            conic_data.push_back(-2.5f+v.y);
-        }
-    }
-    // Reserve LOD for drawing
-    conic_data.push_back((float) lod);
-
-    GLuint loc = prepBuf(conic_data);
-    formatBuf(loc, 3, {3}, Renderer::shader_surface);
-}
-
 
 
 /* Rendering routines */
@@ -163,43 +129,43 @@ void Renderer::renderMesh(std::vector<GLfloat>& data) {
  * Solves surface equation of the type provided
  * Time parameter is optional (some surfaces don't use it)
  */
-float Renderer::func(float x, float y, float t, surface type) {
-    float z = 0.0f;
-    switch (type) {
+Vertex3D Renderer::func(float A, float B, float t, surface s) {
+    Vertex3D v{};
+    switch (s) {
+        /* SURFACES */
         case PARABOLOID:
-            z = pow(x,2) + pow(y,2);
+            v.x = A;
+            v.y = B;
+            v.z = pow(A,2) + pow(B,2);
             break;
 
         case DISC:
-            z = sin(pow(x,2) + pow(y,2));
+            v.x = A;
+            v.y = B;
+            v.z = sin(pow(A,2) + pow(B,2));
             break;
 
         case HYPERBOLIC:
-            z = pow(x,2) - pow(y,2);
+            v.x = A;
+            v.y = B;
+            v.z = pow(A,2) - pow(B,2);
             break;
 
         case UNRESTRICTED_CONE:
-            z = sqrt(pow(x,2)+pow(y,2));
+            v.x = A;
+            v.y = B;
+            v.z = sqrt(pow(A,2)+pow(B,2));
             break;
-    }
-    return z;
-}
 
-/*
- * Solves conics equation of the type provided
- */
-Vertex3D Renderer::func2(float h, float a, float t, conic type) {
-    Vertex3D v{};
-    switch (type) {
+        /* CONICS */
         case DOUBLE_CONE:
-            v.x = h*cos(a);
-            v.y = h*sin(a);
-            v.z = h;
+            v.x = A*cos(B);
+            v.y = A*sin(B);
+            v.z = A;
             break;
     }
     return v;
 }
-
 
 /*
  * @data - Array of float data
