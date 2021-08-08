@@ -1,3 +1,7 @@
+#include "../imgui/imgui.h"
+#include "../imgui/imgui_impl_glfw.h"
+#include "../imgui/imgui_impl_opengl3.h"
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -44,11 +48,21 @@ void conics::Harness::run(conics::Harness* h) {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
-    // Application Initialization
+    /* Application Initialization */
     glCreateVertexArrays(1, &VAO);
-    Harness::R = new Renderer(Harness::VAO, Harness::buf);
+    Harness::R = new Renderer(Harness::VAO, Harness::buf); // Renderer instance
+    IMGUI_CHECKVERSION();
+
+    // imGUI initialization
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init("#version 450");
+
     startup();
+
     glBindVertexArray(VAO);
+
 
     // Application Rendering
     const GLfloat screen_color[4] = {w.color[0], w.color[1], w.color[2], w.color[3]};
@@ -60,7 +74,6 @@ void conics::Harness::run(conics::Harness* h) {
         // Update observers
         for(auto& o : conics::Harness::keylisteners){
             // NOTE: for key callback (NOT poll) => o->keys[currentKey] = currentAction
-
             // Poll tracked keys for presses & mouse positions
             for(auto& k : keys_to_poll){
                 if(glfwGetKey(window, k) == GLFW_PRESS)
@@ -72,8 +85,18 @@ void conics::Harness::run(conics::Harness* h) {
             }
         }
 
-        // Render
+        // GUI Rendering frame initialization
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+        // Render application
         render((float) glfwGetTime());
+
+        // Render GUI
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();

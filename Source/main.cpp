@@ -34,13 +34,7 @@ public:
     std::shared_ptr<Camera> camera;
     Mesh* m;
     void startup() override {
-        IMGUI_CHECKVERSION();
 
-        ImGui::CreateContext();
-        ImGuiIO& io = ImGui::GetIO(); (void)io;
-
-        ImGui_ImplGlfw_InitForOpenGL(window, true);
-        ImGui_ImplOpenGL3_Init("#version 450");
         R->enableAxis();
         m = new Mesh(surface::DISC, 0.1f, 0.1f, 1.0f, 50);
 
@@ -49,14 +43,24 @@ public:
     float delta = 0.0f;
     float last = 0.0f;
 
+    bool show_demo = true;
     void render(float currentTime) override {
-        bool show_demo = true;
 
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();
-        ImGui::ShowDemoWindow(&show_demo);
 
+        if(show_demo)
+        {
+            ImGui::Begin("Temp", &show_demo);
+            ImGui::Text("3D Conics 3D Conics 3D Conics");
+            if(ImGui::Button("Close")){
+                show_demo = false;
+            }
+            ImGui::End();
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        }
+        else{
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+        }
 
         delta = currentTime - last;
         VP = camera->calc_VP(delta);
@@ -70,9 +74,6 @@ public:
 
         // AXES
         R->renderAxis();
-
-        ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         last = currentTime;
     }
