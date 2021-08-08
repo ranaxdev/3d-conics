@@ -1,3 +1,7 @@
+#include "../imgui/imgui.h"
+#include "../imgui/imgui_impl_glfw.h"
+#include "../imgui/imgui_impl_opengl3.h"
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -30,6 +34,13 @@ public:
     std::shared_ptr<Camera> camera;
     Mesh* m;
     void startup() override {
+        IMGUI_CHECKVERSION();
+
+        ImGui::CreateContext();
+        ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+        ImGui_ImplGlfw_InitForOpenGL(window, true);
+        ImGui_ImplOpenGL3_Init("#version 450");
         R->enableAxis();
         m = new Mesh(surface::DISC, 0.1f, 0.1f, 1.0f, 50);
 
@@ -39,6 +50,14 @@ public:
     float last = 0.0f;
 
     void render(float currentTime) override {
+        bool show_demo = true;
+
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+        ImGui::ShowDemoWindow(&show_demo);
+
+
         delta = currentTime - last;
         VP = camera->calc_VP(delta);
 
@@ -51,6 +70,9 @@ public:
 
         // AXES
         R->renderAxis();
+
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         last = currentTime;
     }

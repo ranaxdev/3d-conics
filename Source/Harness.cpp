@@ -20,7 +20,7 @@ void conics::Harness::run(conics::Harness* h) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // GLFW window
-    GLFWwindow* window = glfwCreateWindow(w.width, w.height, w.title, nullptr, nullptr);
+    window = glfwCreateWindow(w.width, w.height, w.title, nullptr, nullptr);
     if(window == nullptr){
         Logger::log(ERROR, "Could not create GLFW window", __FILENAME__);
         glfwTerminate();
@@ -29,7 +29,7 @@ void conics::Harness::run(conics::Harness* h) {
     glfwMakeContextCurrent(window);
     glfwSetWindowUserPointer(window, (void*)(this)); // Pointer to app window that implements this harness
     // GLFW settings
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+//    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // Callbacks
     glfwSetKeyCallback(window, conics::key_callback);

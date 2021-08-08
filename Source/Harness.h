@@ -60,6 +60,7 @@ namespace conics{
         GLuint VAO;
         GLuint buf[1024];
         Renderer* R;
+        GLFWwindow* window;
     };
 
     // GLFW callbacks
