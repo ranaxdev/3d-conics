@@ -31,7 +31,7 @@ public:
     Mesh* m;
     void startup() override {
         R->enableAxis();
-        m = new Mesh(surface::DOUBLE_CONE, 2.0f, 2*PI, 1.0f, 50);
+        m = new Mesh(surface::DISC, 0.1f, 0.1f, 1.0f, 50);
 
     };
 
@@ -42,11 +42,13 @@ public:
         delta = currentTime - last;
         VP = camera->calc_VP(delta);
 
-
-        m->beta -= (float)glfwGetTime()*glm::radians(1.0f);
+        // MESH
+        m->alpha = 0.1f*(float) glfwGetTime();
+        m->beta  = 0.1f*(float) glfwGetTime();
         R->setupMesh(*m);
-
         R->renderMesh(Renderer::mesh_data);
+
+
         // AXES
         R->renderAxis();
 
