@@ -2,8 +2,14 @@
 #include "Renderer.h"
 #include "Harness.h"
 
-int Renderer::free_buf       = -1;
-int Renderer::free_bindpoint = -1;
+int Renderer::free_buf          = -1;
+int Renderer::free_bindpoint    = -1;
+GLuint Renderer::active_conic   = -1;
+GLuint Renderer::active_surface = -1;
+bool Renderer::setup = false;
+std::vector<GLfloat> Renderer::conic_data = {};
+std::vector<GLfloat> Renderer::surface_data = {};
+
 
 Renderer::Renderer(GLuint &VAO, GLuint *buf)
 : VAO(VAO), buf(buf) {}
@@ -67,9 +73,16 @@ void Renderer::setupSurface(float xrange, float yrange, int lod, float time, sur
     // Reserve LOD for drawing
     surface_data.push_back((float) lod);
 
+    // First time setup
+    if(!setup){
+        GLuint loc = prepBuf(surface_data);
+        formatBuf(loc, 3, {3}, Renderer::shader_surface);
+        Renderer::active_surface = loc;
+    }
+    // Editing buffer otherwise
+    else{
 
-    GLuint loc = prepBuf(surface_data);
-    formatBuf(loc, 3, {3}, Renderer::shader_surface);
+    }
 
 }
 
@@ -226,6 +239,15 @@ unsigned int Renderer::prepBuf(std::vector<GLfloat>& data) {
     return free_buf;
 }
 
+/*
+ * @buf - Buffer to edit
+ * Edits buffer data
+ */
+unsigned int Renderer::editBuf(std::vector<GLfloat>& data, GLuint buf) {
+    return 0;
+}
+
+
 
 /*
  * @loc                     - Active buffer location
@@ -249,5 +271,7 @@ void Renderer::formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attr
 
     glVertexArrayVertexBuffer(VAO, free_bindpoint, buf[loc], 0, (num_attribs*comps_per_elem)*sizeof(float));
 }
+
+
 
 

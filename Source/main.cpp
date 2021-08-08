@@ -30,8 +30,8 @@ public:
     std::shared_ptr<Camera> camera;
 
     void startup() override {
+        R->setupConic(5.0f, glm::radians(360.0f), 100, 1.0f, conic::DOUBLE_CONE);
 
-        R->setupConic(2.0f, glm::radians(360.0f), 100, 1.0f, conic::DOUBLE_CONE);
         R->enableAxis();
     };
 
@@ -42,8 +42,9 @@ public:
         delta = currentTime - last;
         VP = camera->calc_VP(delta);
 
+
         // SURFACES
-        R->renderMesh(R->conic_data);
+        R->renderMesh(Renderer::conic_data);
 
         // AXES
         R->renderAxis();

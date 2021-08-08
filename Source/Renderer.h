@@ -38,17 +38,21 @@ public:
     unsigned int prepBuf(GLfloat data[], GLuint size);
     unsigned int prepBuf(GLushort data[], GLuint size); // Temp: make this generic later
     unsigned int prepBuf(std::vector<GLfloat>& data);
+    unsigned int editBuf(std::vector<GLfloat>& data, GLuint buf);
 
     void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attribs, Shader& s);
 
     // Current active mesh vertices
-    std::vector<GLfloat> surface_data;
-    std::vector<GLfloat> conic_data;
+    static std::vector<GLfloat> surface_data;
+    static std::vector<GLfloat> conic_data;
 
 private:
     // Memory mgmt
     static int free_buf;
     static int free_bindpoint;
+    static bool setup;
+    static GLuint active_surface;
+    static GLuint active_conic;
     GLuint VAO;
     GLuint* buf;
 
