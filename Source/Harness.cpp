@@ -58,7 +58,7 @@ void conics::Harness::run(conics::Harness* h) {
     glfwMakeContextCurrent(window);
     glfwSetWindowUserPointer(window, (void*)(this)); // Pointer to app window that implements this harness
     // GLFW settings
-//    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // Callbacks
     glfwSetKeyCallback(window, conics::key_callback);
@@ -84,7 +84,6 @@ void conics::Harness::run(conics::Harness* h) {
     ImGuiIO& io = ImGui::GetIO();
     io.Fonts->AddFontFromFileTTF((FONT_ROBOTO).c_str(), 20);
     (void)io;
-
 
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 450");
@@ -112,7 +111,8 @@ void conics::Harness::run(conics::Harness* h) {
                     o->keys[k] = 0;
 
                 // Send current cursor position
-                glfwGetCursorPos(window, &o->xpos, &o->ypos);
+                if(!editing)
+                    glfwGetCursorPos(window, &o->xpos, &o->ypos);
 
                 // Send editing state
                 o->editing = Harness::editing;
@@ -188,12 +188,34 @@ void conics::key_callback(GLFWwindow *window, int key, int scancode, int action,
 
 
     // Toggle Edit Mode
-    if(key == GLFW_KEY_ENTER && action == GLFW_PRESS)
+    if(key == GLFW_KEY_ENTER && action == GLFW_PRESS){
         instance->toggleEditing();
+
+        /*
+         * Save last cursor position when entering edit mode
+         * Reload cursor position when exiting edit mode
+         */
+        if(instance->isEditing()){
+            glfwGetCursorPos(window, &instance->saved_XPOS, &instance->saved_YPOS);
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        }
+        else{
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+            glfwSetCursorPos(window, instance->saved_XPOS, instance->saved_YPOS);
+        }
+    }
 }
 
 
-// Triangulation routines
+
+
+
+
+
+
+/**************************************************************************
+ *                          Triangulation routines
+ ************************************************************************* */
 std::pair<double, double> conics::getBisector(Vertex v1, Vertex v2){
     /*
      * Calculates the perpendicular bisector of 2 vertices

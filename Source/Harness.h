@@ -77,7 +77,11 @@ namespace conics{
         static void show_menu(); // GUI menu window
 
         // Other states
-        bool editing = false;
+        bool editing = false; // Mesh edit mode
+    public:
+        double saved_XPOS = 0.0f;
+        double saved_YPOS = 0.0f;
+
 
     };
 
