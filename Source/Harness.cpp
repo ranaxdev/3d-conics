@@ -5,6 +5,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <iostream>
+
 #include "Utils/Globals.h"
 #include "Utils/Logger.h"
 #include "Harness.h"
@@ -60,7 +62,11 @@ void conics::Harness::run(conics::Harness* h) {
 
     // imGUI initialization
     ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGuiIO& io = ImGui::GetIO();
+    io.Fonts->AddFontFromFileTTF((FONT_ROBOTO).c_str(), 20);
+    (void)io;
+
+
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 450");
 

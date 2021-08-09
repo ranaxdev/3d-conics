@@ -36,7 +36,7 @@ public:
     void startup() override {
 
         R->enableAxis();
-        m = new Mesh(surface::PARABOLOID, 1.0f, 1.0f, 1.0f, 10);
+        m = new Mesh(surface::DISC, 0.5f, 0.5f, 1.0f, 10);
         R->setupMesh(*m);
 
     };
@@ -49,6 +49,8 @@ public:
         show_menu();
 
         m->lod = Harness::menu_lod;
+        m->alpha = 0.1f*glfwGetTime();
+        m->beta = 0.1*glfwGetTime();
         R->setupMesh(*m);
         // MESH
         R->renderMesh(Renderer::mesh_data);
