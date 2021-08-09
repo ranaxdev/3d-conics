@@ -47,6 +47,20 @@ Eventually, the plan is to create an interactive application where you can view 
     }
   ```
 
+## Libraries Used
+
+- [GLAD](https://github.com/Dav1dde/glad)
+: OpenGL Loading Library
+
+- [GLM](https://github.com/g-truc/glm)
+: OpenGL Mathematics
+
+- [GLFW](https://www.glfw.org/)
+: A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input 
+
+- [Dear ImGui](https://github.com/ocornut/imgui)
+: Bloat-free Graphical User interface for C++ with minimal dependencies 
+
 <!-- LICENSE -->
 ## License
 
