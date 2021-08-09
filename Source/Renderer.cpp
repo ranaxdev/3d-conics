@@ -4,10 +4,11 @@
 #include "Renderer.h"
 #include "Harness.h"
 
+// Static initializations
 int Renderer::free_buf          = -1;
 int Renderer::free_bindpoint    = -1;
 GLuint Renderer::active_surface = -1;
-bool Renderer::setup = false;
+bool Renderer::mesh_setup = false;
 std::vector<GLfloat> Renderer::mesh_data = {};
 
 
@@ -15,6 +16,13 @@ Renderer::Renderer(GLuint &VAO, GLuint *buf)
 : VAO(VAO), buf(buf) {}
 
 
+
+
+
+
+/* ****************************************************************
+ *                  RENDER-ABLES INITIALIZATIONS                  *
+ ******************************************************************/
 /*
  * Initialize axes data
  */
@@ -75,26 +83,35 @@ void Renderer::setupMesh(Mesh& m) {
             mesh_data.push_back(-2.5f+v.y);
         }
     }
-    // Reserve LOD for drawing
+    // Reserve LOD to inform rendering of this mesh
     mesh_data.push_back((float) m.lod);
 
     // First time setup
-    if(!Renderer::setup){
+    if(!Renderer::mesh_setup){
         GLuint loc = prepBuf(mesh_data, true);
         formatBuf(loc, 3, {3}, Renderer::shader_surface);
         Renderer::active_surface = loc;
     }
-    // Editing buffer otherwise
+
+    // Editing buffer otherwise (buffer changes after initial setup)
     else{
+        // TODO: Optimization - Only call when actually editing properties
         editBuf(mesh_data, Renderer::active_surface);
     }
 
-    Renderer::setup = true;
-
+    // Surface mesh has been initialized
+    if(!Renderer::mesh_setup)
+        Renderer::mesh_setup = true;
 }
 
 
-/* Rendering routines */
+
+
+
+
+/* ****************************************************************
+ *                        RENDERING ROUTINES                      *
+ ******************************************************************/
 void Renderer::renderAxis() {
     glLineWidth(20.0f);
     shader_axis.bind();
@@ -113,7 +130,7 @@ void Renderer::renderMesh(std::vector<GLfloat>& data) {
     shader_surface.setMat4(20, conics::Harness::VP);
     shader_surface.setVec4(30, cyan);
 
-    int lod = (int) data.back();
+    int lod = (int) data.back(); // Retrieve reserved LOD
 
     /*
      * The vertical mesh data is appended to the horizontal one in the buffer
@@ -169,6 +186,14 @@ Vertex3D Renderer::func(float A, float B, float t, surface s) {
     return v;
 }
 
+
+
+
+
+
+/* ****************************************************************
+ *                      BUFFER SETUP ROUTINES                     *
+ ******************************************************************/
 /*
  * @data - Array of float data
  * @size - Size of the array in bytes
@@ -198,11 +223,14 @@ unsigned int Renderer::prepBuf(std::vector<GLfloat>& data, bool big) {
     int size = (int) data.size();
     int dat_size = 4*size;
 
+    // Either allocate a big buffer (for large meshes and such)
+    // Or just as large as your data
     int to_allocate;
     if(big)
         to_allocate = ONE_MB;
     else
         to_allocate = dat_size;
+
 
     free_buf++;
     glCreateBuffers(1, &buf[free_buf]);
@@ -227,7 +255,7 @@ unsigned int Renderer::editBuf(std::vector<GLfloat>& data, GLuint i) {
 
     // Buffer overflowed
     if(dat_size >= ONE_MB){
-        Logger::log(ERROR, "Buffer overflowed, buffer ID: " + std::string(reinterpret_cast<const char *>(i)), __FILENAME__);
+        Logger::log(ERROR, "Buffer overflowed, buffer ID: "+ std::to_string(i), __FILENAME__);
     }
 
     float* ptr = (float*) glMapNamedBufferRange(buf[i], 0, dat_size, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);

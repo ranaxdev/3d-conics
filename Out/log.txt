@@ -1,45 +1,58 @@
 *============================= LOGGED SESSION =============================*
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
-[ERR]   2021-08-02 @ 09:15:19   |Harness.cpp| Triangulation failed, parallel lines
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1

@@ -62,10 +62,12 @@ private:
     // Memory mgmt
     static int free_buf;
     static int free_bindpoint;
-    static bool setup;
-    static GLuint active_surface;
     GLuint VAO;
     GLuint* buf;
+
+    // State
+    static bool mesh_setup;              // Mesh buffer has been setup before
+    static GLuint active_surface;        // Buffer ID/loc for currently active surface
 
     // Util
     Vertex3D func(float A, float B, float t, surface s); // Surface eq solver
