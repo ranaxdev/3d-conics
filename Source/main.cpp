@@ -41,16 +41,14 @@ public:
 
     };
 
-    float delta = 0.0f;
-    float last = 0.0f;
-    void render(float currentTime) override {
-        delta = currentTime - last;
+
+    void render(float delta) override {
         VP = camera->calc_VP(delta);
         show_menu();
 
         m->lod = Harness::menu_lod;
-        m->alpha = 0.1f*glfwGetTime();
-        m->beta = 0.1*glfwGetTime();
+        m->alpha = Harness::menu_alpha;
+        m->beta = Harness::menu_beta;
         R->setupMesh(*m);
         // MESH
         R->renderMesh(Renderer::mesh_data);
@@ -58,7 +56,6 @@ public:
         // AXES
         R->renderAxis();
 
-        last = currentTime;
     }
 };
 

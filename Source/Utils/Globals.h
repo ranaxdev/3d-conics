@@ -14,4 +14,7 @@
 #define MAX_LOD 200
 #define ONE_MB 1000000
 
+#define FPS 60.0
+#define INTERVAL_MAX 1.0/FPS
+
 #endif

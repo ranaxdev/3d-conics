@@ -120,44 +120,54 @@ void conics::Harness::run(conics::Harness* h) {
     // Application Rendering
     const GLfloat screen_color[4] = {w.color[0], w.color[1], w.color[2], w.color[3]};
     const float one = 1.0f;
+    float delta = 0.0f;
+    float last = 0.0f;
     while(!glfwWindowShouldClose(window)){
-        glClearBufferfv(GL_COLOR, 0, screen_color);
-        glClearBufferfv(GL_DEPTH, 0, &one);
+        float currentTime = (float)glfwGetTime();
+        delta = currentTime - last;
 
-        // Update observers
-        for(auto& o : conics::Harness::keylisteners){
-            // NOTE: for key callback (NOT poll) => o->keys[currentKey] = currentAction
-            // Poll tracked keys for presses & mouse positions
-            for(auto& k : keys_to_poll){
-                if(glfwGetKey(window, k) == GLFW_PRESS)
-                    o->keys[k] = 1;
-                else
-                    o->keys[k] = 0;
+        if(delta >= INTERVAL_MAX){
+            glClearBufferfv(GL_COLOR, 0, screen_color);
+            glClearBufferfv(GL_DEPTH, 0, &one);
 
-                // Send current cursor position
-                if(!editing)
-                    glfwGetCursorPos(window, &o->xpos, &o->ypos);
+            // Update observers
+            for(auto& o : conics::Harness::keylisteners){
+                // NOTE: for key callback (NOT poll) => o->keys[currentKey] = currentAction
+                // Poll tracked keys for presses & mouse positions
+                for(auto& k : keys_to_poll){
+                    if(glfwGetKey(window, k) == GLFW_PRESS)
+                        o->keys[k] = 1;
+                    else
+                        o->keys[k] = 0;
 
-                // Send editing state
-                o->editing = Harness::editing;
+                    // Send current cursor position
+                    if(!editing)
+                        glfwGetCursorPos(window, &o->xpos, &o->ypos);
+
+                    // Send editing state
+                    o->editing = Harness::editing;
+                }
             }
+
+            // GUI Rendering frame initialization
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplGlfw_NewFrame();
+            ImGui::NewFrame();
+
+            // Render application
+            render(delta);
+
+            // Render GUI
+            ImGui::Render();
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
+            glfwSwapBuffers(window);
+            glfwPollEvents();
+
+
+            last = currentTime;
         }
-
-        // GUI Rendering frame initialization
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();
-
-        // Render application
-        render((float) glfwGetTime());
-
-        // Render GUI
-        ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
     }
 }
 
