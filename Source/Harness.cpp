@@ -17,6 +17,7 @@
 ImVec2 conics::Harness::menu_pos = ImVec2(0.0f, 0.0f);
 ImVec2 conics::Harness::menu_size = ImVec2(320.0f, 300.0f);
 bool conics::Harness::menu_breath = false;
+float conics::Harness::menu_breath_amp = 0.5f;
 std::vector<ImGuiWindowFlags_> conics::Harness::menu_flag_list = {ImGuiWindowFlags_NoResize,ImGuiWindowFlags_NoInputs,ImGuiWindowFlags_NoBackground};
 ImGuiWindowFlags_ conics::Harness::menu_flags = ImGuiWindowFlags_None;
 
@@ -26,6 +27,11 @@ float conics::Harness::menu_beta    = 1.0f;
 
 // Menu Window
 void conics::Harness::show_menu() {
+    if(menu_breath){
+        menu_alpha = 5+(5*sin(menu_breath_amp*glfwGetTime()));
+        menu_beta = 5+(5*sin(menu_breath_amp*glfwGetTime()));
+    }
+
     ImGui::SetNextWindowPos(menu_pos);
     ImGui::SetNextWindowSize(menu_size);
     ImGui::SetNextWindowFocus();
@@ -40,6 +46,7 @@ void conics::Harness::show_menu() {
     ImGui::SliderFloat("   alpha", &conics::Harness::menu_alpha, 0.1f, 10.0f);
     ImGui::SliderFloat("   beta", &conics::Harness::menu_beta, 0.1f, 10.0f);
     ImGui::Checkbox("Breath", &conics::Harness::menu_breath);
+    ImGui::SliderFloat("Amplitude", &conics::Harness::menu_breath_amp, 0.1f, 5.0f);
 
     ImGui::End();
 }

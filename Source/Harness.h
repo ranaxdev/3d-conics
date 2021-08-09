@@ -80,6 +80,7 @@ namespace conics{
         static ImGuiWindowFlags_ menu_flags;
         static ImVec2 menu_pos;
         static ImVec2 menu_size;
+        static float menu_breath_amp;
         static bool menu_breath;
 
         static void menu_update_flags();
