@@ -36,41 +36,22 @@ public:
     void startup() override {
 
         R->enableAxis();
-        m = new Mesh(surface::DISC, 0.1f, 0.1f, 1.0f, 50);
+        m = new Mesh(surface::PARABOLOID, 1.0f, 1.0f, 1.0f, 10);
+        R->setupMesh(*m);
 
     };
 
     float delta = 0.0f;
     float last = 0.0f;
-
-    bool show_demo = true;
     void render(float currentTime) override {
-
-
-        if(show_demo)
-        {
-            ImGui::Begin("Temp", &show_demo);
-            ImGui::Text("3D Conics 3D Conics 3D Conics");
-            if(ImGui::Button("Close")){
-                show_demo = false;
-            }
-            ImGui::End();
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-        }
-        else{
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-        }
-
         delta = currentTime - last;
         VP = camera->calc_VP(delta);
+        show_menu();
 
-        // MESH
-        m->alpha = 0.1f*(float) glfwGetTime();
-        m->beta  = 0.1f*(float) glfwGetTime();
+        m->lod = Harness::menu_lod;
         R->setupMesh(*m);
+        // MESH
         R->renderMesh(Renderer::mesh_data);
-
 
         // AXES
         R->renderAxis();

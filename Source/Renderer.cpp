@@ -1,4 +1,6 @@
+#include <string>
 #include <iostream>
+#include "Utils/Logger.h"
 #include "Renderer.h"
 #include "Harness.h"
 
@@ -78,7 +80,7 @@ void Renderer::setupMesh(Mesh& m) {
 
     // First time setup
     if(!Renderer::setup){
-        GLuint loc = prepBuf(mesh_data);
+        GLuint loc = prepBuf(mesh_data, true);
         formatBuf(loc, 3, {3}, Renderer::shader_surface);
         Renderer::active_surface = loc;
     }
@@ -192,12 +194,19 @@ unsigned int Renderer::prepBuf(GLushort *data, GLuint size) {
  * @data - List of float data
  * Inits a new buffer and returns its index
  */
-unsigned int Renderer::prepBuf(std::vector<GLfloat>& data) {
+unsigned int Renderer::prepBuf(std::vector<GLfloat>& data, bool big) {
     int size = (int) data.size();
     int dat_size = 4*size;
+
+    int to_allocate;
+    if(big)
+        to_allocate = ONE_MB;
+    else
+        to_allocate = dat_size;
+
     free_buf++;
     glCreateBuffers(1, &buf[free_buf]);
-    glNamedBufferStorage(buf[free_buf], dat_size, nullptr, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
+    glNamedBufferStorage(buf[free_buf], to_allocate, nullptr, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT); // 1mb buffer
 
     float* ptr = (float*) glMapNamedBufferRange(buf[free_buf], 0, dat_size, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
     for(int i=0; i<size; i++){
@@ -215,6 +224,11 @@ unsigned int Renderer::prepBuf(std::vector<GLfloat>& data) {
 unsigned int Renderer::editBuf(std::vector<GLfloat>& data, GLuint i) {
     int size = (int) data.size();
     int dat_size = 4*size;
+
+    // Buffer overflowed
+    if(dat_size >= ONE_MB){
+        Logger::log(ERROR, "Buffer overflowed, buffer ID: " + std::string(reinterpret_cast<const char *>(i)), __FILENAME__);
+    }
 
     float* ptr = (float*) glMapNamedBufferRange(buf[i], 0, dat_size, GL_MAP_READ_BIT|GL_MAP_WRITE_BIT);
     for(int x=0; x<size; x++){

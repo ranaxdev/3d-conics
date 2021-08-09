@@ -50,7 +50,7 @@ public:
 
     unsigned int prepBuf(GLfloat data[], GLuint size);
     unsigned int prepBuf(GLushort data[], GLuint size); // Temp: make this generic later
-    unsigned int prepBuf(std::vector<GLfloat>& data);
+    unsigned int prepBuf(std::vector<GLfloat>& data, bool big);
     unsigned int editBuf(std::vector<GLfloat>& data, GLuint i);
 
     void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attribs, Shader& s);

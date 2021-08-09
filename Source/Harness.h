@@ -43,7 +43,6 @@ namespace conics{
         const Window& getWindow() const;
 
         void setKA(const int& key, const int& action);
-
         void addKeyListener(const std::shared_ptr<KeyListener>& k);
 
         virtual void run(Harness* h);
@@ -56,11 +55,17 @@ namespace conics{
         Window w;
         std::vector<std::shared_ptr<KeyListener>> keylisteners;
 
+
     protected:
         GLuint VAO;
         GLuint buf[1024];
         Renderer* R;
         GLFWwindow* window;
+
+        // GUI stuff
+        static int menu_lod;
+        static void show_menu(); // GUI menu
+
     };
 
     // GLFW callbacks

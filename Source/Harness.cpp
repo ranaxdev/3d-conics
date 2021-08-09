@@ -9,7 +9,12 @@
 #include "Utils/Logger.h"
 #include "Harness.h"
 
+
+/**************************************************************************
+ *                          CONICS ROUTINES HARNESS
+ ************************************************************************* */
 glm::mat4 conics::Harness::VP = glm::mat4(1.0f);
+int conics::Harness::menu_lod = 5.0f;
 
 conics::Harness::~Harness() {
     // Dump log file
@@ -103,6 +108,9 @@ void conics::Harness::run(conics::Harness* h) {
     }
 }
 
+
+
+
 void conics::Harness::startup() {}
 
 void conics::Harness::render(float currentTime) {}
@@ -121,11 +129,19 @@ void conics::Harness::addKeyListener(const std::shared_ptr<KeyListener>& k) {
 
 void conics::Harness::setKA(const int &key, const int &action) {
     Harness::currentKey = key;
-    Harness:currentAction = action;
+    Harness::currentAction = action;
+}
+
+void conics::Harness::show_menu() {
+    ImGui::Begin("Control Menu");
+    ImGui::SliderInt("LOD", &conics::Harness::menu_lod, 5.0f, MAX_LOD);
+    ImGui::End();
 }
 
 
-
+/**************************************************************************
+ *                          CONICS ROUTINES GENERAL
+ ************************************************************************* */
 void conics::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     // Retrieve harness of current window
     Harness* instance = (Harness*)glfwGetWindowUserPointer(window);
