@@ -49,7 +49,7 @@ public:
     void renderMesh(std::vector<GLfloat>& data);
 
     unsigned int prepBuf(GLfloat data[], GLuint size);
-    unsigned int prepBuf(GLushort data[], GLuint size); // Temp: make this generic later
+    unsigned int prepBuf(GLushort data[], GLuint size);
     unsigned int prepBuf(std::vector<GLfloat>& data, bool big);
     unsigned int editBuf(std::vector<GLfloat>& data, GLuint i);
 
@@ -70,7 +70,7 @@ private:
     static GLuint active_surface;        // Buffer ID/loc for currently active surface
 
     // Util
-    Vertex3D func(float A, float B, float t, surface s); // Surface eq solver
+    Vertex3D func(float A, float B, float t, surface s); // Surface/Conics eq solver
 
     // Shaders
     Shader shader_axis = Shader(SRC+"Shaders/vert.glsl", SRC+"Shaders/frag.glsl");

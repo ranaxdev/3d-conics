@@ -66,7 +66,7 @@ public:
 #define DEBUG 0
 #if !DEBUG
 int main(){
-    conics::Window window = conics::Window(1280, 960, "conics", 0.0f, 0.0f, 0.0f);
+    conics::Window window = conics::Window(1920, 1080, "conics", 0.0f, 0.0f, 0.0f);
     std::shared_ptr<Camera> camera(new Camera);
     App* a = new App;
     a->setWindow(window);

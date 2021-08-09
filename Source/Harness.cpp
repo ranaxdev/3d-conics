@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+#include <algorithm>
 
 #include "Utils/Globals.h"
 #include "Utils/Logger.h"
@@ -14,20 +15,39 @@
 
 /* MENU */
 ImVec2 conics::Harness::menu_pos = ImVec2(0.0f, 0.0f);
-ImVec2 conics::Harness::menu_size = ImVec2(320.0f, 100.0f);
-int conics::Harness::menu_lod = 5.0f;
+ImVec2 conics::Harness::menu_size = ImVec2(320.0f, 300.0f);
+std::vector<ImGuiWindowFlags_> conics::Harness::menu_flag_list = {ImGuiWindowFlags_NoResize,ImGuiWindowFlags_NoInputs,ImGuiWindowFlags_NoBackground};
+ImGuiWindowFlags_ conics::Harness::menu_flags = ImGuiWindowFlags_None;
+
+int conics::Harness::menu_lod       = 5;
+float conics::Harness::menu_alpha   = 1.0f;
+float conics::Harness::menu_beta    = 1.0f;
 
 // Menu Window
 void conics::Harness::show_menu() {
     ImGui::SetNextWindowPos(menu_pos);
     ImGui::SetNextWindowSize(menu_size);
+    ImGui::SetNextWindowFocus();
 
     ImGui::Begin("Control Menu", nullptr,
                  // Menu window properties
-                 ImGuiWindowFlags_NoResize);
+                 menu_flags);
 
+    // Surface state
     ImGui::SliderInt("   LOD", &conics::Harness::menu_lod, 5.0f, MAX_LOD);
+    ImGui::SliderFloat("   alpha", &conics::Harness::menu_alpha, 0.1f, 10.0f);
+    ImGui::SliderFloat("   beta", &conics::Harness::menu_beta, 0.1f, 10.0f);
     ImGui::End();
+}
+
+// Update menu flags from flags in the menu list vector (call if you want to change flags)
+void conics::Harness::menu_update_flags() {
+    menu_flags = ImGuiWindowFlags_None;
+    std::sort(menu_flag_list.begin(), menu_flag_list.end());
+
+    for(auto& f : menu_flag_list){
+        menu_flags = static_cast<ImGuiWindowFlags_>(menu_flags | f);
+    }
 }
 
 
@@ -75,7 +95,7 @@ void conics::Harness::run(conics::Harness* h) {
     glViewport(0,0,1920,1080);
 
     /* Application Initialization */
-    glCreateVertexArrays(1, &VAO);
+    glCreateVertexArrays(1, &VAO); // Init VAO
     Harness::R = new Renderer(Harness::VAO, Harness::buf); // Renderer instance
     IMGUI_CHECKVERSION();
 
@@ -88,8 +108,12 @@ void conics::Harness::run(conics::Harness* h) {
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 450");
 
+    // App instance init
+    menu_update_flags();
+
     startup();
 
+    // Activate VAO
     glBindVertexArray(VAO);
 
 
@@ -170,6 +194,7 @@ const bool conics::Harness::isEditing() const {
 }
 
 
+
 /**************************************************************************
  *                          CONICS ROUTINES GENERAL
  ************************************************************************* */
@@ -188,7 +213,7 @@ void conics::key_callback(GLFWwindow *window, int key, int scancode, int action,
 
 
     // Toggle Edit Mode
-    if(key == GLFW_KEY_ENTER && action == GLFW_PRESS){
+    if(key == GLFW_KEY_SPACE && action == GLFW_PRESS){
         instance->toggleEditing();
 
         /*
@@ -198,10 +223,30 @@ void conics::key_callback(GLFWwindow *window, int key, int scancode, int action,
         if(instance->isEditing()){
             glfwGetCursorPos(window, &instance->saved_XPOS, &instance->saved_YPOS);
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
+            // Adjust menu window flags
+            std::vector<ImGuiWindowFlags_> toRemove = {
+                    ImGuiWindowFlags_NoInputs,
+                    ImGuiWindowFlags_NoBackground
+            };
+            std::sort(toRemove.begin(), toRemove.end());
+            Harness::menu_flag_list.erase(
+                    std::remove_if(Harness::menu_flag_list.begin(), Harness::menu_flag_list.end(),
+                                   [&](auto x){return std::binary_search(toRemove.begin(), toRemove.end(),x);})
+                                   , Harness::menu_flag_list.end());
+
+            Harness::menu_update_flags();
+
         }
         else{
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
             glfwSetCursorPos(window, instance->saved_XPOS, instance->saved_YPOS);
+
+            // Add NoInput flag to menu to prevent interaction while observing
+            Harness::menu_flag_list.push_back(ImGuiWindowFlags_NoInputs);
+            Harness::menu_flag_list.push_back(ImGuiWindowFlags_NoBackground);
+
+            Harness::menu_update_flags();
         }
     }
 }
