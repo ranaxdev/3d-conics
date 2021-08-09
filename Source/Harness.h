@@ -80,8 +80,10 @@ namespace conics{
         static ImGuiWindowFlags_ menu_flags;
         static ImVec2 menu_pos;
         static ImVec2 menu_size;
+        static bool menu_breath;
 
         static void menu_update_flags();
+        static void menu_plug_mesh(Mesh& m);
         static void show_menu(); // GUI menu window
 
         // Other states

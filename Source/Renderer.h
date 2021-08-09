@@ -17,8 +17,7 @@ enum surface{
     UNRESTRICTED_CONE,
 
     // Conic surfaces
-    DOUBLE_CONE
-
+    DOUBLE_CONE = 20,
 };
 
 struct Mesh{
@@ -43,7 +42,7 @@ public:
     ~Renderer() = default;
 
     void enableAxis();
-    void setupMesh(Mesh& m);
+    void updateMesh(Mesh& m);
 
     void renderAxis();
     void renderMesh(std::vector<GLfloat>& data);

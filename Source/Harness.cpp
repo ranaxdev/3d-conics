@@ -16,6 +16,7 @@
 /* MENU */
 ImVec2 conics::Harness::menu_pos = ImVec2(0.0f, 0.0f);
 ImVec2 conics::Harness::menu_size = ImVec2(320.0f, 300.0f);
+bool conics::Harness::menu_breath = false;
 std::vector<ImGuiWindowFlags_> conics::Harness::menu_flag_list = {ImGuiWindowFlags_NoResize,ImGuiWindowFlags_NoInputs,ImGuiWindowFlags_NoBackground};
 ImGuiWindowFlags_ conics::Harness::menu_flags = ImGuiWindowFlags_None;
 
@@ -34,9 +35,12 @@ void conics::Harness::show_menu() {
                  menu_flags);
 
     // Surface state
+    ImGui::Text("Press SPACE to enter Edit Mode\n\n");
     ImGui::SliderInt("   LOD", &conics::Harness::menu_lod, 5.0f, MAX_LOD);
     ImGui::SliderFloat("   alpha", &conics::Harness::menu_alpha, 0.1f, 10.0f);
     ImGui::SliderFloat("   beta", &conics::Harness::menu_beta, 0.1f, 10.0f);
+    ImGui::Checkbox("Breath", &conics::Harness::menu_breath);
+
     ImGui::End();
 }
 
@@ -48,6 +52,12 @@ void conics::Harness::menu_update_flags() {
     for(auto& f : menu_flag_list){
         menu_flags = static_cast<ImGuiWindowFlags_>(menu_flags | f);
     }
+}
+// Connect the menu items to mesh functionality
+void conics::Harness::menu_plug_mesh(Mesh &m) {
+    m.alpha = Harness::menu_alpha;
+    m.beta = Harness::menu_beta;
+    m.lod = Harness::menu_lod;
 }
 
 
@@ -165,7 +175,6 @@ void conics::Harness::run(conics::Harness* h) {
             glfwSwapBuffers(window);
             glfwPollEvents();
 
-
             last = currentTime;
         }
     }
@@ -202,8 +211,6 @@ void conics::Harness::toggleEditing() {
 const bool conics::Harness::isEditing() const {
     return Harness::editing;
 }
-
-
 
 /**************************************************************************
  *                          CONICS ROUTINES GENERAL

@@ -58,7 +58,7 @@ void Renderer::enableAxis() {
  * NOTE: A = x-range/height
  *       B = y-range/angle
  */
-void Renderer::setupMesh(Mesh& m) {
+void Renderer::updateMesh(Mesh& m) {
     mesh_data.clear();
 
     // Create horizontal and vertical meshes

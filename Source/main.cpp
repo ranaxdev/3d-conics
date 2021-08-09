@@ -37,19 +37,17 @@ public:
 
         R->enableAxis();
         m = new Mesh(surface::DISC, 0.5f, 0.5f, 1.0f, 10);
-        R->setupMesh(*m);
+        R->updateMesh(*m);
 
     };
 
-
     void render(float delta) override {
         VP = camera->calc_VP(delta);
-        show_menu();
 
-        m->lod = Harness::menu_lod;
-        m->alpha = Harness::menu_alpha;
-        m->beta = Harness::menu_beta;
-        R->setupMesh(*m);
+        show_menu();
+        menu_plug_mesh(*m);
+        R->updateMesh(*m);
+
         // MESH
         R->renderMesh(Renderer::mesh_data);
 
