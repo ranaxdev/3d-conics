@@ -7,16 +7,17 @@
 #include "Utils/Logger.h"
 #include "Harness.h"
 
-
 /**************************************************************************
- *                          CONICS ROUTINES HARNESS
+ *                                   GUI
  ************************************************************************* */
-glm::mat4 conics::Harness::VP = glm::mat4(1.0f);
+/* GENERAL */
 
+/* MENU */
 ImVec2 conics::Harness::menu_pos = ImVec2(0.0f, 0.0f);
 ImVec2 conics::Harness::menu_size = ImVec2(320.0f, 100.0f);
 int conics::Harness::menu_lod = 5.0f;
 
+// Menu Window
 void conics::Harness::show_menu() {
     ImGui::SetNextWindowPos(menu_pos);
     ImGui::SetNextWindowSize(menu_size);
@@ -24,10 +25,16 @@ void conics::Harness::show_menu() {
     ImGui::Begin("Control Menu", nullptr,
                  // Menu window properties
                  ImGuiWindowFlags_NoResize);
-    ImGui::SliderInt("LOD", &conics::Harness::menu_lod, 5.0f, MAX_LOD);
+
+    ImGui::SliderInt("   LOD", &conics::Harness::menu_lod, 5.0f, MAX_LOD);
     ImGui::End();
 }
 
+
+/**************************************************************************
+ *                          CONICS ROUTINES HARNESS
+ ************************************************************************* */
+glm::mat4 conics::Harness::VP = glm::mat4(1.0f);
 
 conics::Harness::~Harness() {
     // Dump log file
@@ -65,6 +72,7 @@ void conics::Harness::run(conics::Harness* h) {
     // OpenGL settings
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
+    glViewport(0,0,1920,1080);
 
     /* Application Initialization */
     glCreateVertexArrays(1, &VAO);
@@ -103,7 +111,11 @@ void conics::Harness::run(conics::Harness* h) {
                 else
                     o->keys[k] = 0;
 
+                // Send current cursor position
                 glfwGetCursorPos(window, &o->xpos, &o->ypos);
+
+                // Send editing state
+                o->editing = Harness::editing;
             }
         }
 
@@ -149,7 +161,13 @@ void conics::Harness::setKA(const int &key, const int &action) {
     Harness::currentAction = action;
 }
 
+void conics::Harness::toggleEditing() {
+    Harness::editing = !Harness::editing;
+}
 
+const bool conics::Harness::isEditing() const {
+    return Harness::editing;
+}
 
 
 /**************************************************************************
@@ -167,6 +185,11 @@ void conics::key_callback(GLFWwindow *window, int key, int scancode, int action,
     // Shutdown
     if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, 1);
+
+
+    // Toggle Edit Mode
+    if(key == GLFW_KEY_ENTER && action == GLFW_PRESS)
+        instance->toggleEditing();
 }
 
 

@@ -46,6 +46,9 @@ namespace conics{
         void setWindow(const Window& window); // Call before running otherwise defaults
         const Window& getWindow() const;
 
+        void toggleEditing();
+        const bool isEditing() const;
+
         void setKA(const int& key, const int& action);
         void addKeyListener(const std::shared_ptr<KeyListener>& k);
 
@@ -72,6 +75,9 @@ namespace conics{
         static ImVec2 menu_pos;
         static ImVec2 menu_size;
         static void show_menu(); // GUI menu window
+
+        // Other states
+        bool editing = false;
 
     };
 
