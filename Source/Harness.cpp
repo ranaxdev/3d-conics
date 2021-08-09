@@ -224,11 +224,12 @@ void conics::key_callback(GLFWwindow *window, int key, int scancode, int action,
             glfwGetCursorPos(window, &instance->saved_XPOS, &instance->saved_YPOS);
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
-            // Adjust menu window flags
-            std::vector<ImGuiWindowFlags_> toRemove = {
+            // Adjust menu window flags for edit mode
+            std::vector<ImGuiWindowFlags_> toRemove = { // Flags to remove
                     ImGuiWindowFlags_NoInputs,
                     ImGuiWindowFlags_NoBackground
             };
+            // Remove subset of flags (toRemove) from menu flag list
             std::sort(toRemove.begin(), toRemove.end());
             Harness::menu_flag_list.erase(
                     std::remove_if(Harness::menu_flag_list.begin(), Harness::menu_flag_list.end(),
@@ -242,7 +243,7 @@ void conics::key_callback(GLFWwindow *window, int key, int scancode, int action,
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
             glfwSetCursorPos(window, instance->saved_XPOS, instance->saved_YPOS);
 
-            // Add NoInput flag to menu to prevent interaction while observing
+            // Adjust menu window flags for normal mode
             Harness::menu_flag_list.push_back(ImGuiWindowFlags_NoInputs);
             Harness::menu_flag_list.push_back(ImGuiWindowFlags_NoBackground);
 
