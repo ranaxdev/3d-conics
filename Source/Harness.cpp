@@ -1,7 +1,3 @@
-#include "../imgui/imgui.h"
-#include "../imgui/imgui_impl_glfw.h"
-#include "../imgui/imgui_impl_opengl3.h"
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -16,7 +12,22 @@
  *                          CONICS ROUTINES HARNESS
  ************************************************************************* */
 glm::mat4 conics::Harness::VP = glm::mat4(1.0f);
+
+ImVec2 conics::Harness::menu_pos = ImVec2(0.0f, 0.0f);
+ImVec2 conics::Harness::menu_size = ImVec2(320.0f, 100.0f);
 int conics::Harness::menu_lod = 5.0f;
+
+void conics::Harness::show_menu() {
+    ImGui::SetNextWindowPos(menu_pos);
+    ImGui::SetNextWindowSize(menu_size);
+
+    ImGui::Begin("Control Menu", nullptr,
+                 // Menu window properties
+                 ImGuiWindowFlags_NoResize);
+    ImGui::SliderInt("LOD", &conics::Harness::menu_lod, 5.0f, MAX_LOD);
+    ImGui::End();
+}
+
 
 conics::Harness::~Harness() {
     // Dump log file
@@ -138,11 +149,7 @@ void conics::Harness::setKA(const int &key, const int &action) {
     Harness::currentAction = action;
 }
 
-void conics::Harness::show_menu() {
-    ImGui::Begin("Control Menu");
-    ImGui::SliderInt("LOD", &conics::Harness::menu_lod, 5.0f, MAX_LOD);
-    ImGui::End();
-}
+
 
 
 /**************************************************************************

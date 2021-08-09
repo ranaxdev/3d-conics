@@ -1,6 +1,10 @@
 #ifndef _H_HARNESS
 #define _H_HARNESS
 
+#include "../imgui/imgui.h"
+#include "../imgui/imgui_impl_glfw.h"
+#include "../imgui/imgui_impl_opengl3.h"
+
 #include <vector>
 #include <memory>
 #include <functional>
@@ -62,9 +66,12 @@ namespace conics{
         Renderer* R;
         GLFWwindow* window;
 
-        // GUI stuff
+        /* GUI stuff */
+        // Menu states
         static int menu_lod;
-        static void show_menu(); // GUI menu
+        static ImVec2 menu_pos;
+        static ImVec2 menu_size;
+        static void show_menu(); // GUI menu window
 
     };
 
