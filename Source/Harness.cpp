@@ -66,8 +66,6 @@ void conics::Harness::run(conics::Harness* h) {
     ImGui_ImplOpenGL3_Init("#version 450");
 
     // App instance init
-    menu_update_flags();
-
     startup();
 
     // Activate VAO

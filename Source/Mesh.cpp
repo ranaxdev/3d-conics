@@ -6,8 +6,9 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
 {
     Mesh::first_update = false;
     Mesh::saved_buffer = INT16_MAX;
-}
 
+    Mesh::menu = new Menu(alpha, beta, lod);
+}
 
 
 /* Pre-fed mesh setup
@@ -22,6 +23,11 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
  *       B = y-range/angle
  */
 void Mesh::update() {
+    alpha = menu->alpha;
+    beta = menu->beta;
+    lod = menu->lod;
+    menu->update();
+
     mesh_data.clear();
 
     // Create horizontal and vertical meshes

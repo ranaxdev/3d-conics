@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 
 #include <vector>
+#include "GUI/Menu.h"
 
 enum surface{
     // Pure surfaces
@@ -37,6 +38,8 @@ private:
     // beta  - y-range/angle depending on surface type
     float alpha, beta, time;
     int lod;
+
+    Menu* menu;
 
     surface s;
     Vertex3D func(float A, float B, float t, surface s); // Surface/Conics eq solver

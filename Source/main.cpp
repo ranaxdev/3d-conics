@@ -45,9 +45,6 @@ public:
     void render(float delta) override {
         VP = camera->calc_VP(delta);
 
-//        show_menu();
-//        menu_plug_mesh(*m);
-
         // MESH
         R->renderMesh(*m);
 

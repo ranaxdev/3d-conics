@@ -18,7 +18,6 @@ Menu::Menu(float alpha, float beta, int lod)
     };
 }
 
-
 void Menu::update() {
     if(breathe){
         alpha = 5+(5*sin(amp*glfwGetTime()));
@@ -44,4 +43,3 @@ void Menu::update() {
 
     ImGui::End();
 }
-

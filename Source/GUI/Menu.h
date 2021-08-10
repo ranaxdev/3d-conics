@@ -7,12 +7,10 @@ class Menu : public GUI{
 
 public:
     Menu(float alpha, float beta, int lod);
-    ~Menu() override = default;
-
 
     void update() override;
 
-private:
+
     float alpha, beta, amp;
     int lod;
     bool breathe;
