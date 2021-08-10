@@ -1,16 +1,16 @@
 #ifndef _H_HARNESS
 #define _H_HARNESS
 
-#include "../imgui/imgui.h"
-#include "../imgui/imgui_impl_glfw.h"
-#include "../imgui/imgui_impl_opengl3.h"
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_glfw.h"
+#include "imgui/imgui_impl_opengl3.h"
 
 #include <vector>
 #include <memory>
 #include <functional>
 #include <cmath>
 
-#include "Utils/KeyListener.h"
+#include "KeyListener.h"
 #include "Renderer.h"
 
 

@@ -1,7 +1,7 @@
 #ifndef _H_GUI_MENU
 #define _H_GUI_MENU
 
-#include "../Utils/Globals.h"
+#include "Globals.h"
 #include "GUI.h"
 
 class Menu : public GUI{

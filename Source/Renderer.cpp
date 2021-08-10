@@ -1,6 +1,6 @@
 #include <string>
 #include <iostream>
-#include "Utils/Logger.h"
+#include "Logger.h"
 #include "Renderer.h"
 #include "Harness.h"
 

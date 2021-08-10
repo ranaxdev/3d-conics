@@ -5,7 +5,7 @@
 #include <glm/gtx/string_cast.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "Utils/KeyListener.h"
+#include "KeyListener.h"
 
 // Direction constants - may change depending on util lib
 #define FWD GLFW_KEY_W

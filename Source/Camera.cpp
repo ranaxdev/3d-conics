@@ -1,5 +1,4 @@
 #include "Camera.h"
-#include <iostream>
 
 glm::mat4 &Camera::calc_VP(float delta) {
     if(!editing){ // Camera updates in normal mode, stays still in edit mode

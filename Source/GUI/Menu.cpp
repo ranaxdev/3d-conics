@@ -22,7 +22,6 @@ Menu::Menu(float alpha, float beta, int lod)
 }
 
 void Menu::update() {
-
     if(breathe){
         breath_timer += delta;
         alpha = 5+(5*sin(amp*breath_timer));

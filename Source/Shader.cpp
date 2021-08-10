@@ -4,8 +4,8 @@
 #include <sstream>
 #include <iostream>
 
-#include "Utils/Logger.h"
-#include "Utils/Globals.h"
+#include "Logger.h"
+#include "Globals.h"
 #include "Shader.h"
 
 Shader::Shader(std::string&& vshader_path, std::string&& fshader_path) {

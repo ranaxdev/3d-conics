@@ -4,8 +4,8 @@
 #include <iostream>
 #include <algorithm>
 
-#include "Utils/Globals.h"
-#include "Utils/Logger.h"
+#include "Globals.h"
+#include "Logger.h"
 #include "Harness.h"
 
 /**************************************************************************

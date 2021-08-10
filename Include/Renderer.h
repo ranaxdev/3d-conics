@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "Mesh.h"
-#include "Utils/Globals.h"
+#include "Globals.h"
 #include "Shader.h"
 
 

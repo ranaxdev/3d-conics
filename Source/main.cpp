@@ -1,6 +1,6 @@
-#include "../imgui/imgui.h"
-#include "../imgui/imgui_impl_glfw.h"
-#include "../imgui/imgui_impl_opengl3.h"
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_glfw.h"
+#include "imgui/imgui_impl_opengl3.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -21,9 +21,9 @@
 #include "Camera.h"
 #include "Renderer.h"
 
-#include "Utils/Math.h"
-#include "Utils/Logger.h"
-#include "Utils/Globals.h"
+#include "Math.h"
+#include "Logger.h"
+#include "Globals.h"
 
 
 using namespace conics;
