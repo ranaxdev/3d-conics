@@ -25,7 +25,7 @@ struct Vertex3D{
 class Mesh{
 public:
     Mesh(surface s, float alpha, float beta, float time=1.0f, int lod=10);
-    ~Mesh() = delete;
+    ~Mesh();
 
     bool first_update;
     GLuint saved_buffer;
@@ -33,13 +33,13 @@ public:
 
     void setAlpha(float alpha);
     void update();
+
 private:
+    Menu* menu; // GUI
     // alpha - x-range/height depending on surface type
     // beta  - y-range/angle depending on surface type
     float alpha, beta, time;
     int lod;
-
-    Menu* menu;
 
     surface s;
     Vertex3D func(float A, float B, float t, surface s); // Surface/Conics eq solver

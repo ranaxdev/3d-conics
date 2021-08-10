@@ -23,10 +23,10 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
  *       B = y-range/angle
  */
 void Mesh::update() {
+    menu->update();
     alpha = menu->alpha;
     beta = menu->beta;
     lod = menu->lod;
-    menu->update();
 
     mesh_data.clear();
 
@@ -60,7 +60,6 @@ void Mesh::update() {
         Mesh::first_update = true;
 
 }
-
 
 
 /*
@@ -107,6 +106,10 @@ Vertex3D Mesh::func(float A, float B, float t, surface s) {
 
 void Mesh::setAlpha(float alpha) {
     this->alpha = alpha;
+}
+
+Mesh::~Mesh() {
+    delete menu;
 }
 
 

@@ -15,7 +15,7 @@
 class GUI{
 public:
     GUI() = default;
-    ~GUI() = default;
+    ~GUI();
 
     virtual void update() = 0;
 

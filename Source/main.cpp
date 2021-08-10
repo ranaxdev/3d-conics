@@ -39,7 +39,6 @@ public:
 
         R->enableAxis();
         m = new Mesh(surface::DISC, 5.0f, 5.0f, 1.0f, 20);
-
     };
 
     void render(float delta) override {
@@ -47,7 +46,6 @@ public:
 
         // MESH
         R->renderMesh(*m);
-
 
         // AXES
         R->renderAxis();
