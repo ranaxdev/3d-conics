@@ -37,20 +37,17 @@ public:
     void startup() override {
 
         R->enableAxis();
-        m = new Mesh(surface::DISC, 0.5f, 0.5f, 1.0f, 10);
-        R->updateMesh(*m);
-
+        m = new Mesh(surface::DISC, 5.0f, 5.0f, 1.0f, 20);
     };
 
     void render(float delta) override {
         VP = camera->calc_VP(delta);
 
-        show_menu();
-        menu_plug_mesh(*m);
-        R->updateMesh(*m);
+//        show_menu();
+//        menu_plug_mesh(*m);
 
         // MESH
-        R->renderMesh(Renderer::mesh_data);
+        R->renderMesh(*m);
 
         // AXES
         R->renderAxis();

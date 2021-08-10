@@ -7,16 +7,9 @@
 // Static initializations
 int Renderer::free_buf          = -1;
 int Renderer::free_bindpoint    = -1;
-GLuint Renderer::active_surface = -1;
-bool Renderer::mesh_setup = false;
-std::vector<GLfloat> Renderer::mesh_data = {};
-
 
 Renderer::Renderer(GLuint &VAO, GLuint *buf)
 : VAO(VAO), buf(buf) {}
-
-
-
 
 
 
@@ -47,65 +40,6 @@ void Renderer::enableAxis() {
 
 }
 
-/* Pre-fed mesh setup
- * Mesh properties (context-dependant):
- * @xrange - X values range e.g. if -5 to 5, enter 10
- * @yrange - Same as xrange but with y-vals. Note: this is z-axis in OpenGL
- * @angle  - Maximum angle range e.g. 360 for round mesh
- * @height - Maximum height range (along GL y-axis)
- * @lod    - Level of detail, how fine the mesh should be
- *
- * NOTE: A = x-range/height
- *       B = y-range/angle
- */
-void Renderer::updateMesh(Mesh& m) {
-    mesh_data.clear();
-
-    // Create horizontal and vertical meshes
-    float split = m.lod/2;
-    for(int i=0; i<m.lod; i++){
-        for(int j=0; j<m.lod; j++){
-            float A = m.alpha*(((float) (i-split))/split);
-            float B = m.beta*(((float) (j-split))/split);
-            Vertex3D v = func(A,B, m.time, m.s); // Solve surface eq
-            mesh_data.push_back(v.x);
-            mesh_data.push_back(v.z);
-            mesh_data.push_back(-2.5f+v.y); // Move to center
-        }
-    }
-    for(int i=0; i<m.lod; i++){
-        for(int j=0; j<m.lod; j++){
-            float x = m.alpha*(((float) (j-split))/split); // swap i,j for other dir.
-            float y = m.beta*(((float) (i-split))/split);
-            Vertex3D v = func(x,y,m.time,m.s);
-            mesh_data.push_back(v.x);
-            mesh_data.push_back(v.z);
-            mesh_data.push_back(-2.5f+v.y);
-        }
-    }
-    // Reserve LOD to inform rendering of this mesh
-    mesh_data.push_back((float) m.lod);
-
-    // First time setup
-    if(!Renderer::mesh_setup){
-        GLuint loc = prepBuf(mesh_data, true);
-        formatBuf(loc, 3, {3}, Renderer::shader_surface);
-        Renderer::active_surface = loc;
-    }
-
-    // Editing buffer otherwise (buffer changes after initial setup)
-    else{
-        // TODO: Optimization - Only call when actually editing properties
-        editBuf(mesh_data, Renderer::active_surface);
-    }
-
-    // Surface mesh has been initialized
-    if(!Renderer::mesh_setup)
-        Renderer::mesh_setup = true;
-}
-
-
-
 
 
 
@@ -123,14 +57,28 @@ void Renderer::renderAxis() {
 /*
  * Renders vertical and horizontal components of mesh vertices
  */
-void Renderer::renderMesh(std::vector<GLfloat>& data) {
+void Renderer::renderMesh(Mesh& m) {
+    // First time setup
+    if(!m.first_update){
+        GLuint loc = prepBuf(m.mesh_data, true);
+        formatBuf(loc, 3, {3}, Renderer::shader_surface);
+        m.saved_buffer = loc;
+    }
+    // Editing buffer otherwise (buffer changes after initial setup)
+    else{
+        // TODO: Optimization - Only call when actually editing properties
+        editBuf(m.mesh_data, m.saved_buffer);
+    }
+    m.update();
+
+
     glLineWidth(10.0f);
 
     shader_surface.bind();
     shader_surface.setMat4(20, conics::Harness::VP);
     shader_surface.setVec4(30, cyan);
 
-    int lod = (int) data.back(); // Retrieve reserved LOD
+    int lod = (int) m.mesh_data.back(); // Retrieve reserved LOD
 
     /*
      * The vertical mesh data is appended to the horizontal one in the buffer
@@ -140,50 +88,8 @@ void Renderer::renderMesh(std::vector<GLfloat>& data) {
      */
     for(int i=0; i<lod; i++){
         glDrawArrays(GL_LINE_STRIP, lod*i, lod); // Draw horizontal
-        glDrawArrays(GL_LINE_STRIP, ((int) data.size()-1)/3/2+(lod*i), lod); // Draw vertical
+        glDrawArrays(GL_LINE_STRIP, ((int) m.mesh_data.size()-1)/3/2+(lod*i), lod); // Draw vertical
     }
-}
-
-/*
- * Solves surface equation of the type provided
- * Time parameter is optional (some surfaces don't use it)
- */
-Vertex3D Renderer::func(float A, float B, float t, surface s) {
-    Vertex3D v{};
-    switch (s) {
-        /* SURFACES */
-        case PARABOLOID:
-            v.x = A;
-            v.y = B;
-            v.z = pow(A,2) + pow(B,2);
-            break;
-
-        case DISC:
-            v.x = A;
-            v.y = B;
-            v.z = sin(pow(A,2) + pow(B,2));
-            break;
-
-        case HYPERBOLIC:
-            v.x = A;
-            v.y = B;
-            v.z = pow(A,2) - pow(B,2);
-            break;
-
-        case UNRESTRICTED_CONE:
-            v.x = A;
-            v.y = B;
-            v.z = sqrt(pow(A,2)+pow(B,2));
-            break;
-
-        /* CONICS */
-        case DOUBLE_CONE:
-            v.x = A*cos(B);
-            v.y = A*sin(B);
-            v.z = A;
-            break;
-    }
-    return v;
 }
 
 

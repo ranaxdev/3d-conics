@@ -18,7 +18,9 @@ ImVec2 conics::Harness::menu_pos = ImVec2(0.0f, 0.0f);
 ImVec2 conics::Harness::menu_size = ImVec2(320.0f, 300.0f);
 bool conics::Harness::menu_breath = false;
 float conics::Harness::menu_breath_amp = 0.5f;
-std::vector<ImGuiWindowFlags_> conics::Harness::menu_flag_list = {ImGuiWindowFlags_NoResize,ImGuiWindowFlags_NoInputs,ImGuiWindowFlags_NoBackground};
+std::vector<ImGuiWindowFlags_> conics::Harness::menu_flag_list = {ImGuiWindowFlags_NoResize,
+                                                                  ImGuiWindowFlags_NoInputs,
+                                                                  ImGuiWindowFlags_NoBackground};
 ImGuiWindowFlags_ conics::Harness::menu_flags = ImGuiWindowFlags_None;
 
 int conics::Harness::menu_lod       = 5;
@@ -61,11 +63,11 @@ void conics::Harness::menu_update_flags() {
     }
 }
 // Connect the menu items to mesh functionality
-void conics::Harness::menu_plug_mesh(Mesh &m) {
-    m.alpha = Harness::menu_alpha;
-    m.beta = Harness::menu_beta;
-    m.lod = Harness::menu_lod;
-}
+//void conics::Harness::menu_plug_mesh(Mesh &m) {
+//    m.alpha = Harness::menu_alpha;
+//    m.beta = Harness::menu_beta;
+//    m.lod = Harness::menu_lod;
+//}
 
 
 /**************************************************************************
