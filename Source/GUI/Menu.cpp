@@ -1,4 +1,6 @@
 #include <cmath>
+#include <iostream>
+#include <string>
 #include "Menu.h"
 
 
@@ -9,6 +11,7 @@ Menu::Menu(float alpha, float beta, int lod)
     Menu::size = ImVec2(320.0f, 300.0f);
 
     Menu::breathe = false;
+    Menu::breath_timer = 0.0f;
     Menu::amp = 0.5f;
 
     Menu::flag_list = {
@@ -19,9 +22,11 @@ Menu::Menu(float alpha, float beta, int lod)
 }
 
 void Menu::update() {
+
     if(breathe){
-        alpha = 5+(5*sin(amp*glfwGetTime()));
-        beta = 5+(5*sin(amp*glfwGetTime()));
+        breath_timer += delta;
+        alpha = 5+(5*sin(amp*breath_timer));
+        beta = 5+(5*sin(amp*breath_timer));
     }
 
     ImGui::SetNextWindowPos(pos);

@@ -69,33 +69,14 @@ namespace conics{
         Renderer* R;
         GLFWwindow* window;
 
-        /* GUI stuff */
-        // Menu states
-        static int menu_lod;
-        static float menu_alpha;
-        static float menu_beta;
-
     public:
-        static std::vector<ImGuiWindowFlags_> menu_flag_list;
-        static ImGuiWindowFlags_ menu_flags;
-        static ImVec2 menu_pos;
-        static ImVec2 menu_size;
-        static float menu_breath_amp;
-        static bool menu_breath;
-
-        static void menu_update_flags();
-        static void menu_plug_mesh(Mesh& m);
-        static void show_menu(); // GUI menu window
-
-        // Other states
+        // States
+//        static float delta;
         bool editing = false; // Mesh edit mode
-
 
         // For cursor restoration
         double saved_XPOS = 0.0f;
         double saved_YPOS = 0.0f;
-
-
     };
 
     // GLFW callbacks

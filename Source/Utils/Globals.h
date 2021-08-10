@@ -17,4 +17,5 @@
 #define FPS 100.0
 #define INTERVAL_MAX 1.0/FPS
 
+extern float delta;
 #endif

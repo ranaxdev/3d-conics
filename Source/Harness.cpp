@@ -11,8 +11,9 @@
 /**************************************************************************
  *                          CONICS ROUTINES HARNESS
  ************************************************************************* */
+//float conics::Harness::delta = 0.0f;
 glm::mat4 conics::Harness::VP = glm::mat4(1.0f);
-
+float delta;
 conics::Harness::~Harness() {
     // Dump log file
     Logger::dump();
@@ -75,7 +76,6 @@ void conics::Harness::run(conics::Harness* h) {
     // Application Rendering
     const GLfloat screen_color[4] = {w.color[0], w.color[1], w.color[2], w.color[3]};
     const float one = 1.0f;
-    float delta = 0.0f;
     float last = 0.0f;
     while(!glfwWindowShouldClose(window)){
         float currentTime = (float)glfwGetTime();
