@@ -1,5 +1,6 @@
 #include <cmath>
 #include <iostream>
+#include <string>
 #include "Menu.h"
 
 void Menu::editToggled() {
@@ -19,7 +20,7 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
 
     // Init members
     Menu::pos  = ImVec2(0.0f, 0.0f);
-    Menu::size = ImVec2(320.0f, 300.0f);
+    Menu::size = ImVec2(400.0f, SCREEN_H);
 
     Menu::breathe = false;
     Menu::breath_timer = 0.0f;
@@ -37,33 +38,34 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
     Menu::lod = 20;
 
     if(isConic){
-        text_type = "CONIC";
-        text_alpha = "   h-range";
-        text_beta = "   angle (rad)";
-        MAX_ALPHA = 10.0f;
-        MIN_ALPHA = 0.1f;
-        MAX_BETA = 2*PI;
-        MIN_BETA = 0.0f;
+        Menu::text_type = "CONIC";
+        Menu::text_alpha = "   h-range";
+        Menu::text_beta = "   angle (rad)";
+        Menu::MAX_ALPHA = 10.0f;
+        Menu::MIN_ALPHA = 0.1f;
+        Menu::MAX_BETA = 2*PI;
+        Menu::MIN_BETA = 0.0f;
     }
     else{
-        text_type = "SURFACE";
-        text_alpha = "   x-range";
-        text_beta = "   y-range";
-        MAX_ALPHA = 10.0f;
-        MIN_ALPHA = 0.1f;
-        MAX_BETA = 10.0f;
-        MIN_BETA = 0.1f;
+        Menu::text_type = "SURFACE";
+        Menu::text_alpha = "   x-range";
+        Menu::text_beta = "   y-range";
+        Menu::MAX_ALPHA = 10.0f;
+        Menu::MIN_ALPHA = 0.1f;
+        Menu::MAX_BETA = 10.0f;
+        Menu::MIN_BETA = 0.1f;
     }
-
-    text_mesh = surface_names[s];
+    Menu::breath_alpha_limit = Menu::MAX_ALPHA/2;
+    Menu::breath_beta_limt = Menu::MAX_BETA/2;
+    Menu::text_mesh = surface_names[s];
 }
 
 void Menu::update() {
     // Breathing function
     if(breathe){
         breath_timer += delta;
-        alpha = 5+(5*sin(amp*breath_timer));
-        beta = 5+(5*sin(amp*breath_timer));
+        alpha = 5+(breath_alpha_limit*sin(amp*breath_timer));
+        beta = 5+(breath_beta_limt*sin(amp*breath_timer));
     }
 
     // Window
@@ -93,8 +95,13 @@ void Menu::update() {
     ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
     ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
 
-    ImGui::Checkbox("Breath", &breathe);
-    ImGui::SliderFloat("Amplitude", &amp, 0.1f, 5.0f);
+    ImGui::Text("\n\n===== BREATHE MODE =====");
+    ImGui::Checkbox("Breathe On", &breathe);
+    ImGui::SliderFloat("   Amplitude", &amp, 0.1f, 5.0f);
+    ImGui::SliderFloat((std::string(text_alpha)+std::string(" lim")).c_str(), &breath_alpha_limit, 0.1f, MAX_ALPHA/2);
+    ImGui::SliderFloat((std::string(text_beta)+std::string(" lim")).c_str(), &breath_beta_limt, 0.1f, MAX_BETA/2);
+    ImGui::Text("========================");
+
 
     ImGui::End();
 }

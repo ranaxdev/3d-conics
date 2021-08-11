@@ -21,6 +21,8 @@ public:
     bool isConic;
     surface s;
     float MAX_ALPHA, MIN_ALPHA, MAX_BETA, MIN_BETA;
+    float breath_alpha_limit;
+    float breath_beta_limt;
 
     ImVec2 pos;
     ImVec2 size;

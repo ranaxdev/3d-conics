@@ -17,5 +17,8 @@
 #define FPS 100.0
 #define INTERVAL_MAX 1.0/FPS
 
+#define SCREEN_W 1920
+#define SCREEN_H 1080
+
 extern float delta;
 #endif
