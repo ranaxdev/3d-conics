@@ -94,14 +94,13 @@ void conics::Harness::run(conics::Harness* h) {
                         o->keys[k] = 1;
                     else
                         o->keys[k] = 0;
-
-                    // Send current cursor position
-                    if(!editing)
-                        glfwGetCursorPos(window, &o->xpos, &o->ypos);
-
-                    // Send editing state
-                    o->editing = Harness::editing;
                 }
+                // Send current cursor position
+                if(!editing)
+                    glfwGetCursorPos(window, &o->xpos, &o->ypos);
+
+                // Send editing state
+                o->editing = Harness::editing;
             }
 
             // GUI Rendering frame initialization
@@ -157,6 +156,12 @@ const bool conics::Harness::isEditing() const {
     return Harness::editing;
 }
 
+void conics::Harness::notifyListeners() {
+    for(auto& o : keylisteners){
+        o->editToggled();
+    }
+}
+
 /**************************************************************************
  *                          CONICS ROUTINES GENERAL
  ************************************************************************* */
@@ -177,6 +182,7 @@ void conics::key_callback(GLFWwindow *window, int key, int scancode, int action,
     // Toggle Edit Mode
     if(key == GLFW_KEY_SPACE && action == GLFW_PRESS){
         instance->toggleEditing();
+        instance->notifyListeners();
 
         /*
          * Save last cursor position when entering edit mode

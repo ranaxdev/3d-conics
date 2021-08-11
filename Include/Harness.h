@@ -51,6 +51,7 @@ namespace conics{
 
         void setKA(const int& key, const int& action);
         void addKeyListener(const std::shared_ptr<KeyListener>& k);
+        void notifyListeners();
 
         virtual void run(Harness* h);
         virtual void startup();
@@ -61,7 +62,6 @@ namespace conics{
     private:
         Window w;
         std::vector<std::shared_ptr<KeyListener>> keylisteners;
-
 
     protected:
         GLuint VAO;

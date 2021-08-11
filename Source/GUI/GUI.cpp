@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <iostream>
 #include "GUI.h"
 
 // Add list of window flags

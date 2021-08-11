@@ -7,6 +7,8 @@ public:
     int keys[348] ={0};
     double xpos=0.0, ypos=0.0;
     bool editing = false;
+
+    virtual void editToggled() =0;
 };
 
 #endif

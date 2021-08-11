@@ -10,6 +10,7 @@
 
 #include <vector>
 
+#include "KeyListener.h"
 #include "Globals.h"
 
 class GUI{

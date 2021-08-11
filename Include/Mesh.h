@@ -4,6 +4,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <algorithm>
+#include <memory>
 #include <vector>
 #include "Menu.h"
 
@@ -34,8 +36,8 @@ public:
     void setAlpha(float alpha);
     void update();
 
+     std::shared_ptr<Menu> menu; // GUI
 private:
-    Menu* menu; // GUI
     // alpha - x-range/height depending on surface type
     // beta  - y-range/angle depending on surface type
     float alpha, beta, time;

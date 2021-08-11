@@ -4,12 +4,14 @@
 #include "Globals.h"
 #include "GUI.h"
 
-class Menu : public GUI{
+class Menu : public GUI, public KeyListener{
 
 public:
-    Menu(float alpha, float beta, int lod);
+    Menu();
 
     void update() override;
+
+    void editToggled() override;
 
 
     float alpha, beta, amp, breath_timer;

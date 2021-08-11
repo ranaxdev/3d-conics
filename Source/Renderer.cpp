@@ -65,12 +65,11 @@ void Renderer::renderMesh(Mesh& m) {
         m.saved_buffer = loc;
     }
     // Editing buffer otherwise (buffer changes after initial setup)
-    m.update(); // IMPORTANT: UPDATE BEFORE EDIT
+    m.update(); // IMPORTANT: UPDATE BEFORE EDIT, otherwise mesh breaks a bit
     if(m.first_update){
         // TODO: Optimization - Only call when actually editing properties
         editBuf(m.mesh_data, m.saved_buffer);
     }
-
 
     glLineWidth(10.0f);
 

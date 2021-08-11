@@ -3,9 +3,17 @@
 #include <string>
 #include "Menu.h"
 
+void Menu::editToggled() {
 
-Menu::Menu(float alpha, float beta, int lod)
-: alpha(alpha), beta(beta), lod(lod)
+    if(editing){
+        addFlags({ImGuiWindowFlags_NoInputs, ImGuiWindowFlags_NoBackground});
+    }
+    else{
+        removeFlags({ImGuiWindowFlags_NoInputs, ImGuiWindowFlags_NoBackground});
+    }
+}
+
+Menu::Menu()
 {
     Menu::pos  = ImVec2(0.0f, 0.0f);
     Menu::size = ImVec2(320.0f, 300.0f);
@@ -19,15 +27,23 @@ Menu::Menu(float alpha, float beta, int lod)
             ImGuiWindowFlags_NoInputs,
             ImGuiWindowFlags_NoBackground
     };
+    updateFlags();
+
+    Menu::alpha = 1.0f;
+    Menu::beta = 1.0f;
+    Menu::lod = 20;
 }
 
 void Menu::update() {
+
+    // Breathing function
     if(breathe){
         breath_timer += delta;
         alpha = 5+(5*sin(amp*breath_timer));
         beta = 5+(5*sin(amp*breath_timer));
     }
 
+    // Window
     ImGui::SetNextWindowPos(pos);
     ImGui::SetNextWindowSize(size);
     ImGui::SetNextWindowFocus();

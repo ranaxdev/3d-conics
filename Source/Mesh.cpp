@@ -6,8 +6,6 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
 {
     Mesh::first_update = false;
     Mesh::saved_buffer = INT16_MAX;
-
-    Mesh::menu = new Menu(alpha, beta, lod);
 }
 
 
@@ -108,9 +106,7 @@ void Mesh::setAlpha(float alpha) {
     this->alpha = alpha;
 }
 
-Mesh::~Mesh() {
-    delete menu;
-}
+Mesh::~Mesh() = default;
 
 
 

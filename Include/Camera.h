@@ -31,6 +31,8 @@ public:
     // Getters
     const glm::vec3& getCamPos() const;
 
+    void editToggled() override;
+
 private:
     glm::vec3 cam_pos = glm::vec3(-2.226925, 3.316948, 2.986885);
     glm::vec3 cam_front = glm::vec3(0.0f, 0.0f, -1.0f);
