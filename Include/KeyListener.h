@@ -1,6 +1,10 @@
 #ifndef _H_KEYLISTENER
 #define _H_KEYLISTENER
+
 #include <GLFW/glfw3.h>
+
+#include <vector>
+#include <memory>
 
 class KeyListener{
 public:

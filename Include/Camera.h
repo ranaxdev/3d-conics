@@ -47,7 +47,7 @@ private:
     float velocity = 0.0f;
     double xoff = 0.0, yoff = 0.0;
     double lastX = xoff, lastY = yoff;
-    double yaw, pitch;
+    double yaw = 0.0, pitch = 0.0;
 };
 
 #endif

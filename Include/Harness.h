@@ -50,7 +50,7 @@ namespace conics{
         const bool isEditing() const;
 
         void setKA(const int& key, const int& action);
-        void addKeyListener(const std::shared_ptr<KeyListener>& k);
+        void addKeyListener(std::shared_ptr<KeyListener> k);
         void notifyListeners();
 
         virtual void run(Harness* h);

@@ -13,7 +13,8 @@ void Menu::editToggled() {
     }
 }
 
-Menu::Menu()
+Menu::Menu(float alpha, float beta, int lod)
+: alpha(alpha), beta(beta), lod(lod)
 {
     Menu::pos  = ImVec2(0.0f, 0.0f);
     Menu::size = ImVec2(320.0f, 300.0f);

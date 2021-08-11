@@ -27,21 +27,20 @@
 
 
 using namespace conics;
-
-
 class App : public conics::Harness{
 public:
 
-    std::shared_ptr<Camera> camera;
-    std::shared_ptr<Menu> menu;
-    std::shared_ptr<Mesh> m;
+    std::shared_ptr<Camera> camera = std::make_shared<Camera>();
+    std::shared_ptr<Mesh> mesh;
 
     void startup() override {
-        R->enableAxis();
-        m = std::make_shared<Mesh>(surface::DISC, 5.0f, 5.0f, 1.0f, 20);
-        m->menu = menu;
-        addKeyListener(menu);
 
+        mesh = std::make_shared<Mesh>(surface::DISC, 2.0f, 2.0f, 1.0f, 20);
+
+        R->enableAxis();
+
+        addKeyListener(camera);
+        addKeyListener(mesh->menu);
     };
 
 
@@ -49,11 +48,10 @@ public:
         VP = camera->calc_VP(delta);
 
         // MESH
-        R->renderMesh(*m);
+        R->renderMesh(*mesh);
 
         // AXES
         R->renderAxis();
-
     }
 };
 
@@ -62,16 +60,10 @@ public:
 #if !DEBUG
 int main(){
     conics::Window window = conics::Window(1920, 1080, "conics", 0.0f, 0.0f, 0.0f);
-    std::shared_ptr<Camera> camera(new Camera);
-    std::shared_ptr<Menu> menu(new Menu);
-
     App* a = new App;
     a->setWindow(window);
-    a->addKeyListener(camera);
-    a->camera = camera;
-    a->menu = menu;
-
     a->run(a);
+
     delete a;
     
     return 0;

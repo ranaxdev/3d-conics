@@ -45,3 +45,4 @@ glm::mat4 &Camera::calc_VP(float delta) {
 const glm::vec3 &Camera::getCamPos() const {
     return Camera::cam_pos;
 }
+

@@ -7,7 +7,7 @@
 class Menu : public GUI, public KeyListener{
 
 public:
-    Menu();
+    Menu(float alpha, float beta, int lod);
 
     void update() override;
 
