@@ -11,8 +11,8 @@ void Menu::editToggled() {
     }
 }
 
-Menu::Menu(float alpha, float beta, int lod, surface s)
-: alpha(alpha), beta(beta), lod(lod), s(s)
+Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
+: alpha(alpha), beta(beta), lod(lod), isConic(isConic), s(s)
 {
     // Register as KL
     KeyListener::listeners.push_back(this);
@@ -36,11 +36,12 @@ Menu::Menu(float alpha, float beta, int lod, surface s)
     Menu::beta = 1.0f;
     Menu::lod = 20;
 
-    Menu::text_type = "";
-    if(s >= 20)
+    if(isConic)
         text_type = "CONIC";
     else
         text_type = "SURFACE";
+
+    text_mesh = surface_names[s];
 }
 
 void Menu::update() {
@@ -63,14 +64,17 @@ void Menu::update() {
     // Surface state
     ImGui::Text("Press SPACE to enter Edit Mode\n\n");
 
-    if(s >= 20)
+    style->Colors[ImGuiCol_Text] = purple;
+    ImGui::Text("%s\n", text_mesh);
+
+    if(isConic)
         style->Colors[ImGuiCol_Text] = cyan;
     else
         style->Colors[ImGuiCol_Text] = green;
-
-    ImGui::Text("%s", text_type);
+    ImGui::Text("%s\n", text_type);
 
     style->Colors[ImGuiCol_Text] = white;
+
     ImGui::SliderInt("   LOD", &lod, 5.0f, MAX_LOD);
     ImGui::SliderFloat("   alpha", &alpha, 0.1f, 10.0f);
     ImGui::SliderFloat("   beta", &beta, 0.1f, 10.0f);

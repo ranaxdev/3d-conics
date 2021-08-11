@@ -33,6 +33,7 @@ private:
     // beta  - y-range/angle depending on surface type
     float alpha, beta, time;
     int lod;
+    bool isConic;
 
     surface s;
     Vertex3D func(float A, float B, float t, surface s); // Surface/Conics eq solver

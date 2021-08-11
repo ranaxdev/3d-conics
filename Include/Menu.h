@@ -8,20 +8,23 @@
 class Menu : public GUI, public KeyListener{
 
 public:
-    Menu(float alpha, float beta, int lod, surface s);
+    Menu(float alpha, float beta, int lod, bool isConic, surface s);
 
     void update() override;
 
     void editToggled() override;
 
-    surface s;
+
     float alpha, beta, amp, breath_timer;
     int lod;
     bool breathe;
+    bool isConic;
+    surface s;
 
     ImVec2 pos;
     ImVec2 size;
     const char* text_type;
+    const char* text_mesh;
 
 };
 

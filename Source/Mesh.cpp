@@ -7,7 +7,11 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
     Mesh::first_update = false;
     Mesh::saved_buffer = INT16_MAX;
 
-    Mesh::menu = std::make_shared<Menu>(alpha, beta, lod, s);
+    isConic = false;
+    if(s > SEPARATOR)
+        isConic = true;
+
+    Mesh::menu = std::make_shared<Menu>(alpha, beta, lod, isConic, s);
 }
 
 
