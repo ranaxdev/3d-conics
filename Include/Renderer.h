@@ -10,8 +10,6 @@
 #include "Globals.h"
 #include "Shader.h"
 
-
-
 class Renderer{
 public:
     Renderer(GLuint& VAO, GLuint buf[]);

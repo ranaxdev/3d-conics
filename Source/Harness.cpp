@@ -1,6 +1,3 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 #include <iostream>
 #include <algorithm>
 
@@ -11,7 +8,6 @@
 /**************************************************************************
  *                          CONICS ROUTINES HARNESS
  ************************************************************************* */
-//float conics::Harness::delta = 0.0f;
 glm::mat4 conics::Harness::VP = glm::mat4(1.0f);
 float delta;
 conics::Harness::~Harness() {
@@ -87,7 +83,7 @@ void conics::Harness::run(conics::Harness* h) {
             glClearBufferfv(GL_DEPTH, 0, &one);
 
             // Update observers
-            for(auto& o : conics::Harness::keylisteners){
+            for(auto& o : KeyListener::listeners){
                 // NOTE: for key callback (NOT poll) => o->keys[currentKey] = currentAction
                 // Poll tracked keys for presses & mouse positions
                 for(auto& k : keys_to_poll){
@@ -140,11 +136,6 @@ const conics::Window& conics::Harness::getWindow() const {
     return Harness::w;
 }
 
-
-void conics::Harness::addKeyListener(std::shared_ptr<KeyListener> k) {
-    Harness::keylisteners.push_back(k);
-}
-
 void conics::Harness::setKA(const int &key, const int &action) {
     Harness::currentKey = key;
     Harness::currentAction = action;
@@ -159,7 +150,7 @@ const bool conics::Harness::isEditing() const {
 }
 
 void conics::Harness::notifyListeners() {
-    for(auto& o : keylisteners){
+    for(auto& o : KeyListener::listeners){
         o->editToggled();
     }
 }

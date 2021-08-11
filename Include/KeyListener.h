@@ -13,6 +13,8 @@ public:
     bool editing = false;
 
     virtual void editToggled() =0;
+
+    static std::vector<KeyListener*> listeners;
 };
 
 #endif

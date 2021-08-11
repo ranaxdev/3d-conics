@@ -1,8 +1,7 @@
 #include <string>
-#include <iostream>
 #include "Logger.h"
-#include "Renderer.h"
 #include "Harness.h"
+#include "Renderer.h"
 
 // Static initializations
 int Renderer::free_buf          = -1;

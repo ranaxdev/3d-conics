@@ -5,6 +5,9 @@
 #include "imgui/imgui_impl_glfw.h"
 #include "imgui/imgui_impl_opengl3.h"
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 #include <vector>
 #include <memory>
 #include <functional>
@@ -50,18 +53,17 @@ namespace conics{
         const bool isEditing() const;
 
         void setKA(const int& key, const int& action);
-        void addKeyListener(std::shared_ptr<KeyListener> k);
         void notifyListeners();
 
         virtual void run(Harness* h);
         virtual void startup();
+
         virtual void render(float currentTime);
 
         static glm::mat4 VP;
 
     private:
         Window w;
-        std::vector<std::shared_ptr<KeyListener>> keylisteners;
 
     protected:
         GLuint VAO;
@@ -71,7 +73,6 @@ namespace conics{
 
     public:
         // States
-//        static float delta;
         bool editing = false; // Mesh edit mode
 
         // For cursor restoration

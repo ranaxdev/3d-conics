@@ -5,7 +5,7 @@
 #include <glm/gtx/string_cast.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "KeyListener.h"
+#include "Harness.h"
 
 // Direction constants - may change depending on util lib
 #define FWD GLFW_KEY_W
@@ -23,7 +23,7 @@
 
 class Camera : public KeyListener{
 public:
-    Camera() = default;
+    Camera();
     ~Camera() = default;
 
     glm::mat4& calc_VP(float delta);

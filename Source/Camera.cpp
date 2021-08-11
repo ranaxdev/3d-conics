@@ -1,6 +1,10 @@
 #include <iostream>
 #include "Camera.h"
 
+Camera::Camera(){
+    KeyListener::listeners.push_back(this); // Register this as KL
+}
+
 void Camera::editToggled() {}
 
 glm::mat4 &Camera::calc_VP(float delta) {
