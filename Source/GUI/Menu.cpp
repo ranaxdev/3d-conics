@@ -1,11 +1,9 @@
 #include <cmath>
 #include <iostream>
-#include <string>
 #include "Menu.h"
 
 void Menu::editToggled() {
-
-    if(editing){
+    if(editing){ // Bug: editing updates for listeners before this callback, so opposite here
         addFlags({ImGuiWindowFlags_NoInputs, ImGuiWindowFlags_NoBackground});
     }
     else{
@@ -13,11 +11,12 @@ void Menu::editToggled() {
     }
 }
 
-Menu::Menu(float alpha, float beta, int lod)
-: alpha(alpha), beta(beta), lod(lod)
+Menu::Menu(float alpha, float beta, int lod, surface s)
+: alpha(alpha), beta(beta), lod(lod), s(s)
 {
     // Register as KL
     KeyListener::listeners.push_back(this);
+
     // Init members
     Menu::pos  = ImVec2(0.0f, 0.0f);
     Menu::size = ImVec2(320.0f, 300.0f);
@@ -36,10 +35,15 @@ Menu::Menu(float alpha, float beta, int lod)
     Menu::alpha = 1.0f;
     Menu::beta = 1.0f;
     Menu::lod = 20;
+
+    Menu::text_type = "";
+    if(s >= 20)
+        text_type = "CONIC";
+    else
+        text_type = "SURFACE";
 }
 
 void Menu::update() {
-
     // Breathing function
     if(breathe){
         breath_timer += delta;
@@ -58,6 +62,15 @@ void Menu::update() {
 
     // Surface state
     ImGui::Text("Press SPACE to enter Edit Mode\n\n");
+
+    if(s >= 20)
+        style->Colors[ImGuiCol_Text] = cyan;
+    else
+        style->Colors[ImGuiCol_Text] = green;
+
+    ImGui::Text("%s", text_type);
+
+    style->Colors[ImGuiCol_Text] = white;
     ImGui::SliderInt("   LOD", &lod, 5.0f, MAX_LOD);
     ImGui::SliderFloat("   alpha", &alpha, 0.1f, 10.0f);
     ImGui::SliderFloat("   beta", &beta, 0.1f, 10.0f);

@@ -8,18 +8,8 @@
 #include <memory>
 #include <vector>
 
+#include "Surface.h"
 #include "Menu.h"
-
-enum surface{
-    // Pure surfaces
-    PARABOLOID,
-    DISC,
-    HYPERBOLIC,
-    UNRESTRICTED_CONE,
-
-    // Conic surfaces
-    DOUBLE_CONE = 20,
-};
 
 struct Vertex3D{
     float x,y,z;

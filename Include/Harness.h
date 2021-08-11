@@ -53,7 +53,7 @@ namespace conics{
         const bool isEditing() const;
 
         void setKA(const int& key, const int& action);
-        void notifyListeners();
+        static void notifyListeners();
 
         virtual void run(Harness* h);
         virtual void startup();
