@@ -20,11 +20,14 @@ public:
     bool breathe;
     bool isConic;
     surface s;
+    float MAX_ALPHA, MIN_ALPHA, MAX_BETA, MIN_BETA;
 
     ImVec2 pos;
     ImVec2 size;
     const char* text_type;
     const char* text_mesh;
+    const char* text_alpha;
+    const char* text_beta;
 
 };
 

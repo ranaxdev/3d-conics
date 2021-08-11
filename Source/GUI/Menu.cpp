@@ -36,10 +36,24 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
     Menu::beta = 1.0f;
     Menu::lod = 20;
 
-    if(isConic)
+    if(isConic){
         text_type = "CONIC";
-    else
+        text_alpha = "   h-range";
+        text_beta = "   angle (rad)";
+        MAX_ALPHA = 10.0f;
+        MIN_ALPHA = 0.1f;
+        MAX_BETA = 2*PI;
+        MIN_BETA = 0.0f;
+    }
+    else{
         text_type = "SURFACE";
+        text_alpha = "   x-range";
+        text_beta = "   y-range";
+        MAX_ALPHA = 10.0f;
+        MIN_ALPHA = 0.1f;
+        MAX_BETA = 10.0f;
+        MIN_BETA = 0.1f;
+    }
 
     text_mesh = surface_names[s];
 }
@@ -76,8 +90,8 @@ void Menu::update() {
     style->Colors[ImGuiCol_Text] = white;
 
     ImGui::SliderInt("   LOD", &lod, 5.0f, MAX_LOD);
-    ImGui::SliderFloat("   alpha", &alpha, 0.1f, 10.0f);
-    ImGui::SliderFloat("   beta", &beta, 0.1f, 10.0f);
+    ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
+    ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
 
     ImGui::Checkbox("Breath", &breathe);
     ImGui::SliderFloat("Amplitude", &amp, 0.1f, 5.0f);

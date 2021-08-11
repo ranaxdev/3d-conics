@@ -34,7 +34,7 @@ public:
 
     void startup() override {
 
-        mesh = std::make_shared<Mesh>(surface::DOUBLE_CONE, 2.0f, 2.0f, 1.0f, 20);
+        mesh = std::make_shared<Mesh>(surface::DISC, 2.0f, 2.0f, 1.0f, 20);
         R->enableAxis();
     };
 
