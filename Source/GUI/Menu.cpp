@@ -104,7 +104,7 @@ void Menu::update() {
     ImGui::TextColored(isConic ? cyan:green, "%s\n", text_type);
 
     // General settings
-    ImGui::SliderInt("   LOD", &lod, 5.0f, MAX_LOD);
+    ImGui::SliderInt("   LOD", &lod, 5, MAX_LOD);
     ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
     ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
     ImGui::SliderFloat("   Amplitude", &amp, 0.1f, 5.0f);

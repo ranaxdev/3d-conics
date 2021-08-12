@@ -13,11 +13,16 @@ public:
     ImVec2 size;
     ImVec2 pos;
     bool enableAxis;
+    bool isConic{};
+    const char* text_alpha, *text_beta;
+    int lod; float alpha, beta;
+    float MIN_ALPHA, MAX_ALPHA, MIN_BETA, MAX_BETA;
 
     bool mesh_items_selected[END+1] = {false};
 
 private:
     void disableExcept(int i);
+    int findActive();
 };
 
 #endif

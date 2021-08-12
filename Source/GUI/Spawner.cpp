@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <string>
 #include "Spawner.h"
 
 
@@ -9,12 +9,15 @@ Spawner::Spawner() {
 
     Spawner::enableAxis = true;
 
+    Spawner::text_alpha = ""; Spawner::text_beta = "";
+    Spawner::lod = 0; Spawner::alpha = 0.0f, Spawner::beta = 0.0f;
+    Spawner::MIN_ALPHA = 0.0f; Spawner::MAX_ALPHA = 0.0f;
+    Spawner::MIN_BETA = 0.0f; Spawner::MAX_BETA = 0.0f;
+
     Spawner::flag_list = {
             ImGuiWindowFlags_MenuBar
     };
     updateFlags();
-
-
 
 }
 
@@ -48,7 +51,35 @@ void Spawner::update() {
     }
 
     // Display mesh creation options for the currently selected mesh
+    int active = findActive();
+    if(active > -1){
+        isConic = active > surface::SEPARATOR;
+       if(isConic){
+            text_alpha = "   height";
+            text_beta = "   angle (rad)";
+            Spawner::MAX_ALPHA = 10.0f;
+            Spawner::MIN_ALPHA = 0.1f;
+            Spawner::MAX_BETA = 2*PI;
+            Spawner::MIN_BETA = 0.0f;
+        }
+       else {
+            text_alpha = "   x-range";
+            text_beta = "   y-range";
+            Spawner::MAX_ALPHA = 5.0f;
+            Spawner::MIN_ALPHA = -5.0f;
+            Spawner::MAX_BETA = 5.0f;
+            Spawner::MIN_BETA = -5.0f;
+        }
 
+        ImGui::TextColored(purple, "%s", (std::string("\nCREATING ")+std::string(surface_names[active])).c_str());
+        ImGui::TextColored(yellow, "Select Initial Mesh Properties:");
+
+        ImGui::SliderInt("   LOD", &lod, 5, 200);
+        ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
+        ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
+
+        
+    }
 
     ImGui::End();
 }
@@ -59,5 +90,16 @@ void Spawner::disableExcept(int i) {
         if(j != i)
             Spawner::mesh_items_selected[j] = false;
     }
+}
+
+int Spawner::findActive() {
+    int i = -1;
+    for(int j=0; j<surface::END+1; j++){
+        if(mesh_items_selected[j]){
+            i = j;
+            return i;
+        }
+    }
+    return i;
 }
 
