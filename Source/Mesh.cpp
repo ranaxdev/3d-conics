@@ -29,13 +29,12 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
  *       B = y-range/angle
  */
 void Mesh::update() {
-    menu->update();
+    menu->update(); // Render GUI
     alpha = menu->alpha;
     beta = menu->beta;
     lod = menu->lod;
 
     mesh_data.clear();
-
     // Create horizontal and vertical meshes
     float split = lod/2;
     for(int i=0; i<lod; i++){

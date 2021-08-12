@@ -15,7 +15,6 @@ public:
     void editToggled() override;
 
 
-    bool state;
     float alpha, beta, amp;
     int lod;
     bool breathe, xrot, yrot, zrot;

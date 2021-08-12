@@ -32,12 +32,14 @@ class App : public conics::Harness{
 public:
     std::shared_ptr<Camera> camera = std::make_shared<Camera>();
     std::shared_ptr<Mesh> mesh;
-    Spawner* spawner;
+    std::shared_ptr<Spawner> spawner;
 
     void startup() override {
 
+        spawner = std::make_shared<Spawner>();
         mesh = std::make_shared<Mesh>(surface::DISC, 2.0f, 2.0f, 1.0f, 20);
-        spawner = new Spawner();
+
+
         R->enableAxis();
     };
 

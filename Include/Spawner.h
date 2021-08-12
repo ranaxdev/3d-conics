@@ -9,10 +9,9 @@ public:
 
     void update() override;
 
-private:
+
     ImVec2 size;
     ImVec2 pos;
-    bool state;
 };
 
 #endif

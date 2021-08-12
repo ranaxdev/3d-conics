@@ -36,6 +36,7 @@ protected:
     ImVec4 lblue    =     ImVec4(0.47f, 0.54f, 1.0f, 1.0f);
 
     void updateFlags();
+    static bool state;
 
 };
 

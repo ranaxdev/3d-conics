@@ -2,6 +2,7 @@
 #include <iostream>
 #include "GUI.h"
 
+bool GUI::state = true;
 // Add list of window flags
 void GUI::addFlags(std::vector<ImGuiWindowFlags_>&& flags) {
     for(auto f : flags){
@@ -33,10 +34,7 @@ void GUI::updateFlags() {
     }
 }
 
-GUI::~GUI() {
-    ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();
-}
+GUI::~GUI() = default;
+
 
 

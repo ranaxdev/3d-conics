@@ -73,7 +73,6 @@ void conics::Harness::run(conics::Harness* h) {
     const GLfloat screen_color[4] = {w.color[0], w.color[1], w.color[2], w.color[3]};
     const float one = 1.0f;
     float last = 0.0f;
-
     while(!glfwWindowShouldClose(window)){
         float currentTime = (float)glfwGetTime();
         delta = currentTime - last;
@@ -119,6 +118,9 @@ void conics::Harness::run(conics::Harness* h) {
             last = currentTime;
         }
     }
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
 }
 
 
