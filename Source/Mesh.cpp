@@ -118,10 +118,6 @@ Vertex3D Mesh::func(float A, float B, float t, surface s) {
     return v;
 }
 
-void Mesh::setAlpha(float alpha) {
-    this->alpha = alpha;
-}
-
 Mesh::~Mesh() = default;
 
 

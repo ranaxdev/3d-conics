@@ -56,12 +56,15 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
         Menu::MIN_BETA = -5.0f;
     }
     Menu::breath_alpha_limit = Menu::MAX_ALPHA/2;
-    Menu::breath_beta_limt = Menu::MAX_BETA/2;
+    Menu::breath_beta_limit = Menu::MAX_BETA/2;
     Menu::text_mesh = surface_names[s];
 
     Menu::x_trans = 0.0f;
     Menu::y_trans = 0.0f;
     Menu::z_trans = 0.0f;
+    Menu::xrot = false; Menu::xrot_timer = 0.0f;
+    Menu::yrot = false; Menu::yrot_timer = 0.0f;
+    Menu::zrot = false; Menu::zrot_timer = 0.0f;
 }
 
 void Menu::update() {
@@ -69,10 +72,26 @@ void Menu::update() {
     if(breathe){
         breath_timer += delta;
         alpha = (float)(breath_alpha_limit*sin(amp*breath_timer));
-        beta = (float)(breath_beta_limt*sin(amp*breath_timer));
+        beta = (float)(breath_beta_limit*sin(amp*breath_timer));
     }
 
-    // Window
+    if(xrot){
+        xrot_timer += delta;
+        x_trans = (float) PI+(PI*sin(amp*xrot_timer));
+    }
+    if(yrot){
+        yrot_timer += delta;
+        y_trans= (float) PI+(PI*sin(amp*yrot_timer));
+    }
+    if(zrot){
+        zrot_timer += delta;
+        z_trans = (float) PI+(PI*sin(amp*zrot_timer));
+    }
+
+
+    /* * * * * * * * * * * * * *
+     *      GUI RENDERING
+     * * * * * * * * * * * * * */
     ImGui::SetNextWindowPos(pos);
     ImGui::SetNextWindowSize(size);
     ImGui::SetNextWindowFocus();
@@ -81,8 +100,6 @@ void Menu::update() {
     ImGui::Begin("Control Menu", nullptr,
                  // Menu window properties
                  flags);
-
-    // Surface state
 
     ImGui::Text("Press SPACE to enter Edit Mode\n\n");
 
@@ -101,15 +118,15 @@ void Menu::update() {
     ImGui::SliderInt("   LOD", &lod, 5.0f, MAX_LOD);
     ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
     ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
+    ImGui::SliderFloat("   Amplitude", &amp, 0.1f, 5.0f);
 
     // Breathe mode settings
     style->Colors[ImGuiCol_Text] = yellow;
     ImGui::Text("\n\n===== BREATHE MODE =====");
     style->Colors[ImGuiCol_Text] = white;
     ImGui::Checkbox("Breathe On", &breathe);
-    ImGui::SliderFloat("   Amplitude", &amp, 0.1f, 5.0f);
     ImGui::SliderFloat((std::string(text_alpha)+std::string(" lim")).c_str(), &breath_alpha_limit, 0.1f, MAX_ALPHA);
-    ImGui::SliderFloat((std::string(text_beta)+std::string(" lim")).c_str(), &breath_beta_limt, 0.1f, MAX_BETA);
+    ImGui::SliderFloat((std::string(text_beta)+std::string(" lim")).c_str(), &breath_beta_limit, 0.1f, MAX_BETA);
     style->Colors[ImGuiCol_Text] = yellow;
     ImGui::Text("========================\n\n");
 
@@ -120,6 +137,12 @@ void Menu::update() {
     ImGui::SliderFloat("   x-rot", &x_trans, 0.0f, 2*PI, "%.2f rads");
     ImGui::SliderFloat("   y-rot", &y_trans, 0.0f, 2*PI, "%.2f rads");
     ImGui::SliderFloat("   z-rot", &z_trans, 0.0f, 2*PI, "%.2f rads");
+
+    ImGui::Checkbox("xRot", &xrot); ImGui::SameLine();
+    ImGui::Checkbox("yRot", &yrot); ImGui::SameLine();
+    ImGui::Checkbox("zRot", &zrot);
+
+
     style->Colors[ImGuiCol_Text] = lblue;
     ImGui::Text("========================\n\n");
 

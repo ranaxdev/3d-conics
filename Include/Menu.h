@@ -15,14 +15,15 @@ public:
     void editToggled() override;
 
 
-    float alpha, beta, amp, breath_timer;
+    float alpha, beta, amp;
     int lod;
-    bool breathe;
+    bool breathe, xrot, yrot, zrot;
     bool isConic;
+    float breath_timer, xrot_timer, yrot_timer, zrot_timer;
     surface s;
     float MAX_ALPHA, MIN_ALPHA, MAX_BETA, MIN_BETA;
     float breath_alpha_limit;
-    float breath_beta_limt;
+    float breath_beta_limit;
     float x_trans, y_trans, z_trans;
 
     ImVec2 pos;

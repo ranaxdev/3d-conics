@@ -28,12 +28,12 @@ protected:
     ImGuiWindowFlags_ flags = ImGuiWindowFlags_None;
 
     ImGuiStyle* style = &ImGui::GetStyle();
-    ImVec4 green = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
-    ImVec4 cyan = ImVec4(0.0f, 1.0f, 1.0f, 1.0f);
-    ImVec4 purple = ImVec4(1.0f, 0.0f, 1.0f ,1.0f);
-    ImVec4 white = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
-    ImVec4 yellow = ImVec4(1.0f, 1.0f, 0.0f, 1.0f);
-    ImVec4 lblue = ImVec4(0.47f, 0.54f, 1.0f, 1.0f);
+    ImVec4 green    =     ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
+    ImVec4 cyan     =     ImVec4(0.0f, 1.0f, 1.0f, 1.0f);
+    ImVec4 purple   =     ImVec4(1.0f, 0.0f, 1.0f ,1.0f);
+    ImVec4 white    =     ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+    ImVec4 yellow   =     ImVec4(1.0f, 1.0f, 0.0f, 1.0f);
+    ImVec4 lblue    =     ImVec4(0.47f, 0.54f, 1.0f, 1.0f);
 
     void updateFlags();
 

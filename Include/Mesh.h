@@ -27,7 +27,6 @@ public:
     GLuint saved_buffer;
     std::vector<GLfloat> mesh_data; // Contain all mesh vertices
 
-    void setAlpha(float alpha);
     void update();
 
     glm::mat4 model_transform;
