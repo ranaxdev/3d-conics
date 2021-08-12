@@ -5,7 +5,7 @@
 
 enum surface{
     // Pure surfaces
-    PARABOLOID,
+    PARABOLOID=0,
     DISC,
     HYPERBOLIC,
     UNRESTRICTED_CONE,
@@ -13,7 +13,9 @@ enum surface{
     SEPARATOR,
 
     // Conic surfaces
-    DOUBLE_CONE
+    DOUBLE_CONE,
+
+    END
 };
 
 static const char* surface_names[] = {
@@ -22,7 +24,8 @@ static const char* surface_names[] = {
         "HYPERBOLOID",
         "SURFACE CONE",
         "",
-        "DOUBLE CONE"
+        "DOUBLE CONE",
+        ""
 };
 
 #endif
