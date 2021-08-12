@@ -4,6 +4,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include <algorithm>
 #include <memory>
 #include <vector>
@@ -27,13 +30,17 @@ public:
     void setAlpha(float alpha);
     void update();
 
-     std::shared_ptr<Menu> menu; // GUI
+    glm::mat4 model_transform;
+    std::shared_ptr<Menu> menu; // GUI
 private:
     // alpha - x-range/height depending on surface type
     // beta  - y-range/angle depending on surface type
     float alpha, beta, time;
     int lod;
     bool isConic;
+
+    glm::vec3 origin; // TODO: Make part of construction when you have multiple mesh rendering
+                      // Attach an axis to it
 
     surface s;
     Vertex3D func(float A, float B, float t, surface s); // Surface/Conics eq solver

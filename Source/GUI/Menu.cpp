@@ -50,22 +50,26 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
         Menu::text_type = "SURFACE";
         Menu::text_alpha = "   x-range";
         Menu::text_beta = "   y-range";
-        Menu::MAX_ALPHA = 10.0f;
-        Menu::MIN_ALPHA = 0.1f;
-        Menu::MAX_BETA = 10.0f;
-        Menu::MIN_BETA = 0.1f;
+        Menu::MAX_ALPHA = 5.0f;
+        Menu::MIN_ALPHA = -5.0f;
+        Menu::MAX_BETA = 5.0f;
+        Menu::MIN_BETA = -5.0f;
     }
     Menu::breath_alpha_limit = Menu::MAX_ALPHA/2;
     Menu::breath_beta_limt = Menu::MAX_BETA/2;
     Menu::text_mesh = surface_names[s];
+
+    Menu::x_trans = 0.0f;
+    Menu::y_trans = 0.0f;
+    Menu::z_trans = 0.0f;
 }
 
 void Menu::update() {
     // Breathing function
     if(breathe){
         breath_timer += delta;
-        alpha = 5+(breath_alpha_limit*sin(amp*breath_timer));
-        beta = 5+(breath_beta_limt*sin(amp*breath_timer));
+        alpha = (float)(breath_alpha_limit*sin(amp*breath_timer));
+        beta = (float)(breath_beta_limt*sin(amp*breath_timer));
     }
 
     // Window
@@ -73,11 +77,13 @@ void Menu::update() {
     ImGui::SetNextWindowSize(size);
     ImGui::SetNextWindowFocus();
 
+    style->Colors[ImGuiCol_Text] = white;
     ImGui::Begin("Control Menu", nullptr,
                  // Menu window properties
                  flags);
 
     // Surface state
+
     ImGui::Text("Press SPACE to enter Edit Mode\n\n");
 
     style->Colors[ImGuiCol_Text] = purple;
@@ -91,17 +97,31 @@ void Menu::update() {
 
     style->Colors[ImGuiCol_Text] = white;
 
+    // General settings
     ImGui::SliderInt("   LOD", &lod, 5.0f, MAX_LOD);
     ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
     ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
 
+    // Breathe mode settings
+    style->Colors[ImGuiCol_Text] = yellow;
     ImGui::Text("\n\n===== BREATHE MODE =====");
+    style->Colors[ImGuiCol_Text] = white;
     ImGui::Checkbox("Breathe On", &breathe);
     ImGui::SliderFloat("   Amplitude", &amp, 0.1f, 5.0f);
-    ImGui::SliderFloat((std::string(text_alpha)+std::string(" lim")).c_str(), &breath_alpha_limit, 0.1f, MAX_ALPHA/2);
-    ImGui::SliderFloat((std::string(text_beta)+std::string(" lim")).c_str(), &breath_beta_limt, 0.1f, MAX_BETA/2);
-    ImGui::Text("========================");
+    ImGui::SliderFloat((std::string(text_alpha)+std::string(" lim")).c_str(), &breath_alpha_limit, 0.1f, MAX_ALPHA);
+    ImGui::SliderFloat((std::string(text_beta)+std::string(" lim")).c_str(), &breath_beta_limt, 0.1f, MAX_BETA);
+    style->Colors[ImGuiCol_Text] = yellow;
+    ImGui::Text("========================\n\n");
 
+    // Transformation settings
+    style->Colors[ImGuiCol_Text] = lblue;
+    ImGui::Text("===== TRANSFORM =====");
+    style->Colors[ImGuiCol_Text] = white;
+    ImGui::SliderFloat("   x-rot", &x_trans, 0.0f, 2*PI, "%.2f rads");
+    ImGui::SliderFloat("   y-rot", &y_trans, 0.0f, 2*PI, "%.2f rads");
+    ImGui::SliderFloat("   z-rot", &z_trans, 0.0f, 2*PI, "%.2f rads");
+    style->Colors[ImGuiCol_Text] = lblue;
+    ImGui::Text("========================\n\n");
 
     ImGui::End();
 }

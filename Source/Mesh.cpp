@@ -11,6 +11,8 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
     if(s > SEPARATOR)
         isConic = true;
 
+    Mesh::model_transform = glm::mat4(1.0f);
+    Mesh::origin = glm::vec3(0.0f, 0.0f, -2.5f);
     Mesh::menu = std::make_shared<Menu>(alpha, beta, lod, isConic, s);
 }
 
@@ -43,7 +45,7 @@ void Mesh::update() {
             Vertex3D v = func(A,B, time, s); // Solve surface eq
             mesh_data.push_back(v.x);
             mesh_data.push_back(v.z);
-            mesh_data.push_back(-2.5f+v.y); // Move to center
+            mesh_data.push_back(v.y); // Move to center
         }
     }
     for(int i=0; i<lod; i++){
@@ -53,9 +55,17 @@ void Mesh::update() {
             Vertex3D v = func(x,y,time,s);
             mesh_data.push_back(v.x);
             mesh_data.push_back(v.z);
-            mesh_data.push_back(-2.5f+v.y);
+            mesh_data.push_back(v.y);
         }
     }
+
+    // Transformations
+    model_transform = glm::mat4(1.0f);
+    model_transform = glm::rotate(model_transform, menu->x_trans, glm::vec3(1.0f, 0.0f, 0.0f));
+    model_transform = glm::rotate(model_transform, menu->y_trans, glm::vec3(0.0f, 1.0f, 0.0f));
+    model_transform = glm::rotate(model_transform, menu->z_trans, glm::vec3(0.0f, 0.0f, 1.0f));
+
+
     // Reserve LOD to inform rendering of this mesh
     mesh_data.push_back((float) lod);
 

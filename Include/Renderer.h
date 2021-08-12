@@ -28,7 +28,6 @@ public:
     void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attribs, Shader& s);
 
 
-
 private:
     // Memory mgmt
     static int free_buf;

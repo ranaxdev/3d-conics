@@ -21,14 +21,14 @@ Renderer::Renderer(GLuint &VAO, GLuint *buf)
 void Renderer::enableAxis() {
     const GLfloat axis_data[] = {
             // Axis 1 (red)
-            0.0f, 0.0f, 0.0f,     1.0f, 0.0f, 0.0f,
-            0.0f, 0.0f, -5.0f,    1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, 2.5f,     1.0f, 0.0f, 0.0f,
+            0.0f, 0.0f, -2.5f,    1.0f, 0.0f, 0.0f,
             // Axis 2 (green)
-            0.0f, 2.5f, -2.5f,    0.0f, 1.0f, 0.0f,
-            0.0f, -2.5f, -2.5f,   0.0f, 1.0f, 0.0f,
+            0.0f, 2.5f, 0.0f,    0.0f, 1.0f, 0.0f,
+            0.0f, -2.5f, 0.0f,   0.0f, 1.0f, 0.0f,
             // Axis 3 (blue)
-            2.5f, 0.0f, -2.5f,    0.0f, 0.0f, 1.0f,
-            -2.5f, 0.0f, -2.5f,   0.0f, 0.0f, 1.0f
+            2.5f, 0.0f, 0.0f,    0.0f, 0.0f, 1.0f,
+            -2.5f, 0.0f, 0.0f,   0.0f, 0.0f, 1.0f
     };
 
     // Prepare buffer
@@ -74,6 +74,7 @@ void Renderer::renderMesh(Mesh& m) {
 
     shader_surface.bind();
     shader_surface.setMat4(20, conics::Harness::VP);
+    shader_surface.setMat4(21, m.model_transform);
     shader_surface.setVec4(30, cyan);
 
     int lod = (int) m.mesh_data.back(); // Retrieve reserved LOD
