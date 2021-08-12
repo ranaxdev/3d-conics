@@ -22,7 +22,7 @@
 ## Preview
 <img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/preview.png" alt="Preview" width=100%>
 
-As of `12/08/2021` , 3D-conics features mesh generation based on multivaraible functions and live interaction with a handful of surfaces and 3D conics. The mesh properties can be adjusted via a GUI overlay (Dear Imgui integration) and viewed through a controlalble 3D perspective projection camera, which are implemented as separate modes (edit and normal respectively).
+As of `12/08/2021`, **3d-conics** features mesh generation based on multivaraible functions and live interaction with a handful of surfaces and 3D conics. The mesh properties can be adjusted via a GUI overlay (Dear Imgui integration) and viewed through a controllable 3D perspective projection camera, which are implemented as separate modes (edit and normal respectively).
 
 ## Some Renders
 
