@@ -19,10 +19,9 @@ void Spawner::update() {
      * * * * * * * * * * * * * */
     ImGui::SetNextWindowSize(size);
     ImGui::SetNextWindowPos(pos);
-
-    style->Colors[ImGuiCol_Text] = white;
+    
     ImGui::Begin("Spawner", &GUI::state, flags);
-    ImGui::Checkbox("Enable Axis", &enableAxis);
+    ImGui::Checkbox("   Enable Axis", &enableAxis);
     ImGui::End();
 }
 

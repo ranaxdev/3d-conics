@@ -34,6 +34,11 @@ void GUI::updateFlags() {
     }
 }
 
+GUI::GUI() {
+    style->Colors[ImGuiCol_TitleBgActive] = dblue;
+    style->Colors[ImGuiCol_TitleBg] = dblue;
+}
+
 GUI::~GUI() = default;
 
 

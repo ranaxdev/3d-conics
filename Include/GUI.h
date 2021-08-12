@@ -15,7 +15,7 @@
 
 class GUI{
 public:
-    GUI() = default;
+    GUI();
     ~GUI();
 
     virtual void update() = 0;
@@ -34,6 +34,7 @@ protected:
     ImVec4 white    =     ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
     ImVec4 yellow   =     ImVec4(1.0f, 1.0f, 0.0f, 1.0f);
     ImVec4 lblue    =     ImVec4(0.47f, 0.54f, 1.0f, 1.0f);
+    ImVec4 dblue    =     ImVec4(0.02f, 0.14f, 0.34f, 1.0f);
 
     void updateFlags();
     static bool state;

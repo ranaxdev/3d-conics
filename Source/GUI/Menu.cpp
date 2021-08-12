@@ -95,21 +95,13 @@ void Menu::update() {
     ImGui::SetNextWindowPos(pos);
     ImGui::SetNextWindowSize(size);
 
-    style->Colors[ImGuiCol_Text] = white;
     ImGui::Begin("Control Menu", &GUI::state, flags);
 
     ImGui::Text("Press SPACE to enter Edit Mode\n\n");
 
-    style->Colors[ImGuiCol_Text] = purple;
-    ImGui::Text("%s\n", text_mesh);
 
-    if(isConic)
-        style->Colors[ImGuiCol_Text] = cyan;
-    else
-        style->Colors[ImGuiCol_Text] = green;
-    ImGui::Text("%s\n", text_type);
-
-    style->Colors[ImGuiCol_Text] = white;
+    ImGui::TextColored(purple, "%s\n", text_mesh);
+    ImGui::TextColored(isConic ? cyan:green, "%s\n", text_type);
 
     // General settings
     ImGui::SliderInt("   LOD", &lod, 5.0f, MAX_LOD);
@@ -118,19 +110,14 @@ void Menu::update() {
     ImGui::SliderFloat("   Amplitude", &amp, 0.1f, 5.0f);
 
     // Breathe mode settings
-    style->Colors[ImGuiCol_Text] = yellow;
-    ImGui::Text("\n\n===== BREATHE MODE =====");
-    style->Colors[ImGuiCol_Text] = white;
+    ImGui::TextColored(yellow, "\n\n===== BREATHE MODE =====");
     ImGui::Checkbox("Breathe On", &breathe);
     ImGui::SliderFloat((std::string(text_alpha)+std::string(" lim")).c_str(), &breath_alpha_limit, 0.1f, MAX_ALPHA);
     ImGui::SliderFloat((std::string(text_beta)+std::string(" lim")).c_str(), &breath_beta_limit, 0.1f, MAX_BETA);
-    style->Colors[ImGuiCol_Text] = yellow;
-    ImGui::Text("========================\n\n");
+    ImGui::TextColored(yellow, "========================\n\n");
 
     // Transformation settings
-    style->Colors[ImGuiCol_Text] = lblue;
-    ImGui::Text("===== TRANSFORM =====");
-    style->Colors[ImGuiCol_Text] = white;
+    ImGui::TextColored(lblue, "===== TRANSFORM =====");
     ImGui::SliderFloat("   x-rot", &x_trans, 0.0f, 2*PI, "%.2f rads");
     ImGui::SliderFloat("   y-rot", &y_trans, 0.0f, 2*PI, "%.2f rads");
     ImGui::SliderFloat("   z-rot", &z_trans, 0.0f, 2*PI, "%.2f rads");
@@ -139,9 +126,7 @@ void Menu::update() {
     ImGui::Checkbox("yRot", &yrot); ImGui::SameLine();
     ImGui::Checkbox("zRot", &zrot);
 
-
-    style->Colors[ImGuiCol_Text] = lblue;
-    ImGui::Text("========================\n\n");
+    ImGui::TextColored(lblue, "========================\n\n");
 
     ImGui::End();
 
