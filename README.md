@@ -19,7 +19,13 @@
 
 
 <!-- ABOUT THE PROJECT -->
+## Preview
+<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/preview.png" alt="Preview" width=100%>
+
+As of `12/08/2021` , 3D-conics features mesh generation based on multivaraible functions and live interaction with a handful of surfaces and 3D conics. The mesh properties can be adjusted via a GUI overlay (Dear Imgui integration) and viewed through a controlalble 3D perspective projection camera, which are implemented as separate modes (edit and normal respectively).
+
 ## Some Renders
+
 <img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen1.png" alt="Hyperbolic" width="500">
 <img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen2.png" alt="Disc" width="500">
 <img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen3.png" alt="Hyperbolic" width="500">
@@ -27,7 +33,13 @@
 
 ### Future Releases
 
-Eventually, the plan is to create an interactive application where you can view the surfaces and conics live and have interaction with their properties i.e. adjusting level of details on the surface, applying transformations to them, plotting custom functions etc.
+Features that I would like to work towards implementing
+- Live delaunay triangulation
+- Rendering multiple meshes in the same application instance
+- Live mesh vertex editor
+- Live mesh painting
+
+Feel free to suggest some features in the issues tab!
 
 <!-- GETTING STARTED -->
 ### Example Usage
