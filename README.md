@@ -24,13 +24,6 @@
 
 As of `12/08/2021`, **3d-conics** features mesh generation based on multivaraible functions and live interaction with a handful of surfaces and 3D conics. The mesh properties can be adjusted via a GUI overlay (Dear Imgui integration) and viewed through a controllable 3D perspective projection camera, which are implemented as separate modes (edit and normal respectively).
 
-## Some Renders
-
-<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen1.png" alt="Hyperbolic" width="500">
-<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen2.png" alt="Disc" width="500">
-<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen3.png" alt="Hyperbolic" width="500">
-
-
 ### Future Releases
 
 Features that I would like to work towards implementing
@@ -41,8 +34,16 @@ Features that I would like to work towards implementing
 
 Feel free to suggest some features in the issues tab!
 
+## Some Renders
+
+<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen1.png" alt="Hyperbolic" width="500">
+<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen2.png" alt="Disc" width="500">
+<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen3.png" alt="Hyperbolic" width="500">
+
+
+
 <!-- GETTING STARTED -->
-### Example Usage
+## Example Usage
 
 ```cpp
     // Creating your own App instance
