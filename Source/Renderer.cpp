@@ -8,7 +8,10 @@ int Renderer::free_buf          = -1;
 int Renderer::free_bindpoint    = -1;
 
 Renderer::Renderer(GLuint &VAO, GLuint *buf)
-: VAO(VAO), buf(buf) {}
+: VAO(VAO), buf(buf) {
+    // Buffers you want to pre-setup
+    enableAxis();
+}
 
 
 
@@ -45,6 +48,14 @@ void Renderer::enableAxis() {
 /* ****************************************************************
  *                        RENDERING ROUTINES                      *
  ******************************************************************/
+void Renderer::renderGUI(Spawner &g) {
+    g.update();
+    if(g.enableAxis){
+        renderAxis();
+    }
+}
+
+
 void Renderer::renderAxis() {
     glLineWidth(20.0f);
     shader_axis.bind();
@@ -195,6 +206,7 @@ void Renderer::formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attr
 
     glVertexArrayVertexBuffer(VAO, free_bindpoint, buf[loc], 0, (num_attribs*comps_per_elem)*sizeof(float));
 }
+
 
 
 

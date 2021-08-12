@@ -6,6 +6,7 @@
 
 #include <vector>
 
+#include "Spawner.h"
 #include "Mesh.h"
 #include "Globals.h"
 #include "Shader.h"
@@ -17,6 +18,7 @@ public:
 
     void enableAxis();
 
+    void renderGUI(Spawner& g); // TODO: Overload these for different GUIs
     void renderAxis();
     void renderMesh(Mesh& m);
 

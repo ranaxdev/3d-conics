@@ -9,9 +9,9 @@ public:
 
     void update() override;
 
-
     ImVec2 size;
     ImVec2 pos;
+    bool enableAxis;
 };
 
 #endif

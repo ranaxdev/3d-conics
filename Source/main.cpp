@@ -38,21 +38,18 @@ public:
 
         spawner = std::make_shared<Spawner>();
         mesh = std::make_shared<Mesh>(surface::DISC, 2.0f, 2.0f, 1.0f, 20);
-
-
-        R->enableAxis();
     };
 
 
     void render(float delta) override {
         VP = camera->calc_VP(delta);
 
-        spawner->update();
+        // GUI
+        R->renderGUI(*spawner);
+
         // MESH
         R->renderMesh(*mesh);
 
-        // AXES
-        R->renderAxis();
     }
 };
 
