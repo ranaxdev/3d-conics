@@ -19,6 +19,7 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
     KeyListener::listeners.push_back(this);
 
     // Init members
+    Menu::state = true;
     Menu::pos  = ImVec2(0.0f, 0.0f);
     Menu::size = ImVec2(400.0f, SCREEN_H);
 
@@ -97,9 +98,7 @@ void Menu::update() {
     ImGui::SetNextWindowFocus();
 
     style->Colors[ImGuiCol_Text] = white;
-    ImGui::Begin("Control Menu", nullptr,
-                 // Menu window properties
-                 flags);
+    ImGui::Begin("Control Menu", &state, flags);
 
     ImGui::Text("Press SPACE to enter Edit Mode\n\n");
 

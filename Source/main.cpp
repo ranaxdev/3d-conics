@@ -19,6 +19,7 @@
 #include "Harness.h"
 #include "Shader.h"
 #include "Camera.h"
+#include "Spawner.h"
 #include "Renderer.h"
 
 #include "Math.h"
@@ -31,10 +32,12 @@ class App : public conics::Harness{
 public:
     std::shared_ptr<Camera> camera = std::make_shared<Camera>();
     std::shared_ptr<Mesh> mesh;
+    Spawner* spawner;
 
     void startup() override {
 
         mesh = std::make_shared<Mesh>(surface::DISC, 2.0f, 2.0f, 1.0f, 20);
+        spawner = new Spawner();
         R->enableAxis();
     };
 
@@ -42,6 +45,7 @@ public:
     void render(float delta) override {
         VP = camera->calc_VP(delta);
 
+        spawner->update();
         // MESH
         R->renderMesh(*mesh);
 
