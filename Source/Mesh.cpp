@@ -114,6 +114,18 @@ Vertex3D Mesh::func(float A, float B, float t, surface s) {
             v.z = B;
             break;
 
+        case TORUS:
+            v.x = (2*t + t*cos(A)) * cos(B);
+            v.y = (2*t + t*cos(A)) * sin(B);
+            v.z = t*sin(A);
+            break;
+
+        case SOMBRERO:
+            v.x = A;
+            v.y = B;
+            v.z = t*sin(sqrt(pow(A,2)+pow(B,2))) / sqrt(pow(A,2) + pow(B,2));
+            break;
+
         /* CONICS */
         case DOUBLE_CONE:
             v.x = A*cos(B);

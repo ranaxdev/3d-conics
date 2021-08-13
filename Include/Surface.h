@@ -10,6 +10,8 @@ enum surface{
     HYPERBOLIC,
     UNRESTRICTED_CONE,
     DNA,
+    TORUS,
+    SOMBRERO,
 
     SEPARATOR,
 
@@ -28,6 +30,8 @@ static const char* surface_names[] = {
         "HYPERBOLIC PARABOLOID",
         "SURFACE CONE",
         "DNA",
+        "TORUS",
+        "SOMBRERO",
         "",
         "DOUBLE CONE",
         "SINGLE CONE",
