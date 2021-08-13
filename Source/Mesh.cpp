@@ -113,6 +113,12 @@ Vertex3D Mesh::func(float A, float B, float t, surface s) {
             v.y = A*sin(B);
             v.z = A;
             break;
+
+        case CYLINDER:
+            v.x = cos(B);
+            v.y = sin(B);
+            v.z = A;
+            break;
     }
     return v;
 }
