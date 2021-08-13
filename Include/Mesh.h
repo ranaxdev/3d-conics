@@ -30,7 +30,7 @@ public:
     void update();
 
     glm::mat4 model_transform;
-    std::shared_ptr<Menu> menu; // GUI
+    Menu* menu; // GUI
 private:
     // alpha - x-range/height depending on surface type
     // beta  - y-range/angle depending on surface type

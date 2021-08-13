@@ -33,9 +33,7 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
     };
     updateFlags();
 
-    Menu::alpha = 1.0f;
-    Menu::beta = 1.0f;
-    Menu::lod = 20;
+
 
     if(isConic){
         Menu::text_type = "CONIC";

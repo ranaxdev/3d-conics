@@ -13,7 +13,7 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
 
     Mesh::model_transform = glm::mat4(1.0f);
     Mesh::origin = glm::vec3(0.0f, 0.0f, -2.5f);
-    Mesh::menu = std::make_shared<Menu>(alpha, beta, lod, isConic, s);
+    Mesh::menu = new Menu(alpha, beta, lod, isConic, s);
 }
 
 

@@ -9,8 +9,10 @@ Spawner::Spawner() {
 
     Spawner::enableAxis = true;
 
+    Spawner::current_surface = END;
+    Spawner::mesh_generated = false;
     Spawner::text_alpha = ""; Spawner::text_beta = "";
-    Spawner::lod = 0; Spawner::alpha = 0.0f, Spawner::beta = 0.0f;
+    Spawner::lod = 5; Spawner::alpha = 0.0f, Spawner::beta = 0.0f;
     Spawner::MIN_ALPHA = 0.0f; Spawner::MAX_ALPHA = 0.0f;
     Spawner::MIN_BETA = 0.0f; Spawner::MAX_BETA = 0.0f;
 
@@ -25,6 +27,9 @@ void Spawner::update() {
     /* * * * * * * * * * * * * *
      *      GUI RENDERING
      * * * * * * * * * * * * * */
+    if(Spawner::mesh_generated)
+        Spawner::mesh_generated = false;
+
     ImGui::SetNextWindowSize(size);
     ImGui::SetNextWindowPos(pos);
 
@@ -78,7 +83,12 @@ void Spawner::update() {
         ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
         ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
 
-        
+        // Generate mesh button
+        if(ImGui::Button("Generate")){
+            Spawner::mesh_generated = true;
+            current_surface = static_cast<surface>(active);
+            mesh_items_selected[active] = false;
+        }
     }
 
     ImGui::End();

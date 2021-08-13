@@ -17,8 +17,10 @@ public:
     const char* text_alpha, *text_beta;
     int lod; float alpha, beta;
     float MIN_ALPHA, MAX_ALPHA, MIN_BETA, MAX_BETA;
+    surface current_surface;
 
     bool mesh_items_selected[END+1] = {false};
+    bool mesh_generated;
 
 private:
     void disableExcept(int i);

@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 #include "Logger.h"
 #include "Harness.h"
 #include "Renderer.h"
