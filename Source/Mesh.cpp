@@ -33,6 +33,7 @@ void Mesh::update() {
     alpha = menu->alpha;
     beta = menu->beta;
     lod = menu->lod;
+    time = menu->t;
 
     mesh_data.clear();
     // Create horizontal and vertical meshes
@@ -107,11 +108,23 @@ Vertex3D Mesh::func(float A, float B, float t, surface s) {
             v.z = sqrt(pow(A,2)+pow(B,2));
             break;
 
+        case DNA:
+            v.x = A*cos(B);
+            v.y = A*sin(B);
+            v.z = B;
+            break;
+
         /* CONICS */
         case DOUBLE_CONE:
             v.x = A*cos(B);
             v.y = A*sin(B);
             v.z = A;
+            break;
+
+        case SPHERE:
+            v.x = (t*cos(B))*cos(A);
+            v.y = (t*cos(B))*sin(A);
+            v.z = t*sin(B);
             break;
 
         case CYLINDER:

@@ -15,7 +15,7 @@ public:
     void editToggled() override;
 
 
-    float alpha, beta, amp;
+    float alpha, beta, amp, t;
     int lod;
     bool breathe, xrot, yrot, zrot;
     bool isConic;

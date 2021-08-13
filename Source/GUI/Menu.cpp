@@ -25,6 +25,7 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
     Menu::breathe = false;
     Menu::breath_timer = 0.0f;
     Menu::amp = 0.5f;
+    Menu::t = 1.0f;
 
     Menu::flag_list = {
             ImGuiWindowFlags_NoResize,
@@ -105,6 +106,7 @@ void Menu::update() {
     ImGui::SliderInt("   LOD", &lod, 5, MAX_LOD);
     ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
     ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
+    ImGui::SliderFloat("   t", &t, 1.0f, 5.0f);
     ImGui::SliderFloat("   Amplitude", &amp, 0.1f, 5.0f);
 
     // Breathe mode settings
