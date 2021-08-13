@@ -13,7 +13,10 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
 
     Mesh::model_transform = glm::mat4(1.0f);
     Mesh::origin = glm::vec3(0.0f, 0.0f, -2.5f);
-    Mesh::menu = new Menu(alpha, beta, lod, isConic,time, s);
+    Mesh::color[0] = 0.0f; Mesh::color[1] = 1.0f; Mesh::color[2] = 0.0f;
+    Mesh::use_plain = false;
+
+    Mesh::menu = new Menu(alpha, beta, lod, isConic, time, s);
 }
 
 
@@ -34,6 +37,8 @@ void Mesh::update() {
     beta = menu->beta;
     lod = menu->lod;
     time = menu->t;
+    color = menu->color;
+    use_plain = menu->plain;
 
     mesh_data.clear();
     // Create horizontal and vertical meshes

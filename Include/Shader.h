@@ -25,6 +25,7 @@ public:
     void setVec4(const char* name, glm::vec4& v);
     void setMat4(int loc, glm::mat4& m);
     void setMat4(const char* name, glm::mat4& m);
+    void setInt(int loc, int i);
 
 private:
     void compile_error_checking(GLuint shader);

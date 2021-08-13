@@ -25,6 +25,8 @@ public:
     float breath_alpha_limit;
     float breath_beta_limit;
     float x_trans, y_trans, z_trans;
+    bool plain;
+    float color[3];
 
     ImVec2 pos;
     ImVec2 size;

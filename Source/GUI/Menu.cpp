@@ -63,6 +63,9 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, float t, surface s)
     Menu::xrot = false; Menu::xrot_timer = 0.0f;
     Menu::yrot = false; Menu::yrot_timer = 0.0f;
     Menu::zrot = false; Menu::zrot_timer = 0.0f;
+
+    Menu::plain = false;
+    Menu::color[0] = 0.0f; Menu::color[1] = 1.0f; Menu::color[2] = 0.0f;
 }
 
 void Menu::update() {
@@ -116,7 +119,7 @@ void Menu::update() {
     ImGui::TextColored(yellow, "========================\n\n");
 
     // Transformation settings
-    ImGui::TextColored(lblue, "===== TRANSFORM =====");
+    ImGui::TextColored(lblue, "====== TRANSFORM ======");
     ImGui::SliderFloat("   x-rot", &x_trans, 0.0f, 2*PI, "%.2f rads");
     ImGui::SliderFloat("   y-rot", &y_trans, 0.0f, 2*PI, "%.2f rads");
     ImGui::SliderFloat("   z-rot", &z_trans, 0.0f, 2*PI, "%.2f rads");
@@ -124,8 +127,18 @@ void Menu::update() {
     ImGui::Checkbox("xRot", &xrot); ImGui::SameLine();
     ImGui::Checkbox("yRot", &yrot); ImGui::SameLine();
     ImGui::Checkbox("zRot", &zrot);
-
     ImGui::TextColored(lblue, "========================\n\n");
+
+    // Color settings
+    ImGui::TextColored(cyan, "========= COLOR =========");
+    ImGui::Text("Select plain and color or deselect for ");
+    ImGui::SameLine(); ImGui::TextColored(red,"R"); ImGui::SameLine(); ImGui::TextColored(orange,"A"); ImGui::SameLine();
+    ImGui::TextColored(yellow, "I"); ImGui::SameLine(); ImGui::TextColored(green,"N"); ImGui::SameLine(); ImGui::TextColored(blue,"B");
+    ImGui::SameLine(); ImGui::TextColored(indigo, "O"); ImGui::SameLine(); ImGui::TextColored(violet, "W");
+
+    ImGui::Checkbox("Plain", &plain);
+    ImGui::ColorEdit3("Select Color", color);
+    ImGui::TextColored(cyan, "========================\n\n");
 
     ImGui::End();
 

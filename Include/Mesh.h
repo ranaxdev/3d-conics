@@ -24,6 +24,8 @@ public:
     ~Mesh();
 
     bool first_update;
+    bool use_plain;
+    float* color = new float[3];
     GLuint saved_buffer;
     std::vector<GLfloat> mesh_data; // Contain all mesh vertices
 
@@ -37,7 +39,6 @@ private:
     float alpha, beta, time;
     int lod;
     bool isConic;
-
     glm::vec3 origin; // TODO: Make part of construction when you have multiple mesh rendering
                       // Attach an axis to it
 

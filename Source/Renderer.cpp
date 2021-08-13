@@ -87,7 +87,10 @@ void Renderer::renderMesh(Mesh& m) {
     shader_surface.bind();
     shader_surface.setMat4(20, conics::Harness::VP);
     shader_surface.setMat4(21, m.model_transform);
-    shader_surface.setVec4(30, cyan);
+
+    glm::vec3 color = glm::vec3(m.color[0], m.color[1], m.color[2]);
+    shader_surface.setVec3(30, color);
+    shader_surface.setInt(31, m.use_plain);
 
     int lod = (int) m.mesh_data.back(); // Retrieve reserved LOD
 

@@ -137,6 +137,10 @@ void Shader::setMat4(const char *name, glm::mat4 &m) {
     glUniformMatrix4fv(get_attrib_loc(name), 1, GL_FALSE, &m[0][0]);
 }
 
+void Shader::setInt(int loc,int i) {
+    glUniform1i(loc, i);
+}
+
 
 
 
