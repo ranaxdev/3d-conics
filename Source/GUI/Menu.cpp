@@ -12,20 +12,19 @@ void Menu::editToggled() {
     }
 }
 
-Menu::Menu(float alpha, float beta, int lod, bool isConic, surface s)
-: alpha(alpha), beta(beta), lod(lod), isConic(isConic), s(s)
+Menu::Menu(float alpha, float beta, int lod, bool isConic, float t, surface s)
+: alpha(alpha), beta(beta), lod(lod), isConic(isConic), t(t), s(s)
 {
     // Register as KL
     KeyListener::listeners.push_back(this);
 
     // Init members
     Menu::pos  = ImVec2(0.0f, 0.0f);
-    Menu::size = ImVec2(400.0f, SCREEN_H);
+    Menu::size = ImVec2(460.0f, SCREEN_H);
 
     Menu::breathe = false;
     Menu::breath_timer = 0.0f;
     Menu::amp = 0.5f;
-    Menu::t = 1.0f;
 
     Menu::flag_list = {
             ImGuiWindowFlags_NoResize,
@@ -106,7 +105,7 @@ void Menu::update() {
     ImGui::SliderInt("   LOD", &lod, 5, MAX_LOD);
     ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
     ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
-    ImGui::SliderFloat("   t", &t, 1.0f, 5.0f);
+    ImGui::SliderFloat("   t (stretch/radius)", &t, 1.0f, 5.0f);
     ImGui::SliderFloat("   Amplitude", &amp, 0.1f, 5.0f);
 
     // Breathe mode settings

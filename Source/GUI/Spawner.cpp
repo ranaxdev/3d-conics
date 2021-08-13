@@ -13,6 +13,7 @@ Spawner::Spawner() {
     Spawner::mesh_generated = false;
     Spawner::text_alpha = ""; Spawner::text_beta = "";
     Spawner::lod = 5; Spawner::alpha = 0.0f, Spawner::beta = 0.0f;
+    Spawner::t = 1.0f;
     Spawner::MIN_ALPHA = 0.0f; Spawner::MAX_ALPHA = 0.0f;
     Spawner::MIN_BETA = 0.0f; Spawner::MAX_BETA = 0.0f;
 
@@ -82,6 +83,7 @@ void Spawner::update() {
         ImGui::SliderInt("   LOD", &lod, 5, 200);
         ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
         ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
+        ImGui::SliderFloat("   t", &t, 1.0f, 5.0f);
 
         // Generate mesh button
         if(ImGui::Button("Generate")){

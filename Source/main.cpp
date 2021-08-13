@@ -48,7 +48,7 @@ public:
         if(spawner->mesh_generated){
             delete mesh->menu;
             delete mesh;
-            mesh = new Mesh(spawner->current_surface, spawner->alpha, spawner->beta, 1.0f, spawner->lod);
+            mesh = new Mesh(spawner->current_surface, spawner->alpha, spawner->beta, spawner->t, spawner->lod);
         }
         // GUI
         R->renderGUI(*spawner);

@@ -8,7 +8,7 @@
 class Menu : public GUI, public KeyListener{
 
 public:
-    Menu(float alpha, float beta, int lod, bool isConic, surface s);
+    Menu(float alpha, float beta, int lod, bool isConic, float t, surface s);
 
     void update() override;
 

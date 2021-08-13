@@ -15,6 +15,7 @@ enum surface{
 
     // Conic surfaces
     DOUBLE_CONE,
+    SINGLE_CONE,
     SPHERE,
     CYLINDER,
 
@@ -29,6 +30,7 @@ static const char* surface_names[] = {
         "DNA",
         "",
         "DOUBLE CONE",
+        "SINGLE CONE",
         "SPHERE",
         "CYLINDER",
         ""

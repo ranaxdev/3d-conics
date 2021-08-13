@@ -15,7 +15,7 @@ public:
     bool enableAxis;
     bool isConic{};
     const char* text_alpha, *text_beta;
-    int lod; float alpha, beta;
+    int lod; float alpha, beta, t;
     float MIN_ALPHA, MAX_ALPHA, MIN_BETA, MAX_BETA;
     surface current_surface;
 

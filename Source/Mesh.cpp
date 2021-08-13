@@ -13,7 +13,7 @@ Mesh::Mesh(surface s, float alpha, float beta, float time, int lod)
 
     Mesh::model_transform = glm::mat4(1.0f);
     Mesh::origin = glm::vec3(0.0f, 0.0f, -2.5f);
-    Mesh::menu = new Menu(alpha, beta, lod, isConic, s);
+    Mesh::menu = new Menu(alpha, beta, lod, isConic,time, s);
 }
 
 
@@ -118,7 +118,18 @@ Vertex3D Mesh::func(float A, float B, float t, surface s) {
         case DOUBLE_CONE:
             v.x = A*cos(B);
             v.y = A*sin(B);
-            v.z = A;
+            v.z = t*A;
+            break;
+
+        case SINGLE_CONE:
+            v.x = A*cos(B);
+            v.y = A*sin(B);
+            v.z = t*A;
+            if(v.z < 0.0f){
+                v.x = 0.0f;
+                v.y = 0.0f;
+                v.z = 0.0;
+            }
             break;
 
         case SPHERE:
@@ -128,8 +139,8 @@ Vertex3D Mesh::func(float A, float B, float t, surface s) {
             break;
 
         case CYLINDER:
-            v.x = cos(B);
-            v.y = sin(B);
+            v.x = t*cos(B);
+            v.y = t*sin(B);
             v.z = A;
             break;
     }
