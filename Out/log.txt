@@ -1,13 +1,5 @@
 *============================= LOGGED SESSION =============================*
-[INF]   2021-08-14 @ 20:00:13   |GUI.cpp| Database opened successfully
-[INF]   2021-08-14 @ 20:00:13   |GUI.cpp| Queried successfully
-[INF]   2021-08-14 @ 20:00:19   |GUI.cpp| Database opened successfully
-[INF]   2021-08-14 @ 20:00:19   |GUI.cpp| Queried successfully
-[INF]   2021-08-14 @ 20:00:24   |GUI.cpp| Database opened successfully
-[INF]   2021-08-14 @ 20:00:24   |GUI.cpp| Queried successfully
-[INF]   2021-08-14 @ 20:00:28   |GUI.cpp| Database opened successfully
-[INF]   2021-08-14 @ 20:00:28   |GUI.cpp| Queried successfully
-[INF]   2021-08-14 @ 20:00:32   |GUI.cpp| Database opened successfully
-[INF]   2021-08-14 @ 20:00:32   |GUI.cpp| Queried successfully
-[INF]   2021-08-14 @ 20:00:36   |GUI.cpp| Database opened successfully
-[INF]   2021-08-14 @ 20:00:36   |GUI.cpp| Queried successfully
+[INF]   2021-08-14 @ 21:03:32   |GUI.cpp| Database opened successfully
+[INF]   2021-08-14 @ 21:03:32   |GUI.cpp| Queried successfully
+[INF]   2021-08-14 @ 21:03:51   |GUI.cpp| Database opened successfully
+[INF]   2021-08-14 @ 21:03:51   |GUI.cpp| Queried successfully

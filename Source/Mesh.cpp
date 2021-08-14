@@ -66,9 +66,9 @@ void Mesh::update() {
 
     // Transformations
     model_transform = glm::mat4(1.0f);
-    model_transform = glm::rotate(model_transform, menu->x_trans, glm::vec3(1.0f, 0.0f, 0.0f));
-    model_transform = glm::rotate(model_transform, menu->y_trans, glm::vec3(0.0f, 1.0f, 0.0f));
-    model_transform = glm::rotate(model_transform, menu->z_trans, glm::vec3(0.0f, 0.0f, 1.0f));
+    model_transform = glm::rotate(model_transform, menu->x_rot, glm::vec3(1.0f, 0.0f, 0.0f));
+    model_transform = glm::rotate(model_transform, menu->y_rot, glm::vec3(0.0f, 1.0f, 0.0f));
+    model_transform = glm::rotate(model_transform, menu->z_rot, glm::vec3(0.0f, 0.0f, 1.0f));
 
 
     // Reserve LOD to inform rendering of this mesh

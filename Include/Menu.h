@@ -11,34 +11,37 @@ public:
     Menu(float alpha, float beta, int lod, bool isConic, float t, surface s);
 
     void update() override;
-
     void editToggled() override;
 
 protected:
     int load_mesh_config_callback(int argc, char **argv, char **azColName) override;
 
 public:
-
-
-    float alpha, beta, amp, t;
-    int lod;
-    bool breathe, xrot, yrot, zrot;
-    bool isConic;
-    float breath_timer, xrot_timer, yrot_timer, zrot_timer;
+    // Main
     surface s;
-    float MAX_ALPHA, MIN_ALPHA, MAX_BETA, MIN_BETA;
-    float breath_alpha_limit;
-    float breath_beta_limit;
-    float x_trans, y_trans, z_trans;
+    float alpha, beta, amplitude, t;
+    float max_alpha, min_alpha, max_beta, min_beta, max_time;
+//    const char* text_alpha, *text_beta, *text_type, *text_mesh, *text_time;
+    std::string text_alpha, text_beta, text_type, text_mesh, text_time;
+    int lod;
+    bool isConic;
+
+    // Breathe functionality
+    bool breathe_btn;
+    float breathe_alpha_lim, breath_beta_lim;
+    float breathe_timer;
+
+    // Transform functionality
+    bool x_rot_btn, y_rot_btn, z_rot_btn;
+    float x_rot, y_rot, z_rot;
+    float x_rot_timer, y_rot_timer, z_rot_timer;
+
+    // Color controls
     bool plain;
     float color[3];
 
     ImVec2 pos;
     ImVec2 size;
-    const char* text_type;
-    const char* text_mesh;
-    const char* text_alpha;
-    const char* text_beta;
 
 };
 
