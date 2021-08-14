@@ -115,3 +115,6 @@ int Spawner::findActive() {
     return i;
 }
 
+int Spawner::load_mesh_config_callback(int argc, char **argv, char **azColName) {
+    return 0;
+}

@@ -10,6 +10,9 @@
 
 #include <vector>
 
+#include "sqlite3.h"
+#include "Logger.h"
+#include "Surface.h"
 #include "KeyListener.h"
 #include "Globals.h"
 
@@ -44,6 +47,11 @@ protected:
     void updateFlags();
     static bool state;
 
+    void load_mesh_config(surface s);
+    virtual int load_mesh_config_callback(int argc, char** argv, char** azColName) =0;
+
+private:
+    static int HELPER_load_mesh_config_callback(void *objPtr, int argc, char **argv, char **azColName);
 };
 
 #endif

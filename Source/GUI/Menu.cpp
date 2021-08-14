@@ -15,6 +15,7 @@ void Menu::editToggled() {
 Menu::Menu(float alpha, float beta, int lod, bool isConic, float t, surface s)
 : alpha(alpha), beta(beta), lod(lod), isConic(isConic), t(t), s(s)
 {
+    load_mesh_config(s);
     // Register as KL
     KeyListener::listeners.push_back(this);
 
@@ -22,10 +23,7 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, float t, surface s)
     Menu::pos  = ImVec2(0.0f, 0.0f);
     Menu::size = ImVec2(460.0f, SCREEN_H);
 
-    Menu::breathe = false;
-    Menu::breath_timer = 0.0f;
-    Menu::amp = 0.5f;
-
+    // Init flags
     Menu::flag_list = {
             ImGuiWindowFlags_NoResize,
             ImGuiWindowFlags_NoInputs,
@@ -33,7 +31,11 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, float t, surface s)
     };
     updateFlags();
 
+    // Configure properties
 
+    Menu::breathe = false;
+    Menu::breath_timer = 0.0f;
+    Menu::amp = 0.5f;
     // Configure mesh GUI options
     if(isConic){
         Menu::text_type = "CONIC";
@@ -142,4 +144,14 @@ void Menu::update() {
 
     ImGui::End();
 
+}
+
+int Menu::load_mesh_config_callback(int argc, char **argv, char **azColName) {
+    int i;
+    std::cout << argc << std::endl;
+    for(i = 0; i<argc; i++) {
+        printf("%i, %s = %s\n", i, azColName[i], argv[i] ? argv[i] : "NULL");
+    }
+    printf("\n");
+    return 0;
 }

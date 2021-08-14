@@ -25,6 +25,9 @@ public:
 private:
     void disableExcept(int i);
     int findActive();
+
+protected:
+    int load_mesh_config_callback(int argc, char **argv, char **azColName) override;
 };
 
 #endif

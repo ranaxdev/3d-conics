@@ -14,6 +14,11 @@ public:
 
     void editToggled() override;
 
+protected:
+    int load_mesh_config_callback(int argc, char **argv, char **azColName) override;
+
+public:
+
 
     float alpha, beta, amp, t;
     int lod;

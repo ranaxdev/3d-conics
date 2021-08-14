@@ -60,7 +60,6 @@ public:
 };
 
 
-#define DEBUG 1
 #if !DEBUG
 int main(){
     conics::Window window = conics::Window(1920, 1080, "conics", 0.1f, 0.12f, 0.15f);
@@ -78,8 +77,9 @@ int main(){
 
 
 #include <sqlite3.h>
-static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
+int callback(void *NotUsed, int argc, char **argv, char **azColName) {
     int i;
+    std::cout << argc << std::endl;
     for(i = 0; i<argc; i++) {
         printf("%i, %s = %s\n", i, azColName[i], argv[i] ? argv[i] : "NULL");
     }

@@ -39,6 +39,41 @@ GUI::GUI() {
     style->Colors[ImGuiCol_TitleBg] = dblue;
 }
 
+void GUI::load_mesh_config(surface s) {
+    int surface_ID = (int)s+1;
+
+    sqlite3* db;
+    char* err = nullptr;
+    int rc;
+
+    rc = sqlite3_open((SRC+"surfaceDB.sqlite").c_str(), &db);
+
+    if(rc){
+        Logger::log(ERROR, "Database not opened.", __FILENAME__);
+        Logger::log(ERROR, sqlite3_errmsg(db), __FILENAME__);
+    }
+    else{
+        Logger::log(INFO, "Database opened successfully", __FILENAME__);
+    }
+    std::string str = "SELECT * FROM surface WHERE surface_ID="+std::to_string(surface_ID)+";";
+    const char* sql = str.c_str();
+
+    rc = sqlite3_exec(db, sql, HELPER_load_mesh_config_callback, this, &err);
+
+    if (rc != SQLITE_OK){
+        Logger::log(ERROR, "Query failed", __FILENAME__);
+        sqlite3_free(err);
+    }
+    else{
+        Logger::log(INFO, "Queried successfully", __FILENAME__);
+    }
+    sqlite3_close(db);
+}
+
+int GUI::HELPER_load_mesh_config_callback(void *objPtr, int argc, char **argv, char **azColName) {
+    return ((GUI*)objPtr)->load_mesh_config_callback(argc, argv, azColName);
+}
+
 GUI::~GUI() = default;
 
 

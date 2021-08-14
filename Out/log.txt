@@ -1,58 +1,13 @@
 *============================= LOGGED SESSION =============================*
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:01   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
-[ERR]   2021-08-09 @ 10:57:02   |Renderer.cpp| Buffer overflowed, buffer ID: 1
+[INF]   2021-08-14 @ 20:00:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-14 @ 20:00:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-14 @ 20:00:19   |GUI.cpp| Database opened successfully
+[INF]   2021-08-14 @ 20:00:19   |GUI.cpp| Queried successfully
+[INF]   2021-08-14 @ 20:00:24   |GUI.cpp| Database opened successfully
+[INF]   2021-08-14 @ 20:00:24   |GUI.cpp| Queried successfully
+[INF]   2021-08-14 @ 20:00:28   |GUI.cpp| Database opened successfully
+[INF]   2021-08-14 @ 20:00:28   |GUI.cpp| Queried successfully
+[INF]   2021-08-14 @ 20:00:32   |GUI.cpp| Database opened successfully
+[INF]   2021-08-14 @ 20:00:32   |GUI.cpp| Queried successfully
+[INF]   2021-08-14 @ 20:00:36   |GUI.cpp| Database opened successfully
+[INF]   2021-08-14 @ 20:00:36   |GUI.cpp| Queried successfully
