@@ -60,7 +60,7 @@ public:
 };
 
 
-#define DEBUG 0
+#define DEBUG 1
 #if !DEBUG
 int main(){
     conics::Window window = conics::Window(1920, 1080, "conics", 0.1f, 0.12f, 0.15f);
@@ -77,9 +77,41 @@ int main(){
 #else
 
 
+#include <sqlite3.h>
+static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
+    int i;
+    for(i = 0; i<argc; i++) {
+        printf("%i, %s = %s\n", i, azColName[i], argv[i] ? argv[i] : "NULL");
+    }
+    printf("\n");
+    return 0;
+}
 
 int main(){
 
+    sqlite3* db;
+    char* err = nullptr;
+    int rc;
+    std::cout << (SRC+"surfaceDB.sqlite").c_str() << std::endl;
+    rc = sqlite3_open((SRC+"surfaceDB.sqlite").c_str(), &db);
+
+    if(rc){
+        std::cout << "Not opened" << std::endl;
+        std::cout << sqlite3_errmsg(db) << std::endl;
+    }
+    else{
+        std::cout << "opened" << std::endl;
+    }
+    const char* sql = "SELECT * FROM surface WHERE surface_ID=2;";
+    rc = sqlite3_exec(db, sql, callback, nullptr, &err);
+    if (rc != SQLITE_OK){
+        std::cout << "Failed" << std::endl;
+        sqlite3_free(err);
+    }
+    else{
+        std::cout << "OK" << std::endl;
+    }
+    sqlite3_close(db);
     return 0;
 }
 

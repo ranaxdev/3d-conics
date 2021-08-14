@@ -34,7 +34,7 @@ Menu::Menu(float alpha, float beta, int lod, bool isConic, float t, surface s)
     updateFlags();
 
 
-
+    // Configure mesh GUI options
     if(isConic){
         Menu::text_type = "CONIC";
         Menu::text_alpha = "   h-range";
