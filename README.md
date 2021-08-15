@@ -46,8 +46,10 @@ Feel free to suggest some features in the issues tab!
 
 <img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen1.png" alt="Hyperbolic" width="500">
 <img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen2.png" alt="Disc" width="500">
-<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen3.png" alt="Hyperbolic" width="500">
 
+This `PARABOLOID` was generated with &nbsp;&nbsp;&nbsp;<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/paraboloid_eq.png">
+
+![paraboloid_o](https://user-images.githubusercontent.com/44033302/129495259-617b4158-8033-49df-82d9-bbc076f3166c.gif)
 
 
 <!-- GETTING STARTED -->
