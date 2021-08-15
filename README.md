@@ -23,7 +23,13 @@
 ## Preview
 https://user-images.githubusercontent.com/44033302/129494506-d0533c17-6057-4c43-9b3d-f69dc9af4e8b.mp4
 
-As of `12/08/2021`, **3d-conics** features mesh generation based on multivaraible functions and live interaction with a handful of surfaces and 3D conics. The mesh properties can be adjusted via a GUI overlay (Dear Imgui integration) and viewed through a controllable 3D perspective projection camera, which are implemented as separate modes (edit and normal respectively).
+<br>
+
+As of `15/08/2021`, **3d-conics** features mesh generation based on multivaraible functions and live interaction with their properties (such as controlling the domain/range & applying transformations) with a handful of 3D surfaces and conics. 
+
+The mesh properties can be adjusted via a GUI overlay (Dear Imgui integration) and viewed through a controllable 3D perspective projection camera, which are implemented as separate modes (edit and normal respectively). 
+
+A mesh generating menu allows you to select a handful of prefabricated functions (such as `PARABOLOID`, `HYPERBOLIC PARABOLOID`, `SINGLE CONE`, `DOUBLE CONE`, `CYLINDER`, `SPHERE` and a couple more) and their initialization properties.
 
 ### Future Releases
 
@@ -32,6 +38,7 @@ Features that I would like to work towards implementing
 - Rendering multiple meshes in the same application instance
 - Live mesh vertex editor
 - Live mesh painting
+- Custom transformations
 
 Feel free to suggest some features in the issues tab!
 
