@@ -4,19 +4,21 @@
 
 
 Spawner::Spawner() {
+    // Init members
     Spawner::size = ImVec2(360.0f, 360.0f);
     Spawner::pos = ImVec2(SCREEN_W-size.x, 0.0f);
 
-    Spawner::enableAxis = true;
+    Spawner::lod = 5; Spawner::alpha = 0.0f, Spawner::beta = 0.0f;
+    Spawner::t = 0.0f;
+    Spawner::min_alpha = 0.0f; Spawner::max_alpha = 0.0f;
+    Spawner::min_beta = 0.0f; Spawner::max_beta = 0.0f;
+    Spawner::max_time = 0.0f;
 
+    Spawner::enableAxis = true;
     Spawner::current_surface = END;
     Spawner::mesh_generated = false;
-    Spawner::text_alpha = ""; Spawner::text_beta = "";
-    Spawner::lod = 5; Spawner::alpha = 0.0f, Spawner::beta = 0.0f;
-    Spawner::t = 1.0f;
-    Spawner::MIN_ALPHA = 0.0f; Spawner::MAX_ALPHA = 0.0f;
-    Spawner::MIN_BETA = 0.0f; Spawner::MAX_BETA = 0.0f;
 
+    // Init flags
     Spawner::flag_list = {
             ImGuiWindowFlags_MenuBar
     };
@@ -59,31 +61,16 @@ void Spawner::update() {
     // Display mesh creation options for the currently selected mesh
     int active = findActive();
     if(active > -1){
-        isConic = active > surface::SEPARATOR;
-       if(isConic){
-            text_alpha = "   height";
-            text_beta = "   angle (rad)";
-            Spawner::MAX_ALPHA = 10.0f;
-            Spawner::MIN_ALPHA = 0.1f;
-            Spawner::MAX_BETA = 2*PI;
-            Spawner::MIN_BETA = 0.0f;
-        }
-       else {
-            text_alpha = "   x-range";
-            text_beta = "   y-range";
-            Spawner::MAX_ALPHA = 5.0f;
-            Spawner::MIN_ALPHA = -5.0f;
-            Spawner::MAX_BETA = 5.0f;
-            Spawner::MIN_BETA = -5.0f;
-        }
+        // Load default config of selected mesh into members
+        load_mesh_config(static_cast<surface>(active));
 
         ImGui::TextColored(purple, "%s", (std::string("\nCREATING ")+std::string(surface_names[active])).c_str());
         ImGui::TextColored(yellow, "Select Initial Mesh Properties:");
 
         ImGui::SliderInt("   LOD", &lod, 5, 200);
-        ImGui::SliderFloat(text_alpha, &alpha, MIN_ALPHA, MAX_ALPHA);
-        ImGui::SliderFloat(text_beta, &beta, MIN_BETA, MAX_BETA);
-        ImGui::SliderFloat("   t", &t, 1.0f, 5.0f);
+        ImGui::SliderFloat(text_alpha.c_str(), &alpha, min_alpha, max_alpha);
+        ImGui::SliderFloat(text_beta.c_str(), &beta, min_beta, max_beta);
+        ImGui::SliderFloat(text_time.c_str(), &t, 1.0f, max_time);
 
         // Generate mesh button
         if(ImGui::Button("Generate")){
@@ -116,5 +103,19 @@ int Spawner::findActive() {
 }
 
 int Spawner::load_mesh_config_callback(int argc, char **argv, char **azColName) {
+    Spawner::alpha         = std::stof(argv[2]);
+    Spawner::beta          = std::stof(argv[3]);
+    Spawner::t             = std::stof(argv[5]);
+    Spawner::lod           = std::stoi(argv[6]);
+    Spawner::isConic       = std::stoi(argv[7]);
+    Spawner::max_alpha     = std::stof(argv[8]);
+    Spawner::min_alpha     = std::stof(argv[9]);
+    Spawner::max_beta      = std::stof(argv[10]);
+    Spawner::min_beta      = std::stof(argv[11]);
+    Spawner::max_time      = std::stof(argv[12]);
+    Spawner::text_alpha    = argv[13];
+    Spawner::text_beta     = argv[14];
+    Spawner::text_time     = argv[15];
+    Spawner::text_type     = argv[16];
     return 0;
 }

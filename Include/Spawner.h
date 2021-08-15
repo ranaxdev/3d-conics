@@ -14,9 +14,9 @@ public:
     ImVec2 pos;
     bool enableAxis;
     bool isConic{};
-    const char* text_alpha, *text_beta;
+    std::string text_alpha, text_beta, text_time, text_type;
     int lod; float alpha, beta, t;
-    float MIN_ALPHA, MAX_ALPHA, MIN_BETA, MAX_BETA;
+    float max_alpha, min_alpha, max_beta, min_beta, max_time;
     surface current_surface;
 
     bool mesh_items_selected[END+1] = {false};

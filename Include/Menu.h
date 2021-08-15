@@ -21,7 +21,6 @@ public:
     surface s;
     float alpha, beta, amplitude, t;
     float max_alpha, min_alpha, max_beta, min_beta, max_time;
-//    const char* text_alpha, *text_beta, *text_type, *text_mesh, *text_time;
     std::string text_alpha, text_beta, text_type, text_mesh, text_time;
     int lod;
     bool isConic;
