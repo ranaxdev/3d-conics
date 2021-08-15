@@ -31,30 +31,24 @@ using namespace conics;
 class App : public conics::Harness{
 public:
     std::shared_ptr<Camera> camera = std::make_shared<Camera>();
-    Mesh* mesh;
     std::shared_ptr<Spawner> spawner;
 
     void startup() override {
+        R->default_mesh = new Mesh(surface::DOUBLE_CONE, 2.0f, 2.0f, 1.0f, 20);
 
         spawner = std::make_shared<Spawner>();
-        mesh = new Mesh(surface::DOUBLE_CONE, 2.0f, 2.0f, 1.0f, 20);
+
     };
 
 
     void render(float delta) override {
         VP = camera->calc_VP(delta);
 
-        // Mesh Generation
-        if(spawner->mesh_generated){
-            delete mesh->menu;
-            delete mesh;
-            mesh = new Mesh(spawner->current_surface, spawner->alpha, spawner->beta, spawner->t, spawner->lod);
-        }
         // GUI
         R->renderGUI(*spawner);
 
-        // MESH
-        R->renderMesh(*mesh);
+        // MESH (use default or create your own initial one)
+        R->renderMesh(*R->default_mesh);
 
     }
 };

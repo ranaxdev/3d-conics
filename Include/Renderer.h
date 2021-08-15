@@ -18,7 +18,7 @@ public:
 
     void enableAxis();
 
-    void renderGUI(Spawner& g); // TODO: Overload these for different GUIs
+    void renderGUI(Spawner& g); // TODO: Overload these for different GUIs (if needed)
     void renderAxis();
     void renderMesh(Mesh& m);
 
@@ -28,7 +28,7 @@ public:
     unsigned int editBuf(std::vector<GLfloat>& data, GLuint i);
 
     void formatBuf(GLuint loc, GLint comps_per_elem, std::vector<int> attribs, Shader& s);
-
+    Mesh* default_mesh;
 
 private:
     // Memory mgmt

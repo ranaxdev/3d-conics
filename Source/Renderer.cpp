@@ -54,6 +54,12 @@ void Renderer::renderGUI(Spawner &g) {
     if(g.enableAxis){
         renderAxis();
     }
+    // New Mesh Generation
+    if(g.mesh_generated){
+        delete default_mesh->menu;
+        delete default_mesh;
+        default_mesh = new Mesh(g.current_surface, g.alpha, g.beta, g.t, g.lod);
+    }
 }
 
 
