@@ -54,6 +54,14 @@ Feel free to suggest some features in the issues tab!
 
 ![paraboloid_o](https://user-images.githubusercontent.com/44033302/129495259-617b4158-8033-49df-82d9-bbc076f3166c.gif)
 
+`TORUS` rendered parametrically with
+
+<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/torus_eq.png">
+
+The torus "wraps" in the render because I was live-editing the value of theta
+
+![torus_o](https://user-images.githubusercontent.com/44033302/129497589-9c5079a4-beb4-4615-a89b-052a5d32a301.gif)
+
 
 <!-- GETTING STARTED -->
 ## Example Usage
