@@ -42,8 +42,49 @@ Features that I would like to work towards implementing
 
 Feel free to suggest some features in the issues tab!
 
+
+## Example Usage 
+### Developers
+Creating your own App instance using the conics harness
+```cpp
+class App : public conics::Harness{
+  Camera* camera = new Camera();
+  Spawner* spawner = new Spawner();
+  // override startup to initialize rendering data
+  void startup() override{
+    // Sets up data buffer for a cone shape (starting mesh)
+    R->setupSurface(1.0f, 1.0f, 10, 1.0f, surface::HYPERBOLIC);
+    R->default_mesh = new Mesh(surface::CONE...);
+  }
+  // override render to call renderer routines
+  void render() override{
+    VP = camera->calc_VP(delta);
+    // GUI
+    R->renderGUI(*spawner);
+    // MESH
+    R->renderMesh(*R->default_mesh);
+  }
+}
+  ```
+
+Creating your own GUI overlay window
+```cpp
+// Creating your own GUI
+class MyGUI : public GUI {
+  void update() override;
+  ...
+}
+MyGUI::MyGUI(){
+  MyGUI::flag_list {/* your ImGUI flags here */};
+  MyGUI::updateFlags();
+  
+  // If you want to change GUI with events attach to the KL
+  KeyListener::listeners.push_back(this);
+}
+
+```
+
 ## Some Renders
-<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen2.png" alt="Disc" width="500">
 
 `HYPERBOLIC PARABOLOID` (saddle) generated with &nbsp;&nbsp;&nbsp;<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/saddle_eq.png">
 
@@ -54,7 +95,17 @@ Feel free to suggest some features in the issues tab!
 
 ![paraboloid_o](https://user-images.githubusercontent.com/44033302/129495259-617b4158-8033-49df-82d9-bbc076f3166c.gif)
 
-`TORUS` rendered parametrically with
+
+`SINGLE CONE` generated parametrically with
+
+<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/cone_eq.png">
+
+The cone is stretching because I was live-editing the t-factor
+
+![cone_o](https://user-images.githubusercontent.com/44033302/129498766-9edafc7f-f19d-4b2b-8eb5-85dfb6cf1424.gif)
+
+
+`TORUS` generated parametrically with
 
 <img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/torus_eq.png">
 
@@ -64,22 +115,6 @@ The torus "wraps" in the render because I was live-editing the value of theta
 
 
 <!-- GETTING STARTED -->
-## Example Usage
-
-```cpp
-    // Creating your own App instance
-    class App : public conics::Harness{
-      // override startup to initialize rendering data
-      void startup() override{
-        // Sets up data buffer for a hyperbolic shape
-        R->setupSurface(1.0f, 1.0f, 10, 1.0f, surface::HYPERBOLIC);
-      }
-      // override render to call renderer routines
-      void render() override{
-        R->renderSurface();
-      }
-    }
-  ```
 
 ## Libraries Used
 
