@@ -126,6 +126,7 @@ Vertex3D Mesh::func(float A, float B, float t, surface s) {
             break;
 
         /* CONICS */
+        // 607x467
         case TORUS:
             v.x = (2*t + t*cos(A)) * cos(B);
             v.y = (2*t + t*cos(A)) * sin(B);

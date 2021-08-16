@@ -1,185 +1,397 @@
 *============================= LOGGED SESSION =============================*
-[INF]   2021-08-15 @ 05:43:36   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:36   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:41   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:41   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:41   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:41   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:41   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:41   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:41   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:41   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:41   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:42   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Database opened successfully
-[INF]   2021-08-15 @ 05:43:45   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:01   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:01   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:12   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:13   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:14   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Database opened successfully
+[INF]   2021-08-16 @ 07:03:15   |GUI.cpp| Queried successfully

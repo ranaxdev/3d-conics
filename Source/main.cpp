@@ -56,7 +56,7 @@ public:
 
 #if !DEBUG
 int main(){
-    conics::Window window = conics::Window(1920, 1080, "conics", 0.1f, 0.12f, 0.15f);
+    conics::Window window = conics::Window(1920, 1080, "conics", 0.03f, 0.04f, 0.07f);
     App* a = new App;
     a->setWindow(window);
     a->run(a);
