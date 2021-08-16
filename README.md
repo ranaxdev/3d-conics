@@ -53,7 +53,6 @@ class App : public conics::Harness{
   // override startup to initialize rendering data
   void startup() override{
     // Sets up data buffer for a cone shape (starting mesh)
-    R->setupSurface(1.0f, 1.0f, 10, 1.0f, surface::HYPERBOLIC);
     R->default_mesh = new Mesh(surface::CONE...);
   }
   // override render to call renderer routines
