@@ -112,6 +112,17 @@ The torus "wraps" in the render because I was live-editing the value of theta
 
 ![torus_o](https://user-images.githubusercontent.com/44033302/129497589-9c5079a4-beb4-4615-a89b-052a5d32a301.gif)
 
+## Installation
+### Linux
+
+```bash
+git clone https://github.com/ranaxdev/3d-conics
+cd 3d-conics
+mkdir Release
+cd Release
+cmake -DCMAKE_BUILD_TYPE=Release ../
+make
+```
 
 <!-- GETTING STARTED -->
 
