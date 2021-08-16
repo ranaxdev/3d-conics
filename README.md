@@ -43,11 +43,14 @@ Features that I would like to work towards implementing
 Feel free to suggest some features in the issues tab!
 
 ## Some Renders
-
-<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen1.png" alt="Hyperbolic" width="500">
 <img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/screen2.png" alt="Disc" width="500">
 
-This `PARABOLOID` was generated with &nbsp;&nbsp;&nbsp;<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/paraboloid_eq.png">
+`HYPERBOLIC PARABOLOID` (saddle) generated with &nbsp;&nbsp;&nbsp;<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/saddle_eq.png">
+
+![saddle_o](https://user-images.githubusercontent.com/44033302/129497075-bfba1328-ddee-4e38-ac19-85d7c490b616.gif)
+
+
+`PARABOLOID` generated with &nbsp;&nbsp;&nbsp;<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/paraboloid_eq.png">
 
 ![paraboloid_o](https://user-images.githubusercontent.com/44033302/129495259-617b4158-8033-49df-82d9-bbc076f3166c.gif)
 
