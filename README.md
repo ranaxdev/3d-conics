@@ -115,7 +115,7 @@ The torus "wraps" in the render because I was live-editing the value of theta
 ## Installation
 ### Linux
 
-Dependencies include `OpenGL 4.50`, `libdl`, `glfw3`, `pthread`, `sqlite3`
+Dependencies include `OpenGL 4.50`, `libdl`, `glfw3`, `pthread`, `sqlite3`, `glm`
 
 ```bash
 git clone https://github.com/ranaxdev/3d-conics
