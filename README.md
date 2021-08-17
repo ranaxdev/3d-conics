@@ -22,7 +22,7 @@
 
 | [Preview](#preview) - [Future Releases](#future-releases) - [Example Usage](#example-usage) - [Some Renders](#some-renders) - [Installation](#installation) |
 :----------------------------------------------------------: |
-| [Libraries Used](#libraries-used) - [License](#license) - [Contact](#contact) |
+| [3b1b SoME1](#3blue1brown-some1) - [Libraries Used](#libraries-used) - [License](#license) - [Contact](#contact) |
 
 
 <!-- ABOUT THE PROJECT -->
@@ -136,7 +136,11 @@ make
 
 I'm currently working on releasing an executable so that you don't have to use `cmake` to build it on windows
 
-<!-- GETTING STARTED -->
+## 3Blue1Brown SoME1
+
+This project was inspired by the math educator and content creator [3Blue1Brown](https://www.youtube.com/c/3blue1brown)'s online competition [SoME1](https://www.3blue1brown.com/blog/some1) (The Summer of Math Exposition). It has been submitted as an entry.
+
+I made this tool because I believe math educators can benefit from it by using it to demonstrate 3D surfaces/conics to their students as it is often difficult to plot them by hand, as you have to think about perspective and shading. This tool allows you to view these surfaces in various angles and see how they change by adjusting their many properties.
 
 ## Libraries Used
 
