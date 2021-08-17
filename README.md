@@ -22,6 +22,7 @@
 
 | [Preview](#preview) - [Future Releases](#future-releases) - [Example Usage](#example-usage) - [Some Renders](#some-renders) - [Installation](#installation) |
 :----------------------------------------------------------: |
+| [Libraries Used](#libraries-used) - [License](#license) - [Contact](#contact) |
 
 
 <!-- ABOUT THE PROJECT -->
