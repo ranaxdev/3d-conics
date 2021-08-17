@@ -18,6 +18,11 @@
   </p>
 </p>
 
+<hr>
+
+| [Preview](#preview) - [Future Releases](#future-releases) - [Example Usage](#example-usage) - [Some Renders](#some-renders) - [Installation](#installation) |
+:----------------------------------------------------------: |
+
 
 <!-- ABOUT THE PROJECT -->
 ## Preview
