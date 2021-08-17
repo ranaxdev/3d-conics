@@ -132,6 +132,10 @@ cmake -DCMAKE_BUILD_TYPE=Release ../
 make
 ```
 
+### Windows
+
+I'm currently working on releasing an executable so that you don't have to use `cmake` to build it on windows
+
 <!-- GETTING STARTED -->
 
 ## Libraries Used
