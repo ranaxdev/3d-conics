@@ -1,7 +1,7 @@
 #ifndef _H_RENDERER
 #define _H_RENDERER
 
-#include <glad/glad.h>
+#include <glad.h>
 #include <GLFW/glfw3.h>
 
 #include <vector>
