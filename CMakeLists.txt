@@ -27,7 +27,7 @@ add_subdirectory(external/imgui)
 add_subdirectory(external/glad)
 
 # external/imgui/imgui.cpp external/imgui/imgui_demo.cpp external/imgui/imgui_draw.cpp external/imgui/imgui_impl_glfw.cpp external/imgui/imgui_impl_opengl3.cpp external/imgui/imgui_tables.cpp external/imgui/imgui_widgets.cpp
-add_executable(${PROJECT_NAME} Source/main.cpp Source/Harness.cpp Include/Harness.h Source/Shader.cpp Include/Shader.h Source/Camera.cpp Include/Camera.h Include/KeyListener.h Include/Math.h Source/Utils/Logger.cpp Include/Logger.h Include/Globals.h Source/Renderer.cpp Include/Renderer.h Source/Mesh.cpp Include/Mesh.h Source/GUI/GUI.cpp Include/GUI.h Source/GUI/Menu.cpp Include/Menu.h Source/Utils/KeyListener.cpp Include/Surface.h Source/GUI/Spawner.cpp Include/Spawner.h)
+add_executable(${PROJECT_NAME} Source/main.cpp Source/Harness.cpp Include/Harness.h Source/Shader.cpp Include/Shader.h Source/Camera.cpp Include/Camera.h Include/KeyListener.h Source/Utils/Logger.cpp Include/Logger.h Include/Globals.h Source/Renderer.cpp Include/Renderer.h Source/Mesh.cpp Include/Mesh.h Source/GUI/GUI.cpp Include/GUI.h Source/GUI/Menu.cpp Include/Menu.h Source/Utils/KeyListener.cpp Include/Surface.h Source/GUI/Spawner.cpp Include/Spawner.h)
 
 
 include_directories(Include)
