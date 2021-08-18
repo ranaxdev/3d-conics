@@ -1,1 +1,1 @@
-add_library(GLAD SHARED glad.c)
+add_library(GLAD STATIC glad.c)

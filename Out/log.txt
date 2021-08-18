@@ -1,3 +1,3 @@
 *============================= LOGGED SESSION =============================*
-[INF]   2021-08-18 @ 07:30:21   |GUI.cpp| Database opened successfully
-[INF]   2021-08-18 @ 07:30:21   |GUI.cpp| Queried successfully
+[INF]   2021-08-19 @ 00:15:35   |GUI.cpp| Database opened successfully
+[INF]   2021-08-19 @ 00:15:35   |GUI.cpp| Queried successfully
