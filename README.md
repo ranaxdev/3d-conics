@@ -54,6 +54,8 @@ Feel free to suggest some features in the issues tab!
 ## Example Usage 
 ### Users
 
+Below are some of the things you can do with the meshes which you generate from a spawner menu.
+
 #### Level Of Detail
 There is an universal option to increase or decrease the "level of detail" of the currently rendered mesh. This causes uniform generation of extra vertices, which makes the mesh more tightly/loosely packed. This may also increase resource usage.
 
