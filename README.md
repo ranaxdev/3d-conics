@@ -20,9 +20,11 @@
 
 <hr>
 
-| [Preview](#preview) - [Future Releases](#future-releases) - [Example Usage](#example-usage) - [Some More Renders](#some-more-renders) - [Installation](#installation) |
+| [Preview](#preview) - [Future Releases](#future-releases) - [Some More Renders](#some-more-renders) - [Installation](#installation) |
 :----------------------------------------------------------: |
 | [3b1b SoME1](#3blue1brown-some1) - [Libraries Used](#libraries-used) - [License](#license) - [Contact](#contact) |
+| [Example Usage](#example-usage) - [Users](#users) - [Developers](#developers) |
+
 
 
 <!-- ABOUT THE PROJECT -->
