@@ -75,8 +75,8 @@ https://user-images.githubusercontent.com/44033302/130916996-32f1bb8a-c4e8-4b5a-
 #### Breathing
 This feature allows you to automate viewing how the mesh changes as you adjust their domain/range live. An amplitude slider allows you to control the speed at which this happens.
 
+https://user-images.githubusercontent.com/44033302/130920032-7b821884-61f8-4f06-8dc5-ac9d3034c085.mp4
 
-https://user-images.githubusercontent.com/44033302/130918302-f1d4ae5a-bfde-46cb-b655-6dc2d5133326.mp4
 
 
 ### Developers
