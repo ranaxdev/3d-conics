@@ -20,7 +20,7 @@
 
 <hr>
 
-| [Preview](#preview) - [Future Releases](#future-releases) - [Example Usage](#example-usage) - [Some Renders](#some-renders) - [Installation](#installation) |
+| [Preview](#preview) - [Future Releases](#future-releases) - [Example Usage](#example-usage) - [Some More Renders](#some-more-renders) - [Installation](#installation) |
 :----------------------------------------------------------: |
 | [3b1b SoME1](#3blue1brown-some1) - [Libraries Used](#libraries-used) - [License](#license) - [Contact](#contact) |
 
@@ -50,6 +50,31 @@ Feel free to suggest some features in the issues tab!
 
 
 ## Example Usage 
+### Users
+
+#### Level Of Detail
+There is an universal option to increase or decrease the "level of detail" of the currently rendered mesh. This causes uniform generation of extra vertices, which makes the mesh more tightly/loosely packed. This may also increase resource usage.
+
+https://user-images.githubusercontent.com/44033302/130914937-960748dd-56b8-4f89-acf6-512f61c69c1f.mp4
+
+#### Properties
+Various meshes have their own custom properties which may not apply to all of them. For example, rendering a conic (such as a cylinder) contains adjustable angles to "wrap" itself, radius and height. A surface such as a hyperboloid, which is not generated parametrically has adjustable properties for the maximum domain and range.
+
+
+https://user-images.githubusercontent.com/44033302/130916361-e4f7e7aa-c4b8-40c1-8c55-1f83e460092f.mp4
+
+#### Transformations
+Currently, there is support for rotating the mesh in all 3-axis using Euler angles (might look into replacing with Quaternions). There are buttons to automate the rotations as well, so that you can adjust other properties while watching the mesh transform.
+
+https://user-images.githubusercontent.com/44033302/130916996-32f1bb8a-c4e8-4b5a-85a3-cdfdddc04dc6.mp4
+
+#### Breathing
+This feature allows you to automate viewing how the mesh changes as you adjust their domain/range live. An amplitude slider allows you to control the speed at which this happens.
+
+
+https://user-images.githubusercontent.com/44033302/130918302-f1d4ae5a-bfde-46cb-b655-6dc2d5133326.mp4
+
+
 ### Developers
 Creating your own App instance using the conics harness
 ```cpp
@@ -89,7 +114,8 @@ MyGUI::MyGUI(){
 
 ```
 
-## Some Renders
+
+## Some More Renders
 
 `HYPERBOLIC PARABOLOID` (saddle) generated with &nbsp;&nbsp;&nbsp;<img src="https://github.com/ranaxdev/3d-conics/blob/main/Res/saddle_eq.png">
 
